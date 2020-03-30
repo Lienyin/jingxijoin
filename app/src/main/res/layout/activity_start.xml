@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     android:gravity="center">
 
     <LinearLayout
@@ -10,17 +11,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
+        android:background="@mipmap/open_peag"
         android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:src="@mipmap/loading" />
-
     </LinearLayout>
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:src="@mipmap/loading1" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:text="江苏汇智拓信息科技有限公司"/>
 </LinearLayout>

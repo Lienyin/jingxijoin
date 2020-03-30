@@ -26,7 +26,9 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -329,5 +331,42 @@ public class AppUtils {
         }
     }
 
+    public static int dp2px(Context context, float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
+    }
 
+    public static void callPhone(Context mContext, String tel) {
+        try {
+            //吊起来拨号界面不需要权限
+            Uri uri = Uri.parse("tel:" + tel);
+            Intent callHotPhone = new Intent(Intent.ACTION_DIAL);
+            callHotPhone.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            callHotPhone.setData(uri);
+            mContext.startActivity(callHotPhone);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 检查手机上是否安装了指定的软件
+     * @param context
+     * @param packageName
+     * @return
+     */
+    public static boolean isAvilible(Context context, String packageName) {
+        final PackageManager packageManager = context.getPackageManager();
+        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
+        List<String> packageNames = new ArrayList<String>();
+
+        if (packageInfos != null) {
+            for (int i = 0; i < packageInfos.size(); i++) {
+                String packName = packageInfos.get(i).packageName;
+                packageNames.add(packName);
+            }
+        }
+        // 判断packageNames中是否有目标程序的包名，有TRUE，没有FALSE
+        return packageNames.contains(packageName);
+    }
 }

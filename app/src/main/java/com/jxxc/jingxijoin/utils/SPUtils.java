@@ -22,14 +22,11 @@ public class SPUtils {
     public static SharedPreferences sp;
 
     public static final String K_TOKEN = "token";
-    public static final String K_EXPIREIN = "expireIn";
-    public static final String K_TOKENCREATETIME = "tokenCreateTime";
-    public static final String K_BATTERYTYPE = "batteryType";
-    public static final String K_STATIC_URL = "static_url";
     public static final String K_SESSION_TIMEOUT = "sessionTimeout";
-    public static final String K_SESSION_MOBILE = "mobile";
-    public static final String K_AGENTID = "agentId";//城市id
-    public static final String K_ROLEID = "roleId";//管理员类型
+    public static final String K_SESSION_MOBILE = "phonenumber";
+    public static final String K_STATIC_URL = "staticUrl";//上传静态资源图片
+    public static final String K_ACTIVITY = "activity";//首页活动显示
+    public static final String K_CITY = "city";//当前定位城市
     private static Context mContext;
 
     public static SharedPreferences init(Context context) {
