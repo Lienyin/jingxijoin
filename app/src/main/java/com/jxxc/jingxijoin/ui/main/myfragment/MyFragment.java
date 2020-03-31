@@ -8,16 +8,22 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jxxc.jingxijoin.R;
+import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
+import com.jxxc.jingxijoin.ui.bindingaccount.BindingAccountActivity;
+import com.jxxc.jingxijoin.ui.commercialtenant.CommercialTenantActivity;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 @SuppressLint("ValidFragment")
 public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragmentPresenter> implements View.OnClickListener, MyFragmentContract.View {
     private Context context;
     private TextView tv_user_name;
+    private LinearLayout ll_tixian;
+    private LinearLayout ll_commercial_tenant_info;
 
     public MyFragment(Context context){
         this.context = context;
@@ -27,17 +33,22 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_fragment,container,false);
-        //tv_user_name = (TextView)view.findViewById(R.id.tv_user_name);
-        //tv_user_name.setOnClickListener(this);
+        ll_tixian = view.findViewById(R.id.ll_tixian);
+        ll_commercial_tenant_info = view.findViewById(R.id.ll_commercial_tenant_info);
+        ll_tixian.setOnClickListener(this);
+        ll_commercial_tenant_info.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-//            case R.id.ll_door_photo://门头照
-//                ZzRouter.gotoActivity((Activity) context, DoorPhotoActivity.class);
-//                break;
+            case R.id.ll_tixian://提现
+                ZzRouter.gotoActivity((Activity) context, BindingAccountActivity.class);
+                break;
+            case R.id.ll_commercial_tenant_info://商户信息
+                ZzRouter.gotoActivity((Activity) context, CommercialTenantActivity.class);
+                break;
         }
     }
 }

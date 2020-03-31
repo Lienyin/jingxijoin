@@ -7,4 +7,10 @@ public class Api {
 
     //1-客户登录
     public static final String LOGIN = BASEURL + "/user/login.json";
+    //1-客户登录
+    public static final String BINDING_TIXIAN = BASEURL + "/user/login.json";
+    //1-客户登录
+    public static final String SMS_CODE = BASEURL + "/user/login.json";
+    //1-客户登录
+    public static final String GET_ACCOUNT_INFO = BASEURL + "/user/login.json";
 }

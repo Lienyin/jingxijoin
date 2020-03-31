@@ -83,6 +83,7 @@
     </LinearLayout>
     <!--商家信息-->
     <LinearLayout
+        android:id="@+id/ll_commercial_tenant_info"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
@@ -110,6 +111,7 @@
     </LinearLayout>
     <!--提现账户-->
     <LinearLayout
+        android:id="@+id/ll_tixian"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="0.5dp"
