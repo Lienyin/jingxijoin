@@ -1,6 +1,7 @@
 package com.jxxc.jingxijoin.ui.main.firstfragment;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
 import com.jxxc.jingxijoin.utils.AnimUtils;
+import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 @SuppressLint("ValidFragment")
 public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, FirseFramentPresenter> implements View.OnClickListener, FirseFramentContract.View, SwipeRefreshLayout.OnRefreshListener {
@@ -27,6 +29,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.first_fragment, container, false);
+        StatusBarUtil.setStatusBarMode((Activity) context, true, R.color.public_all);//状态栏颜色
         //tv_todayOrderCount = view.findViewById(R.id.tv_todayOrderCount);
         return view;
     }

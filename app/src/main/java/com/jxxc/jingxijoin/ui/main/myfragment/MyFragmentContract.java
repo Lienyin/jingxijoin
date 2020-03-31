@@ -1,4 +1,4 @@
-package com.jxxc.jingxijoin.ui.main.myfragment.secondfragment;
+package com.jxxc.jingxijoin.ui.main.myfragment;
 
 
 import com.jxxc.jingxijoin.mvp.BasePresenter;

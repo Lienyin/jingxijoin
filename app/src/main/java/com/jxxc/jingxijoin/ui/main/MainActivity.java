@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.ui.main.firstfragment.FirstFragment;
-import com.jxxc.jingxijoin.ui.main.myfragment.secondfragment.MyFragment;
+import com.jxxc.jingxijoin.ui.main.myfragment.MyFragment;
 import com.jxxc.jingxijoin.ui.main.secondfragment.SecondFragment;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
@@ -44,7 +44,6 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
 
     @Override
     public void initData() {
-        StatusBarUtil.setStatusBarMode(this, true, R.color.public_all);//状态栏颜色
         bindView();
     }
 

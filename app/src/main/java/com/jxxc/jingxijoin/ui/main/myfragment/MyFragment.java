@@ -1,6 +1,7 @@
-package com.jxxc.jingxijoin.ui.main.myfragment.secondfragment;
+package com.jxxc.jingxijoin.ui.main.myfragment;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
+import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 @SuppressLint("ValidFragment")
 public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragmentPresenter> implements View.OnClickListener, MyFragmentContract.View {
@@ -26,7 +28,6 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_fragment,container,false);
         //tv_user_name = (TextView)view.findViewById(R.id.tv_user_name);
-
         //tv_user_name.setOnClickListener(this);
         return view;
     }
