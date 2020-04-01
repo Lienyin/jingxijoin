@@ -259,6 +259,7 @@
             </LinearLayout>
             <!--第三个-->
             <LinearLayout
+                android:id="@+id/ll_jishi"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginLeft="10dp"

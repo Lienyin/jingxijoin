@@ -9,17 +9,20 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jxxc.jingxijoin.R;
+import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
+import com.jxxc.jingxijoin.ui.jishimanagement.JishiManagementActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 @SuppressLint("ValidFragment")
 public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, FirseFramentPresenter> implements View.OnClickListener, FirseFramentContract.View, SwipeRefreshLayout.OnRefreshListener {
     private Context context;
-    private TextView tv_todayOrderCount;
+    private LinearLayout ll_jishi;
 
     public FirstFragment(Context context) {
         this.context = context;
@@ -29,8 +32,8 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.first_fragment, container, false);
-        StatusBarUtil.setStatusBarMode((Activity) context, true, R.color.public_all);//状态栏颜色
-        //tv_todayOrderCount = view.findViewById(R.id.tv_todayOrderCount);
+        ll_jishi = view.findViewById(R.id.ll_jishi);
+        ll_jishi.setOnClickListener(this);
         return view;
     }
 
@@ -38,9 +41,9 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
     public void onClick(View view) {
         AnimUtils.clickAnimator(view);
         switch (view.getId()) {
-//            case R.id.ll_gong_dan://工单
-//                ZzRouter.gotoActivity((Activity) context, WorkOrderActivity.class,"2");
-//                break;
+            case R.id.ll_jishi://工单
+                ZzRouter.gotoActivity((Activity) context, JishiManagementActivity.class);
+                break;
         }
     }
 
