@@ -66,5 +66,11 @@
         <!--商户信息-->
         <activity android:name=".ui.commercialtenant.CommercialTenantActivity"
             android:screenOrientation="portrait"/>
+        <!--消息列表-->
+        <activity android:name=".ui.message.MessageActivity"
+            android:screenOrientation="portrait"/>
+        <!--消息详情-->
+        <activity android:name=".ui.messagedetails.MessageDetailsActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

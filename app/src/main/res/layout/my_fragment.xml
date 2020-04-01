@@ -168,6 +168,7 @@
     </LinearLayout>
     <!--消息中心-->
     <LinearLayout
+        android:id="@+id/ll_msg"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="0.5dp"

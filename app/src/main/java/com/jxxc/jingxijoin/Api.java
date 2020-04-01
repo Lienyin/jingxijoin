@@ -13,4 +13,6 @@ public class Api {
     public static final String SMS_CODE = BASEURL + "/user/login.json";
     //1-客户登录
     public static final String GET_ACCOUNT_INFO = BASEURL + "/user/login.json";
+    //1-客户登录
+    public static final String MESSAGE_LIST = BASEURL + "/user/login.json";
 }
