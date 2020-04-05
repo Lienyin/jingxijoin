@@ -78,5 +78,8 @@
         <!--添加技师-->
         <activity android:name=".ui.addjishi.AddJishiActivity"
             android:screenOrientation="portrait"/>
+        <!--订单列表-->
+        <activity android:name=".ui.orderlist.OrderListActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

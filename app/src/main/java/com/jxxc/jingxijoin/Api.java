@@ -11,8 +11,10 @@ public class Api {
     public static final String LOGIN = BASEURL + "system/company/login";
     //4-查询app最新版本
     public static final String LATEST_VERSION = BASEURL + "system/upgrade_pack/latest_version";
+    //5-订单列表
+    public static final String MY_ORDER = BASEURL + "biz/carWashOrder/myOrder";
 
-    //1-客户登录
+    
     public static final String GET_ACCOUNT_INFO = BASEURL + "/user/login.json";
     //1-客户登录
     public static final String MESSAGE_LIST = BASEURL + "/user/login.json";

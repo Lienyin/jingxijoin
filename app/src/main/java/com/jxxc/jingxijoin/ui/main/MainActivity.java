@@ -45,6 +45,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
 
     @Override
     public void initData() {
+        StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         bindView();
         mPresenter.latestVersion(3);
     }
@@ -89,6 +90,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
         hideAllFragment(transaction);
         switch(v.getId()){
             case R.id.txt_deal:
+                StatusBarUtil.setStatusBarMode(this, true, R.color.public_all);
                 selected();
                 tabDeal.setSelected(true);
                 if(f1==null){
@@ -100,6 +102,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
                 break;
 
             case R.id.txt_more:
+                StatusBarUtil.setStatusBarMode(this, true, R.color.white);
                 selected();
                 tabMore.setSelected(true);
                 if(f2==null){
@@ -110,6 +113,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
                 }
                 break;
             case R.id.txt_order:
+                StatusBarUtil.setStatusBarMode(this, true, R.color.white);
                 selected();
                 topOrder.setSelected(true);
                 if(f3==null){
