@@ -195,7 +195,7 @@
             <!--第一个-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
@@ -225,6 +225,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
                         android:text="+ 0"
                         android:textColor="@color/home_yellow_m"
                         android:textSize="14sp" />
@@ -233,7 +234,7 @@
             <!--第二个-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
@@ -263,6 +264,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
                         android:text="+ 0"
                         android:textColor="@color/public_all"
                         android:textSize="14sp" />
@@ -272,7 +274,7 @@
             <LinearLayout
                 android:id="@+id/ll_jishi"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
@@ -319,7 +321,7 @@
             <LinearLayout
                 android:id="@+id/ll_order"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
@@ -349,6 +351,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
                         android:text="+ 0"
                         android:textColor="@color/public_all"
                         android:textSize="14sp" />
@@ -357,7 +360,7 @@
             <!--第二个-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
@@ -395,7 +398,7 @@
             <!--第三个-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
