@@ -15,6 +15,7 @@ import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.utils.AppUtils;
+import com.jxxc.jingxijoin.utils.SPUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 import butterknife.BindView;
@@ -56,6 +57,9 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
     @Override
     public void initData() {
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
+        if (!AppUtils.isEmpty(SPUtils.get(SPUtils.K_ACCOUNT,""))){
+            etAccount.setText(SPUtils.get(SPUtils.K_ACCOUNT,""));
+        }
     }
 
     @OnClick({R.id.btn_login,R.id.tv_get_code,R.id.tv_login_fangshi})

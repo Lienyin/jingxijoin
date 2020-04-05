@@ -36,17 +36,18 @@ public class LoginPresenter extends BasePresenterImpl<LoginContract.View> implem
      */
     @Override
     public void login(String loginName,String password) {
-        OkGo.<HttpResult<back_Login>>post(Api.LOGIN_CODE)
+        OkGo.<HttpResult<back_Login>>post(Api.LOGIN)
                 .params("loginName",loginName)
-                .params("password",password)
+                .params("password",MD5Utils.shaPassword(password).trim().toUpperCase())
                 .execute(new JsonCallback<HttpResult<back_Login>>(){
                     @Override
                     public void onSuccess(Response<HttpResult<back_Login>> response) {
                         hideLoading();
                         back_Login d = response.body().data;
                         if (response.body().code == 0){
-                            mView.loginCallBack();
                             SPUtils.put(SPUtils.K_TOKEN,d.token);
+                            SPUtils.put(SPUtils.K_ACCOUNT,loginName);
+                            mView.loginCallBack();
                         }else {
                             toast(mContext,response.body().message);
                         }
@@ -61,7 +62,7 @@ public class LoginPresenter extends BasePresenterImpl<LoginContract.View> implem
      */
     @Override
     public void loginCode(final String phonenumber,String code) {
-        OkGo.<HttpResult<back_Login>>post(Api.LOGIN)
+        OkGo.<HttpResult<back_Login>>post(Api.LOGIN_CODE)
                 .params("phonenumber",phonenumber)
                 .params("code", code)
                 .execute(new JsonCallback<HttpResult<back_Login>>(){
@@ -70,8 +71,9 @@ public class LoginPresenter extends BasePresenterImpl<LoginContract.View> implem
                         hideLoading();
                         back_Login d = response.body().data;
                         if (response.body().code == 0){
-                            mView.loginCallBack();
                             SPUtils.put(SPUtils.K_TOKEN,d.token);
+                            SPUtils.put(SPUtils.K_ACCOUNT,phonenumber);
+                            mView.loginCallBack();
                         }else {
                             toast(mContext,response.body().message);
                         }

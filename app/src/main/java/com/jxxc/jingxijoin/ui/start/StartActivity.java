@@ -10,6 +10,8 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.ui.login.LoginActivity;
 import com.jxxc.jingxijoin.ui.main.MainActivity;
+import com.jxxc.jingxijoin.utils.AppUtils;
+import com.jxxc.jingxijoin.utils.SPUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,8 +40,11 @@ public class StartActivity extends Activity {
         timer = new Timer();
         TimerTask task =new TimerTask(){
             public void run(){
-                //ZzRouter.gotoActivity(StartActivity.this, MainActivity.class);
-                ZzRouter.gotoActivity(StartActivity.this, LoginActivity.class);
+                if (!AppUtils.isEmpty(SPUtils.get(SPUtils.K_ACCOUNT,""))){
+                    ZzRouter.gotoActivity(StartActivity.this, MainActivity.class);
+                }else{
+                    ZzRouter.gotoActivity(StartActivity.this, LoginActivity.class);
+                }
             }
         };
         timer.schedule(task,2000);//延迟2秒启动
