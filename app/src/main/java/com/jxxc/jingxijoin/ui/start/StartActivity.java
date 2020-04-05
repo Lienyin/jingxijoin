@@ -38,8 +38,8 @@ public class StartActivity extends Activity {
         timer = new Timer();
         TimerTask task =new TimerTask(){
             public void run(){
-                ZzRouter.gotoActivity(StartActivity.this, MainActivity.class);
-                //ZzRouter.gotoActivity(StartActivity.this, LoginActivity.class);
+                //ZzRouter.gotoActivity(StartActivity.this, MainActivity.class);
+                ZzRouter.gotoActivity(StartActivity.this, LoginActivity.class);
             }
         };
         timer.schedule(task,2000);//延迟2秒启动
