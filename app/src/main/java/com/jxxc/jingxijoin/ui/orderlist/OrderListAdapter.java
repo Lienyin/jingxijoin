@@ -70,9 +70,15 @@ public class OrderListAdapter extends BaseQuickAdapter<OrderListEntity, BaseView
             helper.setBackgroundRes(R.id.view_bg,R.drawable.car_color_8);
         }
         //订单状态 0待支付 1已支付待接单 2已接单待服务 3服务中 4服务已完成 5取消订单
-        if (item.status == 1){
+        if (item.status==0){
+            helper.setVisible(R.id.tv_diao_du,false);
+            helper.setText(R.id.tv_dating_order_count_down,"待支付");
+        }else if (item.status == 1){
             //不会有状态1
+            helper.setText(R.id.tv_dating_order_count_down,"待接单");
+            helper.setVisible(R.id.tv_diao_du,false);
         }else if (item.status == 2){//待服务
+            helper.setText(R.id.tv_dating_order_count_down,"待服务");
             helper.setVisible(R.id.tv_diao_du,true);
         }else if (item.status == 3){//服务中
             helper.setVisible(R.id.tv_diao_du,false);
@@ -107,8 +113,10 @@ public class OrderListAdapter extends BaseQuickAdapter<OrderListEntity, BaseView
             }else{
             }
         }else if (item.status == 4){//服务已完成
+            helper.setText(R.id.tv_dating_order_count_down,"已完成");
             helper.setVisible(R.id.tv_diao_du,false);
         }else{
+            helper.setText(R.id.tv_dating_order_count_down,"订单取消");
             helper.setVisible(R.id.tv_diao_du,false);
         }
         helper.setOnClickListener(R.id.tv_dating_order_kehu, new View.OnClickListener() {

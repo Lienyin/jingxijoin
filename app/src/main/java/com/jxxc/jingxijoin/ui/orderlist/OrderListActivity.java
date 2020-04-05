@@ -48,6 +48,8 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
     RadioButton rb_work_order_dai_jie;
     @BindView(R.id.rb_work_order_jin_xing)
     RadioButton rb_work_order_jin_xing;
+    @BindView(R.id.rb_work_order_cancel)
+    RadioButton rb_work_order_cancel;
     private OrderListAdapter adapter;
     private int offset = 2;
     private String orderType = "";//状态 不传查默认所有 ( 0, “待支付”),( 1, “已支付待接单”),( 2, “已接单待服务”),( 3, “服务中”),( 4, “服务已完成”),( 5, “取消订单”)
@@ -113,7 +115,8 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
         });
     }
 
-    @OnClick({R.id.tv_back,R.id.rb_work_order_all,R.id.rb_work_order_dai_jie,R.id.rb_work_order_jin_xing})
+    @OnClick({R.id.tv_back,R.id.rb_work_order_all,R.id.rb_work_order_dai_jie,
+            R.id.rb_work_order_jin_xing,R.id.rb_work_order_cancel})
     public void onViewClicked(View view) {
         AnimUtils.clickAnimator(view);
         switch (view.getId()) {
@@ -124,13 +127,17 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
                 orderType = "";
                 mPresenter.myOrder("",1,10);
                 break;
-            case R.id.rb_work_order_dai_jie://待服务
+            case R.id.rb_work_order_dai_jie://待服务+服务中
                 orderType = "2";
                 mPresenter.myOrder("2",1,10);
                 break;
             case R.id.rb_work_order_jin_xing://已完成
                 orderType = "4";
                 mPresenter.myOrder("4",1,10);
+                break;
+            case R.id.rb_work_order_cancel://取消
+                orderType = "5";
+                mPresenter.myOrder("5",1,10);
                 break;
             default:
         }

@@ -48,6 +48,16 @@
                 android:text="已完成"
                 android:textColor="@drawable/radio"
                 android:textSize="14sp" />
+            <RadioButton
+                android:id="@+id/rb_work_order_cancel"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="已取消"
+                android:textColor="@drawable/radio"
+                android:textSize="14sp" />
         </RadioGroup>
     </LinearLayout>
     <android.support.v4.widget.SwipeRefreshLayout
