@@ -2,6 +2,7 @@ package com.jxxc.jingxijoin.ui.main;
 
 import android.content.Context;
 
+import com.jxxc.jingxijoin.entity.backparameter.LatestVersionEntity;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
 import com.jxxc.jingxijoin.Api;
@@ -29,4 +30,20 @@ public class MainPresenter extends BasePresenterImpl<MainContract.View> implemen
 
     }
 
+    @Override
+    public void latestVersion(int type) {
+        OkGo.<HttpResult<LatestVersionEntity>>post(Api.LATEST_VERSION)
+                .params("type",type)
+                .execute(new JsonCallback<HttpResult<LatestVersionEntity>>() {
+                    @Override
+                    public void onSuccess(Response<HttpResult<LatestVersionEntity>> response) {
+                        LatestVersionEntity d = response.body().data;
+                        if (response.body().code==0){
+                            mView.latestVersionCallBack(d);
+                        }else{
+                            toast(mContext,response.body().message);
+                        }
+                    }
+                });
+    }
 }

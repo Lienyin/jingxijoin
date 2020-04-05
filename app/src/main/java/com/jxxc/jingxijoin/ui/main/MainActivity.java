@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 
 import com.jxxc.jingxijoin.R;
+import com.jxxc.jingxijoin.entity.backparameter.LatestVersionEntity;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.ui.main.firstfragment.FirstFragment;
 import com.jxxc.jingxijoin.ui.main.myfragment.MyFragment;
@@ -45,6 +46,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     @Override
     public void initData() {
         bindView();
+        mPresenter.latestVersion(3);
     }
 
     //UI组件初始化与事件绑定
@@ -148,5 +150,11 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     @Override
     protected void onRestart() {
         super.onRestart();
+    }
+
+    //查询app最新版本返回接口
+    @Override
+    public void latestVersionCallBack(LatestVersionEntity data) {
+
     }
 }
