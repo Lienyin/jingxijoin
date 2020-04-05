@@ -28,6 +28,7 @@
             <ImageView
                 android:layout_width="55dp"
                 android:layout_height="55dp"
+                android:background="@drawable/car_color_8"
                 android:layout_marginLeft="40dp"
                 android:src="@mipmap/logo"/>
             <LinearLayout
