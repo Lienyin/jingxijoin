@@ -15,8 +15,12 @@ public class Api {
     public static final String MY_ORDER = BASEURL + "biz/carWashOrder/myOrder";
     //6-订单详情
     public static final String GET_ORDER = BASEURL + "biz/carWashOrder/getOrder";
-    //7-基础收益(首页)
+    //7-调度
+    public static final String DISPATCH = BASEURL + "biz/carWashOrder/dispatch";
+    //8-基础收益(首页)
     public static final String BAS_EARNINGS = BASEURL + "system/company/basEarnings";
+    //9-技师列表
+    public static final String QUERY_LIST = BASEURL + "system/technician/queryList";
 
 
     public static final String GET_ACCOUNT_INFO = BASEURL + "/user/login.json";

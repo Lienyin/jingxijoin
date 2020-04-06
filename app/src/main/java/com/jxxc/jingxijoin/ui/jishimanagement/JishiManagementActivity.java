@@ -2,14 +2,18 @@ package com.jxxc.jingxijoin.ui.jishimanagement;
 
 
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jxxc.jingxijoin.R;
+import com.jxxc.jingxijoin.entity.backparameter.QueryListEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.ui.addjishi.AddJishiActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -28,6 +32,8 @@ public class JishiManagementActivity extends MVPBaseActivity<JishiManagementCont
     TextView tv_title;
     @BindView(R.id.tv_affirm)
     TextView tv_affirm;
+    @BindView(R.id.lv_jishi_data)
+    ListView lv_jishi_data;
 
     private JishiAdapter jishiAdapter;
     @Override
@@ -41,6 +47,7 @@ public class JishiManagementActivity extends MVPBaseActivity<JishiManagementCont
         tv_title.setText("技师管理");
         tv_affirm.setVisibility(View.VISIBLE);
         tv_affirm.setText("+");
+        mPresenter.queryList();
     }
 
     @OnClick({R.id.tv_back,R.id.tv_affirm})
@@ -55,5 +62,13 @@ public class JishiManagementActivity extends MVPBaseActivity<JishiManagementCont
                 break;
             default:
         }
+    }
+
+    //技师管理返回数据
+    @Override
+    public void queryListCallBack(List<QueryListEntity> data) {
+        jishiAdapter = new JishiAdapter(this);
+        jishiAdapter.setData(data);
+        lv_jishi_data.setAdapter(jishiAdapter);
     }
 }

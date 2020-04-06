@@ -60,4 +60,5 @@ public class OrderListPresenter extends BasePresenterImpl<OrderListContract.View
                     }
                 });
     }
+
 }

@@ -15,12 +15,10 @@ public class OrderListContract {
     interface View extends BaseView {
         void myOrderCallBack(List<OrderListEntity> data);
         void myOrderMoreCallBack(List<OrderListEntity> data);
-
     }
 
     interface  Presenter extends BasePresenter<View> {
         void myOrder(String status, int pageNum, int pageSize);
         void myOrderMore(String status, int pageNum, int pageSize);
-
     }
 }

@@ -1,6 +1,8 @@
 package com.jxxc.jingxijoin.ui.orderlist;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.location.Location;
 import android.os.Handler;
 import android.os.Message;
@@ -29,7 +31,7 @@ import butterknife.OnClick;
 
 /**
  * MVPPlugin
- *  邮箱 784787081@qq.com
+ * 邮箱 784787081@qq.com
  */
 
 public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, OrderListPresenter> implements OrderListContract.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
@@ -58,14 +60,14 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
     private List<OrderListEntity> list = new ArrayList<>();
     private String oId;//订单id
 
-    Handler handler = new Handler(){
+    Handler handler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what ==1) {
-                adapter.notifyDataSetChanged();
+            if (msg.what == 1) {
+                //adapter.notifyDataSetChanged();
                 //每隔1秒更新一次界面，如果只需要精确到秒的倒计时此处改成1000即可
-                handler.sendEmptyMessageDelayed(1,1000);
+                handler.sendEmptyMessageDelayed(1, 1000);
             }
         }
     };
@@ -92,7 +94,7 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
         adapter.setOnLoadMoreListener(this, rvList);
         adapter.setEmptyView(R.layout.layout_nothing);
         adapter.start();
-        handler.sendEmptyMessageDelayed(1,1000);
+        handler.sendEmptyMessageDelayed(1, 1000);
 
         //隐藏侧滑删除功能(2019/08/05)
         //rvList.addOnItemTouchListener(new SwipeItemLayout.OnSwipeItemTouchListener(getContext()));
@@ -100,9 +102,22 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
             @Override
             public void onFenxiangClick(String orderId, int type) {
                 oId = orderId;
-                switch (type){
+                switch (type) {
                     case 1://调度
+                        new AlertDialog
+                                .Builder(OrderListActivity.this)
+                                .setTitle("提示")
+                                .setMessage("确定要调度此单？")
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialoginterface, int i) {
 
+                                    }
+                                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                }).show();
                         break;
                 }
             }
@@ -110,13 +125,13 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ZzRouter.gotoActivity(OrderListActivity.this, OrderDetailsActivity.class,list.get(position).orderId);
+                ZzRouter.gotoActivity(OrderListActivity.this, OrderDetailsActivity.class, list.get(position).orderId);
             }
         });
     }
 
-    @OnClick({R.id.tv_back,R.id.rb_work_order_all,R.id.rb_work_order_dai_jie,
-            R.id.rb_work_order_jin_xing,R.id.rb_work_order_cancel})
+    @OnClick({R.id.tv_back, R.id.rb_work_order_all, R.id.rb_work_order_dai_jie,
+            R.id.rb_work_order_jin_xing, R.id.rb_work_order_cancel})
     public void onViewClicked(View view) {
         AnimUtils.clickAnimator(view);
         switch (view.getId()) {
@@ -125,19 +140,19 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
                 break;
             case R.id.rb_work_order_all://全部
                 orderType = "";
-                mPresenter.myOrder("",1,10);
+                mPresenter.myOrder("", 1, 10);
                 break;
             case R.id.rb_work_order_dai_jie://待服务+服务中
                 orderType = "2";
-                mPresenter.myOrder("2",1,10);
+                mPresenter.myOrder("2", 1, 10);
                 break;
             case R.id.rb_work_order_jin_xing://已完成
                 orderType = "4";
-                mPresenter.myOrder("4",1,10);
+                mPresenter.myOrder("4", 1, 10);
                 break;
             case R.id.rb_work_order_cancel://取消
                 orderType = "5";
-                mPresenter.myOrder("5",1,10);
+                mPresenter.myOrder("5", 1, 10);
                 break;
             default:
         }
@@ -146,13 +161,13 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
     @Override
     public void onRefresh() {
         offset = 2;
-        mPresenter.myOrder(orderType,1, 10);
+        mPresenter.myOrder(orderType, 1, 10);
     }
 
     @Override
     public void onLoadMoreRequested() {
         swipeLayout.setRefreshing(false);
-        mPresenter.myOrderMore(orderType,offset, 10);
+        mPresenter.myOrderMore(orderType, offset, 10);
     }
 
     @Override
@@ -160,7 +175,11 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
         list = data;
         swipeLayout.setRefreshing(false);
         adapter.setNewData(data);
-        adapter.disableLoadMoreIfNotFullPage();
+        if (data.size() < 10) {
+            adapter.loadMoreEnd();
+        } else {
+            adapter.disableLoadMoreIfNotFullPage();
+        }
     }
 
     @Override

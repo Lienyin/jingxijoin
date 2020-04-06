@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/public_all"
+        android:background="@mipmap/home_bg"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,9 +16,9 @@
             android:layout_marginTop="10dp"
             android:gravity="right">
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@mipmap/logo"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/updata_jishi"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -206,7 +206,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@mipmap/logo" />
+                    android:src="@mipmap/yuyue_dan" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -245,7 +245,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@mipmap/logo" />
+                    android:src="@mipmap/jiesuan" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -286,7 +286,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@mipmap/logo" />
+                    android:src="@mipmap/jishi" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -332,7 +332,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@mipmap/logo" />
+                    android:src="@mipmap/order" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -371,7 +371,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@mipmap/logo" />
+                    android:src="@mipmap/bao_biao" />
 
                 <TextView
                     android:layout_width="50dp"
@@ -410,7 +410,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@mipmap/logo" />
+                    android:src="@mipmap/erweima" />
 
                 <TextView
                     android:layout_width="50dp"

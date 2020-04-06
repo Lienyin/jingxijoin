@@ -82,36 +82,36 @@ public class OrderListAdapter extends BaseQuickAdapter<OrderListEntity, BaseView
             helper.setVisible(R.id.tv_diao_du,true);
         }else if (item.status == 3){//服务中
             helper.setVisible(R.id.tv_diao_du,false);
-
+            helper.setText(R.id.tv_dating_order_count_down,"服务中");
             //服务截至时间-当前时间
-            int jzTIme =  Integer.parseInt(getTime(item.getCanCompleteTime()));//截至时间
-            int dqTime = Integer.parseInt(getTime(getDQTime()));//当前时间
-            if (jzTIme-dqTime>0){
-                String str = "";
-                int s = jzTIme-dqTime;
-                int time = s/3600;
-                if (time>=1){
-                    int h = s/3600;//小时
-                    s = s-h*3600;//剩余秒数
-                    int m = s/60;//分钟
-                    s = s-m*60;//秒数
-                    if (h>=10){
-                        helper.setText(R.id.tv_dating_order_count_down,"  "+h+":"+m+":"+s);
-                    }else{
-                        helper.setText(R.id.tv_dating_order_count_down,"  0"+h+":"+m+":"+s);
-                    }
-                }else{
-                    int m = s/60;//分钟
-                    s = s-m*60;//秒数
-                    //str = getStrTimeMinute((jzTIme-dqTime)+"");//服务剩余时间
-                    if (m>=10){
-                        helper.setText(R.id.tv_dating_order_count_down,m+":"+s);
-                    }else{
-                        helper.setText(R.id.tv_dating_order_count_down,"  0"+m+":"+s);
-                    }
-                }
-            }else{
-            }
+//            int jzTIme =  Integer.parseInt(getTime(item.getCanCompleteTime()));//截至时间
+//            int dqTime = Integer.parseInt(getTime(getDQTime()));//当前时间
+//            if (jzTIme-dqTime>0){
+//                String str = "";
+//                int s = jzTIme-dqTime;
+//                int time = s/3600;
+//                if (time>=1){
+//                    int h = s/3600;//小时
+//                    s = s-h*3600;//剩余秒数
+//                    int m = s/60;//分钟
+//                    s = s-m*60;//秒数
+//                    if (h>=10){
+//                        helper.setText(R.id.tv_dating_order_count_down,"  "+h+":"+m+":"+s);
+//                    }else{
+//                        helper.setText(R.id.tv_dating_order_count_down,"  0"+h+":"+m+":"+s);
+//                    }
+//                }else{
+//                    int m = s/60;//分钟
+//                    s = s-m*60;//秒数
+//                    //str = getStrTimeMinute((jzTIme-dqTime)+"");//服务剩余时间
+//                    if (m>=10){
+//                        helper.setText(R.id.tv_dating_order_count_down,m+":"+s);
+//                    }else{
+//                        helper.setText(R.id.tv_dating_order_count_down,"  0"+m+":"+s);
+//                    }
+//                }
+//            }else{
+//            }
         }else if (item.status == 4){//服务已完成
             helper.setText(R.id.tv_dating_order_count_down,"已完成");
             helper.setVisible(R.id.tv_diao_du,false);
