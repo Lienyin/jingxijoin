@@ -22,6 +22,7 @@ import com.jxxc.jingxijoin.ui.jishimanagement.JishiManagementActivity;
 import com.jxxc.jingxijoin.ui.orderlist.OrderListActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
+import com.jxxc.jingxijoin.utils.SPUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 @SuppressLint("ValidFragment")
@@ -85,6 +86,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
     public void basEarningsCallBack(BasEarningsEntity data) {
         GlideImgManager.loadCircleImage(context, data.companyLogo, iv_home_logo);
         tv_home_name.setText(data.companyName);
+        SPUtils.put(SPUtils.K_COMPANY_NAME,data.companyName);
         if (data.starLevel>0&&data.starLevel<=1){
             iv_home_level.setBackgroundResource(R.mipmap.icon_user_13);
         }else if (data.starLevel>1&&data.starLevel<=2){

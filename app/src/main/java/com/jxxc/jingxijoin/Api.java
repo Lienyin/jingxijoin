@@ -21,6 +21,12 @@ public class Api {
     public static final String BAS_EARNINGS = BASEURL + "system/company/basEarnings";
     //9-技师列表
     public static final String QUERY_LIST = BASEURL + "system/technician/queryList";
+    //10-技师详情
+    public static final String TECHNICIAN_INFO = BASEURL + "system/technician/info";
+    //11-修改技师信息
+    public static final String TECHNICIAN_EDIT = BASEURL + "system/technician/edit";
+    //12-新增技师
+    public static final String TECHNICIAN_ADD = BASEURL + "system/technician/add";
 
 
     public static final String GET_ACCOUNT_INFO = BASEURL + "/user/login.json";

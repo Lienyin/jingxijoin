@@ -26,5 +26,8 @@
     <ListView
         android:id="@+id/lv_jishi_data"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:divider="#f6f6f6"
+        android:dividerHeight="3dp"/>
 </LinearLayout>

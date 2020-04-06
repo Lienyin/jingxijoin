@@ -25,6 +25,7 @@ public class SPUtils {
     public static final String K_SESSION_TIMEOUT = "sessionTimeout";
     public static final String K_SESSION_MOBILE = "phonenumber";
     public static final String K_ACCOUNT = "account";
+    public static final String K_COMPANY_NAME = "companyName";
     private static Context mContext;
 
     public static SharedPreferences init(Context context) {

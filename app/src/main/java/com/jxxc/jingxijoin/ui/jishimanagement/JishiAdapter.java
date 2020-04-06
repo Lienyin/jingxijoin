@@ -76,6 +76,24 @@ public class JishiAdapter extends BaseAdapter {
         }else{
             holder.iv_jishi_jibie.setBackgroundResource(R.mipmap.icon_user_27);
         }
+        holder.iv_jishi_look.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onFenxiangClickListener.onFenxiangClick(data.technicianId,1);
+            }
+        });
+        holder.iv_jishi_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onFenxiangClickListener.onFenxiangClick(data.technicianId,2);
+            }
+        });
+        holder.iv_jishi_dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onFenxiangClickListener.onFenxiangClick(data.technicianId,3);
+            }
+        });
         return convertView;
     }
 
@@ -89,13 +107,13 @@ public class JishiAdapter extends BaseAdapter {
         ImageView iv_jishi_dec;
     }
 
-    private OrderListAdapter.OnFenxiangClickListener onFenxiangClickListener;
+    private OnFenxiangClickListener onFenxiangClickListener;
 
-    public void setOnFenxiangClickListener(OrderListAdapter.OnFenxiangClickListener onFenxiangClickListener) {
+    public void setOnFenxiangClickListener(OnFenxiangClickListener onFenxiangClickListener) {
         this.onFenxiangClickListener = onFenxiangClickListener;
     }
 
     public interface OnFenxiangClickListener{
-        void onFenxiangClick(String orderId, int type);
+        void onFenxiangClick(String technicianId, int type);
     }
 }

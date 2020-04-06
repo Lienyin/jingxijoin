@@ -1,6 +1,7 @@
 package com.jxxc.jingxijoin.ui.jishimanagement;
 
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import com.jxxc.jingxijoin.entity.backparameter.QueryListEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.ui.addjishi.AddJishiActivity;
+import com.jxxc.jingxijoin.ui.orderlist.OrderListAdapter;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
@@ -70,5 +72,23 @@ public class JishiManagementActivity extends MVPBaseActivity<JishiManagementCont
         jishiAdapter = new JishiAdapter(this);
         jishiAdapter.setData(data);
         lv_jishi_data.setAdapter(jishiAdapter);
+
+        jishiAdapter.setOnFenxiangClickListener(new JishiAdapter.OnFenxiangClickListener() {
+            @Override
+            public void onFenxiangClick(String technicianId, int type) {
+                switch (type){
+                    case 1:
+                    case 2:
+                        Intent intent = new Intent(JishiManagementActivity.this,AddJishiActivity.class);
+                        intent.putExtra("type",type+"");
+                        intent.putExtra("technicianId",technicianId);
+                        startActivity(intent);
+                        break;
+                    case 3://删除
+
+                        break;
+                }
+            }
+        });
     }
 }
