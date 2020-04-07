@@ -3,6 +3,7 @@ package com.jxxc.jingxijoin.ui.yuyuebiao;
 import android.content.Context;
 
 import com.jxxc.jingxijoin.Api;
+import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentListEntity;
 import com.jxxc.jingxijoin.http.EventCenter;
 import com.jxxc.jingxijoin.http.HttpResult;
@@ -39,6 +40,29 @@ public class YuYueBiaoPresenter extends BasePresenterImpl<YuYueBiaoContract.View
                         List<AppointmentListEntity> d = response.body().data;
                         if (response.body().code==0){
                             mView.appointmentListCallBack(d);
+                        }else{
+                            toast(mContext,response.body().message);
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 预约详情
+     * @param appointmentStartTime
+     * @param appointmentEndTime
+     */
+    @Override
+    public void appointmentInfo(String appointmentStartTime, String appointmentEndTime) {
+        OkGo.<HttpResult<AppointmentInfoEntity>>post(Api.APPOINTMENT_INFO)
+                .params("appointmentStartTime",appointmentStartTime)
+                .params("appointmentEndTime",appointmentEndTime)
+                .execute(new JsonCallback<HttpResult<AppointmentInfoEntity>>() {
+                    @Override
+                    public void onSuccess(Response<HttpResult<AppointmentInfoEntity>> response) {
+                        AppointmentInfoEntity d = response.body().data;
+                        if (response.body().code==0){
+                            mView.appointmentInfoCallBack(d);
                         }else{
                             toast(mContext,response.body().message);
                         }

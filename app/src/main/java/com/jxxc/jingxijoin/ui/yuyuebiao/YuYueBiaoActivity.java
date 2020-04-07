@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jxxc.jingxijoin.R;
+import com.jxxc.jingxijoin.dialog.SortDialog;
+import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentListEntity;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
@@ -42,6 +44,7 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
     private TimeAdapter timeAdapter;
     private WeekOfAdapter weekOfAdapter;
     private String dateStr ="";
+    private SortDialog sortDialog;
     @Override
     protected int layoutId() {
         return R.layout.yuyue_biao_activity;
@@ -60,8 +63,11 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
         String queryDate = formatter.format(date);//今天日期
-        dateStr = queryDate;//默认日期
+        //dateStr = queryDate;//默认日期
+        dateStr = "2020-04-06";//默认日期
         mPresenter.appointmentList(dateStr);
+
+        sortDialog = new SortDialog(this);
     }
 
     @OnClick({R.id.tv_back})
@@ -121,8 +127,23 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
     //预约列表接口返回数据
     @Override
     public void appointmentListCallBack(List<AppointmentListEntity> data) {
-        timeAdapter = new TimeAdapter(this);
-        timeAdapter.setData(data);
-        gv_time_data.setAdapter(timeAdapter);
+        if (data.size()>0){
+            timeAdapter = new TimeAdapter(this);
+            timeAdapter.setData(data);
+            gv_time_data.setAdapter(timeAdapter);
+
+            timeAdapter.setOnFenxiangClickListener(new TimeAdapter.OnFenxiangClickListener() {
+                @Override
+                public void onFenxiangClick(String statTime,String endTime) {
+                    mPresenter.appointmentInfo(dateStr+" "+statTime,dateStr+" "+endTime);
+                }
+            });
+        }
+    }
+
+    //预约详情返回数据
+    @Override
+    public void appointmentInfoCallBack(AppointmentInfoEntity data) {
+        sortDialog.showShareDialog(true,data);
     }
 }

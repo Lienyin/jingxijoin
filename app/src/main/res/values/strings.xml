@@ -3,4 +3,8 @@
     <string name="register_aut_code"><u>还没有账号，立即注册</u></string>
     <string name="register_aut_code_login"><u>已有账号，密码登录</u></string>
     <string name="goto_attestation"><u>去认证</u></string>
+    <string name="xiche_hint">实际服务时间以车主达店时间为准，如车主在预约到店时间逾期后仍未
+到店，预约订单将被临时挂起(不超过12小时)-超时处理，洗车服务时
+间自然顺延，服务开启及关闭时间以接单服务技师端开启为准(订单取
+消除外)</string>
 </resources>

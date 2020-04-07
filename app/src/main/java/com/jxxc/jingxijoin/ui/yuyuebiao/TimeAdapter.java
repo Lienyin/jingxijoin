@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,7 +17,6 @@ import java.util.List;
 
 public class TimeAdapter extends BaseAdapter {
     private Context context;
-    private int defaultSelection=-1;
     private List<AppointmentListEntity> list;
 
     public TimeAdapter(Context context){
@@ -50,6 +50,9 @@ public class TimeAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.time_adapter,null);
             holder.tv_time_num = convertView.findViewById(R.id.tv_time_num);
             holder.tv_time_name = convertView.findViewById(R.id.tv_time_name);
+            holder.tv_static_name = convertView.findViewById(R.id.tv_static_name);
+            holder.iv_icon_static = convertView.findViewById(R.id.iv_icon_static);
+            holder.tv_order_id = convertView.findViewById(R.id.tv_order_id);
             holder.ll_time_bg = convertView.findViewById(R.id.ll_time_bg);
             convertView.setTag(holder);
         }else{
@@ -57,33 +60,70 @@ public class TimeAdapter extends BaseAdapter {
         }
         AppointmentListEntity data = list.get(position);
         holder.tv_time_name.setText(data.title);
-        holder.tv_time_name.setTextColor(context.getResources().getColor(R.color.set_bg));
-        holder.tv_time_num.setText(Html.fromHtml("<font color=\"#cccccc\">时间已过</font>"));
-        if (position == defaultSelection) {// 选中时设置单纯颜色
-            holder.ll_time_bg.setSelected(true);
-        } else {// 未选中时设置selector
-            holder.ll_time_bg.setSelected(false);
+        //订单状态 1待调度 2待服务 3服务中
+        if (data.status==1){
+            holder.ll_time_bg.setBackgroundResource(R.drawable.green_bian_huang);
+            holder.tv_static_name.setText("待排X"+data.num);
+            holder.tv_time_num.setVisibility(View.INVISIBLE);
+            holder.tv_time_num.setText("");
+            holder.iv_icon_static.setVisibility(View.VISIBLE);
+            holder.iv_icon_static.setImageResource(R.mipmap.add_time_yuyue_bai);
+            holder.tv_order_id.setVisibility(View.VISIBLE);
+            holder.tv_order_id.setText(data.orderId);
+        }else if(data.status==2){
+            holder.ll_time_bg.setBackgroundResource(R.drawable.green_bian_lvs);
+            holder.tv_static_name.setText("已排班");
+            holder.tv_time_num.setVisibility(View.VISIBLE);
+            holder.tv_time_num.setText("技师编号"+data.technicianCode);
+            holder.iv_icon_static.setVisibility(View.VISIBLE);
+            holder.iv_icon_static.setImageResource(R.mipmap.time_yuyue_bai);
+            holder.tv_order_id.setVisibility(View.VISIBLE);
+            holder.tv_order_id.setText(data.orderId);
+        }else if(data.status==3){
+            holder.ll_time_bg.setBackgroundResource(R.drawable.green_bian_lv);
+            holder.tv_static_name.setText("服务中");
+            holder.tv_time_num.setVisibility(View.VISIBLE);
+            holder.tv_time_num.setText("技师编号"+data.technicianCode);
+            holder.iv_icon_static.setVisibility(View.VISIBLE);
+            holder.iv_icon_static.setImageResource(R.mipmap.xi_che);
+            holder.tv_order_id.setVisibility(View.VISIBLE);
+            holder.tv_order_id.setText(data.orderId);
+        }else{
+            holder.ll_time_bg.setBackgroundResource(R.drawable.green_bian_owei_yuyue);
+            holder.tv_static_name.setText("未预约");
+            holder.tv_time_num.setVisibility(View.INVISIBLE);
+            holder.tv_time_num.setText("");
+            holder.iv_icon_static.setVisibility(View.INVISIBLE);
+            holder.tv_order_id.setVisibility(View.INVISIBLE);
         }
+
+        holder.iv_icon_static.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (data.status==1){
+                    onFenxiangClickListener.onFenxiangClick(data.title.substring(0,5),data.title.substring(6,11));
+                }
+            }
+        });
         return convertView;
     }
 
     class ViewHolder{
         TextView tv_time_num;
         TextView tv_time_name;
+        TextView tv_static_name;
+        TextView tv_order_id;
+        ImageView iv_icon_static;
         LinearLayout ll_time_bg;
     }
 
-/**
-     * @param position
-     * ���ø���״̬��item
-     */
-    public void setSelectPosition(int position) {
-        if (!(position < 0 || position > list.size())) {
-            defaultSelection = position;
-            notifyDataSetChanged();
-        }else{
-            defaultSelection = -1;
-            notifyDataSetChanged();
-        }
+    private OnFenxiangClickListener onFenxiangClickListener;
+
+    public void setOnFenxiangClickListener(OnFenxiangClickListener onFenxiangClickListener) {
+        this.onFenxiangClickListener = onFenxiangClickListener;
+    }
+
+    public interface OnFenxiangClickListener{
+        void onFenxiangClick(String statTime,String endTime);
     }
 }

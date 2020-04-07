@@ -31,6 +31,8 @@ public class Api {
     public static final String APPOINTMENT_LIST = BASEURL + "system/company/appointmentList";
     //14-预约单管理
     public static final String APPOINTMENT_MANAGEMENT = BASEURL + "system/company/appointmentManagement";
+   //15-预约详情
+   public static final String APPOINTMENT_INFO = BASEURL + "system/company/appointmentInfo";
 
 
     public static final String GET_ACCOUNT_INFO = BASEURL + "/user/login.json";

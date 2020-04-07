@@ -10,5 +10,5 @@ public class AppointmentListEntity implements Serializable {
     public int num;
     public String h;
     public String title;
-    public String status;
+    public int status;
 }
