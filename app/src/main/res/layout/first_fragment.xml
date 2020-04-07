@@ -194,6 +194,7 @@
             android:orientation="vertical">
             <!--第一个-->
             <LinearLayout
+                android:id="@+id/ll_yuyue"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"

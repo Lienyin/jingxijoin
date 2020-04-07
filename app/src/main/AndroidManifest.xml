@@ -81,5 +81,11 @@
         <!--订单列表-->
         <activity android:name=".ui.orderlist.OrderListActivity"
             android:screenOrientation="portrait"/>
+        <!--预约单管理-->
+        <activity android:name=".ui.yuyuelist.YuYueListActivity"
+            android:screenOrientation="portrait"/>
+        <!--预约单日程表-->
+        <activity android:name=".ui.yuyuebiao.YuYueBiaoActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <include layout="@layout/title"/>
+    <!--周几-->
+    <com.jxxc.jingxijoin.utils.HorizontalListView
+        android:id="@+id/gv_weekOf_date"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="5dp"
+        android:numColumns="7"/>
+    <!--预约时间段-->
+    <com.jxxc.jingxijoin.utils.MyGridView
+        android:id="@+id/gv_time_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:numColumns="3"/>
+</LinearLayout>

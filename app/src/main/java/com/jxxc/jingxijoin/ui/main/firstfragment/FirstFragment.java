@@ -20,6 +20,7 @@ import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
 import com.jxxc.jingxijoin.ui.jishimanagement.JishiManagementActivity;
 import com.jxxc.jingxijoin.ui.orderlist.OrderListActivity;
+import com.jxxc.jingxijoin.ui.yuyuelist.YuYueListActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
 import com.jxxc.jingxijoin.utils.SPUtils;
@@ -28,7 +29,7 @@ import com.jxxc.jingxijoin.utils.StatusBarUtil;
 @SuppressLint("ValidFragment")
 public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, FirseFramentPresenter> implements View.OnClickListener, FirseFramentContract.View, SwipeRefreshLayout.OnRefreshListener {
     private Context context;
-    private LinearLayout ll_jishi,ll_order;
+    private LinearLayout ll_yuyue,ll_jishi,ll_order;
     private TextView tv_home_name,tv_fuwu_type,tv_home_type;
     private ImageView iv_home_logo,iv_home_level;
     private TextView tv_today_order,tv_benyue_shouyi,tv_ke_tixian;
@@ -42,6 +43,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.first_fragment, container, false);
+        ll_yuyue = view.findViewById(R.id.ll_yuyue);
         ll_jishi = view.findViewById(R.id.ll_jishi);
         ll_order = view.findViewById(R.id.ll_order);
         tv_home_name = view.findViewById(R.id.tv_home_name);
@@ -55,6 +57,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         tv_yuyue_number = view.findViewById(R.id.tv_yuyue_number);
         tv_home_order_num = view.findViewById(R.id.tv_home_order_num);
         tv_home_settle_order_num = view.findViewById(R.id.tv_home_settle_order_num);
+        ll_yuyue.setOnClickListener(this);
         ll_jishi.setOnClickListener(this);
         ll_order.setOnClickListener(this);
         StyledDialog.buildLoading("加载中").setActivity((Activity) context).show();
@@ -71,6 +74,9 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
                 break;
             case R.id.ll_order://订单
                 ZzRouter.gotoActivity((Activity) context, OrderListActivity.class);
+                break;
+            case R.id.ll_yuyue://订单
+                ZzRouter.gotoActivity((Activity) context, YuYueListActivity.class);
                 break;
         }
     }
