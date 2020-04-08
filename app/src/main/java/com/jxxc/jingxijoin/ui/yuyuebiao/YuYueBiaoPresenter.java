@@ -85,7 +85,6 @@ public class YuYueBiaoPresenter extends BasePresenterImpl<YuYueBiaoContract.View
                 .execute(new JsonCallback<HttpResult>() {
                     @Override
                     public void onSuccess(Response<HttpResult> response) {
-                        StyledDialog.dismissLoading();
                         if (response.body().code==0){
                             mView.dispatchCallBack();
                         }else{

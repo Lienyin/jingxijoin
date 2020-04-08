@@ -103,6 +103,7 @@ public class SortDialog implements View.OnClickListener {
                     Log.i("TAG",key + "---" + value);
                     onFenxiangClickListener.onFenxiangClick(key,value);
                 }
+                cleanDialog();
                 break;
         }
     }

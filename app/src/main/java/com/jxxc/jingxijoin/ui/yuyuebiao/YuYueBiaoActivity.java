@@ -3,6 +3,7 @@ package com.jxxc.jingxijoin.ui.yuyuebiao;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.hss01248.dialog.StyledDialog;
@@ -64,11 +65,23 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
         String queryDate = formatter.format(date);//今天日期
-        //dateStr = queryDate;//默认日期
-        dateStr = "2020-04-06";//默认日期
+        dateStr = queryDate;//默认日期
+        //dateStr = "2020-04-06";//默认日期
         mPresenter.appointmentList(dateStr);
 
         sortDialog = new SortDialog(this);
+
+        //获取周几
+        gv_weekOf_date.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                weekOfAdapter.setSelectPosition(position);
+                Calendar date = Calendar.getInstance();
+                String year = String.valueOf(date.get(Calendar.YEAR));
+                dateStr = year+"-"+test(30).get(position).toString().substring(0,5);
+                mPresenter.appointmentList(dateStr);
+            }
+        });
     }
 
     @OnClick({R.id.tv_back})
@@ -149,7 +162,6 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
         sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
             @Override
             public void onFenxiangClick(String orderId, String technicianId) {
-                StyledDialog.buildLoading("正在排班").setActivity(YuYueBiaoActivity.this).show();
                 mPresenter.dispatch(orderId,technicianId);
             }
         });
