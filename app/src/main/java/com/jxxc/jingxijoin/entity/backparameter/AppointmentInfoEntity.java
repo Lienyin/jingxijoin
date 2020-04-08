@@ -9,6 +9,14 @@ public class AppointmentInfoEntity implements Serializable {
     public List<Tech> tech;
     public class Carport{
         public String carportId;
+
+        public String getCarportId() {
+            return carportId;
+        }
+
+        public void setCarportId(String carportId) {
+            this.carportId = carportId;
+        }
     }
     public class Order{
         public String appointmentTime;

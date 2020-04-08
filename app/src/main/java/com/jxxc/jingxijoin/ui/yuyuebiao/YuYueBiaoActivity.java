@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.dialog.SortDialog;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
@@ -145,5 +146,18 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
     @Override
     public void appointmentInfoCallBack(AppointmentInfoEntity data) {
         sortDialog.showShareDialog(true,data);
+        sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
+            @Override
+            public void onFenxiangClick(String orderId, String technicianId) {
+                StyledDialog.buildLoading("正在排班").setActivity(YuYueBiaoActivity.this).show();
+                mPresenter.dispatch(orderId,technicianId);
+            }
+        });
+    }
+
+    //排班返回数据
+    @Override
+    public void dispatchCallBack() {
+        mPresenter.appointmentList(dateStr);
     }
 }

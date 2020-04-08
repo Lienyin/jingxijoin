@@ -3,7 +3,6 @@ package com.jxxc.jingxijoin.ui.yuyuebiao;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,18 @@ import android.widget.TextView;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SortAdapter extends BaseAdapter {
     private Context context;
-    private int defaultSelection=0;
     private List<AppointmentInfoEntity.Order> list;
     private List<AppointmentInfoEntity.Carport> carportList;
     private List<AppointmentInfoEntity.Tech> techList;
+    private Map<Integer,String> carId = new HashMap<>();
+    private Map<String,String> techId = new HashMap<>();
 
     public SortAdapter(Context context){
         this.context=context;
@@ -79,8 +82,8 @@ public class SortAdapter extends BaseAdapter {
                         .setItems(items, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.i("TAG","选择: " + items[which]);
                                 finalHolder.tv_order_gongwei.setText(items[which]+"");
+                                carId.put(position,items[which]);
                             }
                         });
                 dialog.show();
@@ -98,8 +101,8 @@ public class SortAdapter extends BaseAdapter {
                         .setItems(items, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.i("TAG","选择: " + items[which]);
                                 finalHolder.tv_order_jishi.setText(items[which]+"");
+                                techId.put(data.orderId,techList.get(which).technicianId);
                             }
                         });
                 dialog.show();
@@ -115,17 +118,10 @@ public class SortAdapter extends BaseAdapter {
         TextView tv_order_jishi;
     }
 
-/**
-     * @param position
-     * ���ø���״̬��item
-     */
-    public void setSelectPosition(int position) {
-        if (!(position < 0 || position > list.size())) {
-            defaultSelection = position;
-            notifyDataSetChanged();
-        }else{
-            defaultSelection = -1;
-            notifyDataSetChanged();
-        }
-    }
+   public Map<Integer,String> getCarId(){
+        return carId;
+   }
+   public Map<String,String> getTechId(){
+        return techId;
+   }
 }

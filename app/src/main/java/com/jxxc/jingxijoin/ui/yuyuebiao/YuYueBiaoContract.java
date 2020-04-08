@@ -18,10 +18,12 @@ public class YuYueBiaoContract {
     interface View extends BaseView {
         void appointmentListCallBack(List<AppointmentListEntity> data);
         void appointmentInfoCallBack(AppointmentInfoEntity data);
+        void dispatchCallBack();
     }
 
     interface  Presenter extends BasePresenter<View> {
         void appointmentList(String queryDate);
         void appointmentInfo(String appointmentStartTime,String appointmentEndTime);
+        void dispatch(String orderId,String technicianId);
     }
 }

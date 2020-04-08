@@ -2,6 +2,7 @@ package com.jxxc.jingxijoin.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,12 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.ui.yuyuebiao.SortAdapter;
 import com.jxxc.jingxijoin.utils.AnimUtils;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -80,7 +87,22 @@ public class SortDialog implements View.OnClickListener {
                 cleanDialog();
                 break;
             case R.id.btn_queding_paiban://确定排班
-                cleanDialog();
+//                Set<Map.Entry<Integer, String>> carId = sortAdapter.getCarId().entrySet();
+//                for (Map.Entry<Integer, String> me : carId){
+//                    // 根据键值对对象获取键和值
+//                    Integer key = me.getKey();
+//                    String value = me.getValue();
+//                    Log.i("TAG",key + "-@--" + value);
+//                }
+
+                Set<Map.Entry<String, String>> techId = sortAdapter.getTechId().entrySet();
+                for (Map.Entry<String, String> me : techId){
+                    // 根据键值对对象获取键和值
+                    String key = me.getKey();
+                    String value = me.getValue();
+                    Log.i("TAG",key + "---" + value);
+                    onFenxiangClickListener.onFenxiangClick(key,value);
+                }
                 break;
         }
     }
@@ -92,6 +114,6 @@ public class SortDialog implements View.OnClickListener {
     }
 
     public interface OnFenxiangClickListener {
-        void onFenxiangClick(int shareType);
+        void onFenxiangClick(String orderId,String technicianId);
     }
 }

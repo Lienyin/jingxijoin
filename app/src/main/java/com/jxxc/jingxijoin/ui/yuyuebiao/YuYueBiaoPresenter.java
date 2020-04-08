@@ -2,6 +2,7 @@ package com.jxxc.jingxijoin.ui.yuyuebiao;
 
 import android.content.Context;
 
+import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.Api;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentListEntity;
@@ -63,6 +64,30 @@ public class YuYueBiaoPresenter extends BasePresenterImpl<YuYueBiaoContract.View
                         AppointmentInfoEntity d = response.body().data;
                         if (response.body().code==0){
                             mView.appointmentInfoCallBack(d);
+                        }else{
+                            toast(mContext,response.body().message);
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 排班
+     * @param orderId
+     * @param technicianId
+     */
+    @Override
+    public void dispatch(String orderId, String technicianId) {
+        OkGo.<HttpResult>post(Api.DISPATCH)
+                .params("orderId",orderId)
+                .params("technicianId",technicianId)
+                .params("carportId","0")
+                .execute(new JsonCallback<HttpResult>() {
+                    @Override
+                    public void onSuccess(Response<HttpResult> response) {
+                        StyledDialog.dismissLoading();
+                        if (response.body().code==0){
+                            mView.dispatchCallBack();
                         }else{
                             toast(mContext,response.body().message);
                         }
