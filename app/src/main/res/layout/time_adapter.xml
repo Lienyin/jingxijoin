@@ -52,7 +52,6 @@
             android:textColor="@color/white"
             android:layout_marginTop="5dp"
             android:textSize="10sp"
-            android:maxLength="12"
             android:visibility="invisible"
             android:text="XXXXXX"/>
     </LinearLayout>

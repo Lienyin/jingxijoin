@@ -55,11 +55,12 @@ public class SortDialog implements View.OnClickListener {
 
     }
 
+
     public void showShareDialog(boolean outTouchCancel, AppointmentInfoEntity data) {
         appointmentInfoEntity = data;
         if (data.order.size()>0){
             sortAdapter = new SortAdapter(context);
-            sortAdapter.setData(data.order);
+            sortAdapter.setData(data.order,data.carport,data.tech);
             lv_pai_ban_data.setAdapter(sortAdapter);
         }
 

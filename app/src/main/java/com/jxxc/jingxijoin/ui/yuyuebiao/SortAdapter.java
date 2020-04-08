@@ -1,6 +1,9 @@
 package com.jxxc.jingxijoin.ui.yuyuebiao;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +19,19 @@ public class SortAdapter extends BaseAdapter {
     private Context context;
     private int defaultSelection=0;
     private List<AppointmentInfoEntity.Order> list;
+    private List<AppointmentInfoEntity.Carport> carportList;
+    private List<AppointmentInfoEntity.Tech> techList;
 
     public SortAdapter(Context context){
         this.context=context;
     }
 
-    public void setData(List<AppointmentInfoEntity.Order> list){
+    public void setData(List<AppointmentInfoEntity.Order> list,
+                        List<AppointmentInfoEntity.Carport> carportList,
+                        List<AppointmentInfoEntity.Tech> techList){
         this.list = list;
+        this.carportList = carportList;
+        this.techList = techList;
     }
 
     @Override
@@ -57,6 +66,45 @@ public class SortAdapter extends BaseAdapter {
         AppointmentInfoEntity.Order data = list.get(position);
         holder.tv_order_id.setText(data.orderId);
         holder.tv_order_time.setText(data.appointmentTime);
+        ViewHolder finalHolder = holder;
+        holder.tv_order_gongwei.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] items = new String[carportList.size()];
+                for (int i=0;i<carportList.size();i++){
+                    items[i] = carportList.get(i).carportId;
+                }
+                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                dialog.setTitle("选择洗车工位")
+                        .setItems(items, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("TAG","选择: " + items[which]);
+                                finalHolder.tv_order_gongwei.setText(items[which]+"");
+                            }
+                        });
+                dialog.show();
+            }
+        });
+        holder.tv_order_jishi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] items = new String[techList.size()];
+                for (int i=0;i<techList.size();i++){
+                    items[i] = (i+1)+"-技师"+techList.get(i).realName+"(随时可以服务)";
+                }
+                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                dialog.setTitle("选择洗车技师")
+                        .setItems(items, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("TAG","选择: " + items[which]);
+                                finalHolder.tv_order_jishi.setText(items[which]+"");
+                            }
+                        });
+                dialog.show();
+            }
+        });
         return convertView;
     }
 

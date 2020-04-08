@@ -18,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black333"
                 android:layout_marginLeft="20dp"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:text="预约订单"/>
             <TextView
                 android:id="@+id/tv_order_id"
@@ -27,13 +27,13 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black333"
                 android:layout_marginLeft="5dp"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:text="XXXX"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black333"
-                android:textSize="14sp"
+                android:textSize="10sp"
                 android:text="可用洗车工位"/>
             <TextView
                 android:id="@+id/tv_order_gongwei"
@@ -46,30 +46,32 @@
                 android:drawableRight="@mipmap/xiang_xia"
                 android:paddingRight="3dp"
                 android:background="@drawable/shape_bg_white"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:text="0"/>
         </LinearLayout>
         <TextView
             android:id="@+id/tv_order_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="10sp"
             android:layout_marginLeft="20dp"
             android:textColor="@color/black666"
             android:text="预约时间：XXXX-XX-XX"/>
         <TextView
             android:id="@+id/tv_order_jishi"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textColor="@color/black333"
+            android:layout_height="40dp"
+            android:textColor="@color/black666"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
             android:drawableRight="@mipmap/xiang_xia"
             android:paddingRight="10dp"
             android:background="@drawable/shape_bg_white"
-            android:textSize="14sp"
-            android:text="XXX"/>
+            android:textSize="12sp"
+            android:text="请选择洗车技师"/>
     </LinearLayout>
 </LinearLayout>
