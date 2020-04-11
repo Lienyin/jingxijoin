@@ -33,6 +33,8 @@ public class Api {
     public static final String APPOINTMENT_MANAGEMENT = BASEURL + "system/company/appointmentManagement";
    //15-预约详情
    public static final String APPOINTMENT_INFO = BASEURL + "system/company/appointmentInfo";
+   //16-获取二维码
+   public static final String GET_QRCOED = BASEURL + "system/company/getQrcoed";
 
 
     public static final String GET_ACCOUNT_INFO = BASEURL + "/user/login.json";

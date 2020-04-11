@@ -87,5 +87,8 @@
         <!--预约单日程表-->
         <activity android:name=".ui.yuyuebiao.YuYueBiaoActivity"
             android:screenOrientation="portrait"/>
+        <!--二维码-->
+        <activity android:name=".ui.qrcoed.QrcoedActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>
