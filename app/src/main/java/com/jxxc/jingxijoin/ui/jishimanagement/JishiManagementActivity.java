@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.QueryListEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
@@ -85,10 +86,17 @@ public class JishiManagementActivity extends MVPBaseActivity<JishiManagementCont
                         startActivity(intent);
                         break;
                     case 3://删除
-
+                        StyledDialog.buildLoading("正在删除").setActivity(JishiManagementActivity.this).show();
+                        mPresenter.remove(technicianId);
                         break;
                 }
             }
         });
+    }
+
+    //删除技师返回数据
+    @Override
+    public void removeCallBack() {
+        mPresenter.queryList();
     }
 }

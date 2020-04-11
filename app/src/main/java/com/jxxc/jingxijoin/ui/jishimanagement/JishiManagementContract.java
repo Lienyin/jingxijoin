@@ -16,9 +16,11 @@ import java.util.List;
 public class JishiManagementContract {
     interface View extends BaseView {
         void queryListCallBack(List<QueryListEntity> data);
+        void removeCallBack();
     }
 
     interface  Presenter extends BasePresenter<View> {
         void queryList();
+        void remove(String technicianId);
     }
 }

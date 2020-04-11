@@ -2,6 +2,7 @@ package com.jxxc.jingxijoin.ui.jishimanagement;
 
 import android.content.Context;
 
+import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.Api;
 import com.jxxc.jingxijoin.entity.backparameter.QueryListEntity;
 import com.jxxc.jingxijoin.http.EventCenter;
@@ -38,6 +39,27 @@ public class JishiManagementPresenter extends BasePresenterImpl<JishiManagementC
                         List<QueryListEntity> d = response.body().data;
                         if (response.body().code==0){
                             mView.queryListCallBack(d);
+                        }else{
+                            toast(mContext,response.body().message);
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 删除技师
+     * @param technicianId
+     */
+    @Override
+    public void remove(String technicianId) {
+        OkGo.<HttpResult>post(Api.TECHNICIAN_REMOVE)
+                .params("technicianId",technicianId)
+                .execute(new JsonCallback<HttpResult>() {
+                    @Override
+                    public void onSuccess(Response<HttpResult> response) {
+                        StyledDialog.dismissLoading();
+                        if (response.body().code==0){
+                            mView.removeCallBack();
                         }else{
                             toast(mContext,response.body().message);
                         }
