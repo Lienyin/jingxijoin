@@ -14,7 +14,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.R;
+import com.jxxc.jingxijoin.dialog.SortDialog;
+import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.OrderListEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
@@ -59,6 +62,7 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
     private double locationLongitude;
     private List<OrderListEntity> list = new ArrayList<>();
     private String oId;//订单id
+    private SortDialog sortDialog;
 
     Handler handler = new Handler() {
 
@@ -83,6 +87,7 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
         tv_title.setText("我的订单");
         initAdapter();
         onRefresh();
+        sortDialog = new SortDialog(this);
     }
 
     private void initAdapter() {
@@ -100,24 +105,12 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
         //rvList.addOnItemTouchListener(new SwipeItemLayout.OnSwipeItemTouchListener(getContext()));
         adapter.setOnFenxiangClickListener(new OrderListAdapter.OnFenxiangClickListener() {
             @Override
-            public void onFenxiangClick(String orderId, int type) {
+            public void onFenxiangClick(String orderId, int type,String startTime,String endTime) {
                 oId = orderId;
                 switch (type) {
                     case 1://调度
-                        new AlertDialog
-                                .Builder(OrderListActivity.this)
-                                .setTitle("提示")
-                                .setMessage("确定要调度此单？")
-                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialoginterface, int i) {
-
-                                    }
-                                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                                    }
-                                }).show();
+                        StyledDialog.buildLoading("请求中").setActivity(OrderListActivity.this).show();
+                        mPresenter.appointmentInfo(startTime,endTime);
                         break;
                 }
             }
@@ -192,6 +185,24 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
         if (data.size() < 10) {
             adapter.loadMoreEnd();
         }
+    }
+
+    //预约详情
+    @Override
+    public void appointmentInfoCallBack(AppointmentInfoEntity data) {
+        sortDialog.showShareDialog(true,data);
+        sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
+            @Override
+            public void onFenxiangClick(String orderId, String technicianId) {
+                mPresenter.dispatch(orderId,technicianId);
+            }
+        });
+    }
+
+    //调度返回数据
+    @Override
+    public void dispatchCallBack() {
+        onRefresh();
     }
 
 }

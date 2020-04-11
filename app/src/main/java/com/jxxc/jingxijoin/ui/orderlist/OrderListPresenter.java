@@ -1,6 +1,8 @@
 package com.jxxc.jingxijoin.ui.orderlist;
 
+import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.Api;
+import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.OrderListEntity;
 import com.jxxc.jingxijoin.http.EventCenter;
 import com.jxxc.jingxijoin.http.HttpResult;
@@ -61,4 +63,49 @@ public class OrderListPresenter extends BasePresenterImpl<OrderListContract.View
                 });
     }
 
+    /**
+     * 预约详情
+     * @param appointmentStartTime
+     * @param appointmentEndTime
+     */
+    @Override
+    public void appointmentInfo(String appointmentStartTime, String appointmentEndTime) {
+        OkGo.<HttpResult<AppointmentInfoEntity>>post(Api.APPOINTMENT_INFO)
+                .params("appointmentStartTime",appointmentStartTime)
+                .params("appointmentEndTime",appointmentEndTime)
+                .execute(new JsonCallback<HttpResult<AppointmentInfoEntity>>() {
+                    @Override
+                    public void onSuccess(Response<HttpResult<AppointmentInfoEntity>> response) {
+                        StyledDialog.dismissLoading();
+                        AppointmentInfoEntity d = response.body().data;
+                        if (response.body().code==0){
+                            mView.appointmentInfoCallBack(d);
+                        }else{
+                            toast(mContext,response.body().message);
+                        }
+                    }
+                });
+    }
+    /**
+     * 调度
+     * @param orderId
+     * @param technicianId
+     */
+    @Override
+    public void dispatch(String orderId, String technicianId) {
+        OkGo.<HttpResult>post(Api.DISPATCH)
+                .params("orderId",orderId)
+                .params("technicianId",technicianId)
+                .params("carportId","0")
+                .execute(new JsonCallback<HttpResult>() {
+                    @Override
+                    public void onSuccess(Response<HttpResult> response) {
+                        if (response.body().code==0){
+                            mView.dispatchCallBack();
+                        }else{
+                            toast(mContext,response.body().message);
+                        }
+                    }
+                });
+    }
 }

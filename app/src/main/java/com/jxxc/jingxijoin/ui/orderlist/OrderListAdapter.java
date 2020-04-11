@@ -2,6 +2,7 @@ package com.jxxc.jingxijoin.ui.orderlist;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -132,7 +133,19 @@ public class OrderListAdapter extends BaseQuickAdapter<OrderListEntity, BaseView
         helper.setOnClickListener(R.id.tv_diao_du, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onFenxiangClickListener.onFenxiangClick(item.orderId,1);//调度
+                //获取当前日期
+                SimpleDateFormat formatter= new SimpleDateFormat("yyyy");
+                Date date = new Date(System.currentTimeMillis());
+                String year = formatter.format(date);//年
+                //月/日
+                String YD = item.appointmentTime.substring(0,2)+"-"+item.appointmentTime.substring(3,5);
+                String starthm = item.appointmentTime.substring(7,12);
+                String endhm = item.appointmentTime.substring(13,18);
+
+                String appointmentStartTime = year+"-"+YD+" "+starthm;
+                String appointmentEndTime = year+"-"+YD+" "+endhm;
+                onFenxiangClickListener.onFenxiangClick(item.orderId,1,appointmentStartTime,
+                        appointmentEndTime);//调度
             }
         });
     }
@@ -144,7 +157,7 @@ public class OrderListAdapter extends BaseQuickAdapter<OrderListEntity, BaseView
     }
 
     public interface OnFenxiangClickListener{
-        void onFenxiangClick(String orderId, int type);
+        void onFenxiangClick(String orderId, int type,String startTime,String endTime);
     }
 
     // 将字符串转为时间戳
