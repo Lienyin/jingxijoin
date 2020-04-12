@@ -1,7 +1,13 @@
 package com.jxxc.jingxijoin.ui.main.myfragment;
 
+import com.jxxc.jingxijoin.Api;
+import com.jxxc.jingxijoin.entity.backparameter.UserInfoEntity;
 import com.jxxc.jingxijoin.http.EventCenter;
+import com.jxxc.jingxijoin.http.HttpResult;
+import com.jxxc.jingxijoin.http.JsonCallback;
 import com.jxxc.jingxijoin.mvp.BasePresenterImpl;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.model.Response;
 
 /**
  * MVPPlugin
@@ -12,5 +18,22 @@ public class MyFragmentPresenter extends BasePresenterImpl<MyFragmentContract.Vi
     @Override
     protected void onEventComing(EventCenter center) {
 
+    }
+
+    @Override
+    public void userInfo() {
+        OkGo.<HttpResult<UserInfoEntity>>post(Api.USER_INFO)
+                .tag(this)
+                .execute(new JsonCallback<HttpResult<UserInfoEntity>>() {
+                    @Override
+                    public void onSuccess(Response<HttpResult<UserInfoEntity>> response) {
+                        UserInfoEntity d = response.body().data;
+                        if (response.body().code==0){
+                            mView.userInfoCallBack(d);
+                        }else{
+                            toast(mContext,response.body().message);
+                        }
+                    }
+                });
     }
 }

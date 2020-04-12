@@ -50,6 +50,7 @@ public class JishiManagementActivity extends MVPBaseActivity<JishiManagementCont
         tv_title.setText("技师管理");
         tv_affirm.setVisibility(View.VISIBLE);
         tv_affirm.setText("+");
+        tv_affirm.setTextSize(28);
         mPresenter.queryList();
     }
 

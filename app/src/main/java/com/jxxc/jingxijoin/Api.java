@@ -37,9 +37,9 @@ public class Api {
    public static final String GET_QRCOED = BASEURL + "system/company/getQrcoed";
    //17-删除技师
    public static final String TECHNICIAN_REMOVE = BASEURL + "system/technician/remove";
+    //18-个人信息
+    public static final String USER_INFO = BASEURL + "/system/company/info";
 
-
-    public static final String GET_ACCOUNT_INFO = BASEURL + "/user/login.json";
     //1-客户登录
     public static final String MESSAGE_LIST = BASEURL + "/user/login.json";
     //1-客户登录

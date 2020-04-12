@@ -112,7 +112,7 @@ public class BindingAccountPresenter extends BasePresenterImpl<BindingAccountCon
      */
     @Override
     public void getAccountInfo() {
-        OkGo.<HttpResult<AccountInfoEntity>>post(Api.GET_ACCOUNT_INFO)
+        OkGo.<HttpResult<AccountInfoEntity>>post(Api.USER_INFO)
                 .tag(this)
                 .execute(new JsonCallback<HttpResult<AccountInfoEntity>>() {
                     @Override
