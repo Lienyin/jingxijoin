@@ -6,6 +6,7 @@ import com.jxxc.jingxijoin.http.EventCenter;
 import com.jxxc.jingxijoin.http.HttpResult;
 import com.jxxc.jingxijoin.http.JsonCallback;
 import com.jxxc.jingxijoin.mvp.BasePresenterImpl;
+import com.jxxc.jingxijoin.utils.SPUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
 
@@ -30,6 +31,7 @@ public class MyFragmentPresenter extends BasePresenterImpl<MyFragmentContract.Vi
                         UserInfoEntity d = response.body().data;
                         if (response.body().code==0){
                             mView.userInfoCallBack(d);
+                            SPUtils.put(SPUtils.K_SESSION_MOBILE,d.phonenumber);
                         }else{
                             toast(mContext,response.body().message);
                         }

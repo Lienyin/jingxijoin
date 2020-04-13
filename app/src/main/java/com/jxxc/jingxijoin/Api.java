@@ -39,9 +39,11 @@ public class Api {
    public static final String TECHNICIAN_REMOVE = BASEURL + "system/technician/remove";
     //18-个人信息
     public static final String USER_INFO = BASEURL + "/system/company/info";
+    //19-提现账户
+    public static final String GET_ACCOUNT_INFO = BASEURL + "/biz/drawMoney/getAccountInfo";
 
     //1-客户登录
-    public static final String MESSAGE_LIST = BASEURL + "/user/login.json";
+    public static final String MESSAGE_LIST = BASEURL + "/";
     //1-客户登录
-    public static final String BINDING_TIXIAN = BASEURL + "/user/login.json";
+    public static final String BINDING_TIXIAN = BASEURL + "/";
 }
