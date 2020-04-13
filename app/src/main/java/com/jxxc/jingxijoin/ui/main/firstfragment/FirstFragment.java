@@ -18,9 +18,11 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.BasEarningsEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
+import com.jxxc.jingxijoin.ui.finance.FinanceActivity;
 import com.jxxc.jingxijoin.ui.jishimanagement.JishiManagementActivity;
 import com.jxxc.jingxijoin.ui.orderlist.OrderListActivity;
 import com.jxxc.jingxijoin.ui.qrcoed.QrcoedActivity;
+import com.jxxc.jingxijoin.ui.settleaccounts.SettleAccountsActivity;
 import com.jxxc.jingxijoin.ui.yuyuelist.YuYueListActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
@@ -30,7 +32,7 @@ import com.jxxc.jingxijoin.utils.StatusBarUtil;
 @SuppressLint("ValidFragment")
 public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, FirseFramentPresenter> implements View.OnClickListener, FirseFramentContract.View, SwipeRefreshLayout.OnRefreshListener {
     private Context context;
-    private LinearLayout ll_yuyue,ll_jishi,ll_order,ll_qr_code;
+    private LinearLayout ll_yuyue,ll_jishi,ll_order,ll_qr_code,ll_jie_suan,ll_finance;
     private TextView tv_home_name,tv_fuwu_type,tv_home_type;
     private ImageView iv_home_logo,iv_home_level;
     private TextView tv_today_order,tv_benyue_shouyi,tv_ke_tixian;
@@ -56,6 +58,8 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         tv_today_order = view.findViewById(R.id.tv_today_order);
         tv_benyue_shouyi = view.findViewById(R.id.tv_benyue_shouyi);
         tv_ke_tixian = view.findViewById(R.id.tv_ke_tixian);
+        ll_jie_suan = view.findViewById(R.id.ll_jie_suan);
+        ll_finance = view.findViewById(R.id.ll_finance);
         tv_yuyue_number = view.findViewById(R.id.tv_yuyue_number);
         tv_home_order_num = view.findViewById(R.id.tv_home_order_num);
         tv_home_settle_order_num = view.findViewById(R.id.tv_home_settle_order_num);
@@ -63,6 +67,8 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         ll_jishi.setOnClickListener(this);
         ll_order.setOnClickListener(this);
         ll_qr_code.setOnClickListener(this);
+        ll_jie_suan.setOnClickListener(this);
+        ll_finance.setOnClickListener(this);
         StyledDialog.buildLoading("加载中").setActivity((Activity) context).show();
         mPresenter.basEarnings();
         return view;
@@ -83,6 +89,12 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
                 break;
             case R.id.ll_qr_code://二维码
                 ZzRouter.gotoActivity((Activity) context, QrcoedActivity.class);
+                break;
+            case R.id.ll_jie_suan://结算
+                ZzRouter.gotoActivity((Activity) context, SettleAccountsActivity.class);
+                break;
+            case R.id.ll_finance://财务
+                ZzRouter.gotoActivity((Activity) context, FinanceActivity.class);
                 break;
         }
     }
