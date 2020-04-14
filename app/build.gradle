@@ -70,4 +70,6 @@ dependencies {
     implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
     implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    implementation 'com.yuyh.imgsel:library:2.0.2'
+    implementation 'top.zibin:Luban:1.1.3'
 }

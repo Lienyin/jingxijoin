@@ -27,6 +27,7 @@ public class SPUtils {
     public static final String K_ACCOUNT = "account";
     public static final String K_COMPANY_NAME = "companyName";
     public static final String K_COMPANY_ID = "companyId";
+    public static final String K_FILE_URL = "baseUrl";
     private static Context mContext;
 
     public static SharedPreferences init(Context context) {

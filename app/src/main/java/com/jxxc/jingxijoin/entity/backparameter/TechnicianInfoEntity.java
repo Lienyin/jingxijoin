@@ -7,4 +7,5 @@ public class TechnicianInfoEntity implements Serializable {
     public String idCartImg;
     public String idCart;
     public String phonenumber;
+    public String technicianCode;
 }

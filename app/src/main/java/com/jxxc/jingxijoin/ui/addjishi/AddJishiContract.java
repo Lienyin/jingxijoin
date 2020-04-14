@@ -3,6 +3,7 @@ package com.jxxc.jingxijoin.ui.addjishi;
 import android.content.Context;
 
 import com.jxxc.jingxijoin.entity.backparameter.TechnicianInfoEntity;
+import com.jxxc.jingxijoin.entity.backparameter.UpdateInfoEntity;
 import com.jxxc.jingxijoin.mvp.BasePresenter;
 import com.jxxc.jingxijoin.mvp.BaseView;
 
@@ -16,15 +17,21 @@ public class AddJishiContract {
         void technicianInfoCallBack(TechnicianInfoEntity data);
         void technicianEditCallBack();
         void technicianAddCallBack();
+        void updateInfoCallBack();
+        void uploadImageCallBack(UpdateInfoEntity data);
     }
 
     interface  Presenter extends BasePresenter<View> {
         void technicianInfo(String technicianId);
-        void technicianEdit(String technicianId,String realName,
+        void technicianEdit(String realName,
                            String idCart,String phonenumber,
                            String idCartImg,String password);
-        void technicianAdd(String technicianId,String realName,
+        void technicianAdd(String realName,
                            String idCart,String phonenumber,
                            String idCartImg,String password);
+
+        void initImageSelecter();
+        void gotoImageSelect(AddJishiActivity activity, int requestCodeChoose);
+        void uploadImage(String s);
     }
 }

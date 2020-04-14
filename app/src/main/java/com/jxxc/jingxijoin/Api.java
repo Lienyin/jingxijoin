@@ -1,5 +1,7 @@
 package com.jxxc.jingxijoin;
 
+import com.jxxc.jingxijoin.utils.SPUtils;
+
 public class Api {
    public static final String BASEURL = "http://47.101.185.138:8110/";//
 
@@ -38,9 +40,11 @@ public class Api {
    //17-删除技师
    public static final String TECHNICIAN_REMOVE = BASEURL + "system/technician/remove";
     //18-个人信息
-    public static final String USER_INFO = BASEURL + "/system/company/info";
+    public static final String USER_INFO = BASEURL + "system/company/info";
     //19-提现账户
-    public static final String GET_ACCOUNT_INFO = BASEURL + "/biz/drawMoney/getAccountInfo";
+    public static final String GET_ACCOUNT_INFO = BASEURL + "biz/drawMoney/getAccountInfo";
+    //20-上传文件
+    public static final String UPLOAD_FILE = SPUtils.get(SPUtils.K_FILE_URL,"") + "common/upload";
 
     //1-客户登录
     public static final String MESSAGE_LIST = BASEURL + "/";

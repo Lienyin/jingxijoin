@@ -8,8 +8,4 @@ public class LatestVersionEntity implements Serializable {
     public String url;
     public String isForce;
     public String staticUrl;
-    public String colors;
-    public String color;
-    public String name;
-    public String colorCode;
 }

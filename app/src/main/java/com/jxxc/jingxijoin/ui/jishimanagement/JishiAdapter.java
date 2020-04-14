@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.QueryListEntity;
 import com.jxxc.jingxijoin.ui.orderlist.OrderListAdapter;
+import com.jxxc.jingxijoin.utils.AppUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
 
 import java.util.List;
@@ -61,20 +62,26 @@ public class JishiAdapter extends BaseAdapter {
         }
         QueryListEntity data = list.get(position);
         GlideImgManager.loadCircleImage(context, data.avatar, holder.iv_jishi_hand);
-        holder.tv_jishi_number.setText("编号:"+data.technicianCode);
+        if (!AppUtils.isEmpty(data.technicianCode)){
+            holder.tv_jishi_number.setText("编号:"+data.technicianCode);
+        }else{
+            holder.tv_jishi_number.setText("等待考试通过");
+        }
         holder.tv_jishi_name.setText(data.realName);
-        if (data.grade>0&&data.grade<=1){
+        if (data.grade==0){
             holder.iv_jishi_jibie.setBackgroundResource(R.mipmap.icon_user_13);
-        }else if (data.grade>1&&data.grade<=2){
+        }else if (data.grade==1){
+            holder.iv_jishi_jibie.setBackgroundResource(R.mipmap.icon_user_13);
+        }else if (data.grade==2){
             holder.iv_jishi_jibie.setBackgroundResource(R.mipmap.icon_user_21);
-        }else if (data.grade>2&&data.grade<=3){
+        }else if (data.grade==3){
             holder.iv_jishi_jibie.setBackgroundResource(R.mipmap.icon_user_23);
-        }else if (data.grade>3&&data.grade<=4){
+        }else if (data.grade==4){
             holder.iv_jishi_jibie.setBackgroundResource(R.mipmap.icon_user_25);
-        }else if (data.grade>4&&data.grade<=5){
+        }else if (data.grade==5){
             holder.iv_jishi_jibie.setBackgroundResource(R.mipmap.icon_user_27);
         }else{
-            holder.iv_jishi_jibie.setBackgroundResource(R.mipmap.icon_user_27);
+            holder.iv_jishi_jibie.setBackgroundResource(R.mipmap.icon_user_13);
         }
         holder.iv_jishi_look.setOnClickListener(new View.OnClickListener() {
             @Override

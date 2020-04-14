@@ -2,6 +2,7 @@ package com.jxxc.jingxijoin.ui.finance;
 
 import android.content.Context;
 
+import com.jxxc.jingxijoin.http.EventCenter;
 import com.jxxc.jingxijoin.mvp.BasePresenterImpl;
 
 /**
@@ -10,5 +11,9 @@ import com.jxxc.jingxijoin.mvp.BasePresenterImpl;
  */
 
 public class FinancePresenter extends BasePresenterImpl<FinanceContract.View> implements FinanceContract.Presenter{
-    
+
+    @Override
+    protected void onEventComing(EventCenter center) {
+
+    }
 }

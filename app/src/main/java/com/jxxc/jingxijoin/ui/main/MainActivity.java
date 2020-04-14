@@ -16,6 +16,7 @@ import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.ui.main.firstfragment.FirstFragment;
 import com.jxxc.jingxijoin.ui.main.myfragment.MyFragment;
 import com.jxxc.jingxijoin.ui.main.secondfragment.SecondFragment;
+import com.jxxc.jingxijoin.utils.SPUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 
@@ -159,6 +160,6 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     //查询app最新版本返回接口
     @Override
     public void latestVersionCallBack(LatestVersionEntity data) {
-
+        SPUtils.put(SPUtils.K_FILE_URL,data.staticUrl);
     }
 }

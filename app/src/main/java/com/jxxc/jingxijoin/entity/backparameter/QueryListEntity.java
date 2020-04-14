@@ -6,6 +6,6 @@ public class QueryListEntity implements Serializable {
     public String realName;
     public String technicianCode;
     public String avatar;
-    public float grade;
+    public int grade;
     public String technicianId;
 }

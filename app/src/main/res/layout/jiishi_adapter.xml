@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/icon_user_27"/>
+                android:background="@mipmap/icon_user_13"/>
         </LinearLayout>
         <ImageView
             android:id="@+id/iv_jishi_look"
