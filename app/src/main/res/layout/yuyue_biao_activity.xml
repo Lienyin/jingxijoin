@@ -10,7 +10,7 @@
     <com.jxxc.jingxijoin.utils.HorizontalListView
         android:id="@+id/gv_weekOf_date"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="120dp"
         android:layout_marginTop="5dp"
         android:numColumns="7"/>
     <!--预约时间段-->

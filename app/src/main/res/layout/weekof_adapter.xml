@@ -2,23 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="5dp"
     android:gravity="center">
 
-    <LinearLayout
-        android:id="@+id/ll_time_bg"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:orientation="vertical"
-        android:background="@drawable/tab_time_yuyue"
-        android:gravity="center">
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+
+        <LinearLayout
+            android:id="@+id/ll_time_bg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/tab_time_yuyue"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_time_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:text="xx:xx"/>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_time_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:text="xx:xx"/>
-    </LinearLayout>
+            android:id="@+id/tv_order_number"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/order_number_bg"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:visibility="visible"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/black333"
+            android:text="0"/>
+    </RelativeLayout>
 </LinearLayout>

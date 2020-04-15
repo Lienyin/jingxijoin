@@ -47,6 +47,7 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
     private WeekOfAdapter weekOfAdapter;
     private String dateStr ="";
     private SortDialog sortDialog;
+    private int orderNumber = 0;
     @Override
     protected int layoutId() {
         return R.layout.yuyue_biao_activity;
@@ -65,8 +66,8 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
         String queryDate = formatter.format(date);//今天日期
-        dateStr = queryDate;//默认日期
-        //dateStr = "2020-04-06";//默认日期
+        //dateStr = queryDate;//默认日期
+        dateStr = "2020-04-06";//默认日期
         mPresenter.appointmentList(dateStr);
 
         sortDialog = new SortDialog(this);
@@ -152,6 +153,13 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
                     mPresenter.appointmentInfo(dateStr+" "+statTime,dateStr+" "+endTime);
                 }
             });
+            orderNumber = 0;//换时间，清空
+            for (int i=0;i<data.size();i++){
+                orderNumber += data.get(i).num;
+            }
+
+            weekOfAdapter.setOrderNumber(orderNumber);
+            weekOfAdapter.notifyDataSetChanged();
         }
     }
 

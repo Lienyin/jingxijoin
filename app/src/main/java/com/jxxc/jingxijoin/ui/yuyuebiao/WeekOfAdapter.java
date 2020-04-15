@@ -16,6 +16,7 @@ public class WeekOfAdapter extends BaseAdapter {
     private Context context;
     private int defaultSelection=0;
     private List<String> list;
+    private int orderNumber=0;
 
     public WeekOfAdapter(Context context){
         this.context=context;
@@ -23,6 +24,10 @@ public class WeekOfAdapter extends BaseAdapter {
 
     public void setData(List<String> list){
         this.list = list;
+    }
+
+    public void setOrderNumber(int orderNumber){
+        this.orderNumber = orderNumber;
     }
 
     @Override
@@ -48,6 +53,7 @@ public class WeekOfAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.weekof_adapter,null);
             holder.tv_time_name = convertView.findViewById(R.id.tv_time_name);
             holder.ll_time_bg = convertView.findViewById(R.id.ll_time_bg);
+            holder.tv_order_number = convertView.findViewById(R.id.tv_order_number);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -56,14 +62,18 @@ public class WeekOfAdapter extends BaseAdapter {
         holder.tv_time_name.setText(data);
         if (position == defaultSelection) {// 选中时设置单纯颜色
             holder.ll_time_bg.setSelected(true);
+            holder.tv_order_number.setText(orderNumber+"");
+            holder.tv_order_number.setVisibility(View.VISIBLE);
         } else {// 未选中时设置selector
             holder.ll_time_bg.setSelected(false);
+            holder.tv_order_number.setVisibility(View.INVISIBLE);
         }
         return convertView;
     }
 
     class ViewHolder{
         TextView tv_time_name;
+        TextView tv_order_number;
         LinearLayout ll_time_bg;
     }
 
