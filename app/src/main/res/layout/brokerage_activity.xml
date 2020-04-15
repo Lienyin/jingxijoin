@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blackf1"
+    android:orientation="vertical">
+
+    <include layout="@layout/title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_bg"
+                android:layout_marginLeft="10dp">
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overlapAnchor="false"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_brokerage_date"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/card_bg">
+                <TextView
+                    android:id="@+id/tv_brokerage_date"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp"
+                    android:paddingLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:hint="请选择查询时间"/>
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@mipmap/xia_jiantou"/>
+            </LinearLayout>
+        </LinearLayout>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_user_all"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:checked="true"
+                android:text="已结算"
+                android:background="@drawable/car_management_yizu"
+                android:textColor="@drawable/radio"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/rb_user_yuqi"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="未结算"
+                android:background="@drawable/car_management_xianzhi"
+                android:textColor="@drawable/radio"
+                android:textSize="12sp" />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home_pop_bg"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+</LinearLayout>

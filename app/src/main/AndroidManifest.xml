@@ -108,5 +108,8 @@
         <!--提现记录-->
         <activity android:name=".ui.withdrawdepositrecord.WithdrawDepositRecordActivity"
             android:screenOrientation="portrait"/>
+        <!--佣金记录-->
+        <activity android:name=".ui.brokerage.BrokerageActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

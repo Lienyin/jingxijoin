@@ -13,6 +13,7 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.GetAccountInfoEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
+import com.jxxc.jingxijoin.ui.brokerage.BrokerageActivity;
 import com.jxxc.jingxijoin.ui.extractsucceed.ExtractSucceedActivity;
 import com.jxxc.jingxijoin.ui.withdrawdepositrecord.WithdrawDepositRecordActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
@@ -77,7 +78,7 @@ public class ExtractActivity extends MVPBaseActivity<ExtractContract.View, Extra
                 ZzRouter.gotoActivity(this, WithdrawDepositRecordActivity.class);
                 break;
             case R.id.ll_zhang_dan://佣金账单
-                ZzRouter.gotoActivity(this, WithdrawDepositRecordActivity.class);
+                ZzRouter.gotoActivity(this, BrokerageActivity.class);
                 break;
             default:
         }

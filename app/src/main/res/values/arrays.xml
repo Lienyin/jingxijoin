@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="languages">
+        <item>c语言</item>
+        <item>java </item>
+        <item>php</item>
+        <item>xml</item>
+        <item>html</item>
+    </string-array>
+
+    <string-array name="siteTypeOne">
+        <item>请选择创建类型</item>
+        <item>自营</item>
+        <item>加盟 </item>
+    </string-array>
+</resources>

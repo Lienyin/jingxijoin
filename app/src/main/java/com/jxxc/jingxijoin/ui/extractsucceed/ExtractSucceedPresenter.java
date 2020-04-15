@@ -2,6 +2,7 @@ package com.jxxc.jingxijoin.ui.extractsucceed;
 
 import android.content.Context;
 
+import com.jxxc.jingxijoin.http.EventCenter;
 import com.jxxc.jingxijoin.mvp.BasePresenterImpl;
 
 /**
@@ -10,5 +11,9 @@ import com.jxxc.jingxijoin.mvp.BasePresenterImpl;
  */
 
 public class ExtractSucceedPresenter extends BasePresenterImpl<ExtractSucceedContract.View> implements ExtractSucceedContract.Presenter{
-    
+
+    @Override
+    protected void onEventComing(EventCenter center) {
+
+    }
 }
