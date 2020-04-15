@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_financing_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/shape_bg_button">
+
+            <TextView
+                android:id="@+id/tv_title_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:text="近三个月累计收入（元）"/>
+            <TextView
+                android:id="@+id/tv_bao_totalRent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_marginTop="14dp"
+                android:textColor="@color/white"
+                android:text="0.00"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_bao_sanyue"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableBottom="@drawable/radio_bao_bg"
+                    android:gravity="center"
+                    android:text="近三个月"
+                    android:textColor="@drawable/radio_bao"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_bao_liuyue"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:drawableBottom="@drawable/radio_bao_bg"
+                    android:gravity="center"
+                    android:text="近半年"
+                    android:textColor="@drawable/radio_bao"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_bao_yinian"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:drawableBottom="@drawable/radio_bao_bg"
+                    android:gravity="center"
+                    android:text="近一年"
+                    android:textColor="@drawable/radio_bao"
+                    android:textSize="14sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/home_pop_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="right|center">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="10dp"
+                    android:background="@color/public_all" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:text="订单金额"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="10dp"
+                    android:background="@color/home_yellow_n" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:text="佣金"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <!--柱状图-->
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bar_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bao_view_null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/iv_nothing" />
+    </LinearLayout>
+</LinearLayout>

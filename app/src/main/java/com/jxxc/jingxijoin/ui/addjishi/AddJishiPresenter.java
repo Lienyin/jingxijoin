@@ -60,10 +60,11 @@ public class AddJishiPresenter extends BasePresenterImpl<AddJishiContract.View> 
      * 修改技师
      */
     @Override
-    public void technicianEdit(String realName,
+    public void technicianEdit(String technicianId,String realName,
                                String idCart,String phonenumber,
                                String idCartImg,String password) {
         OkGo.<HttpResult>post(Api.TECHNICIAN_EDIT)
+                .params("technicianId",technicianId)
                 .params("realName",realName)
                 .params("idCart",idCart)
                 .params("phonenumber",phonenumber)
@@ -72,6 +73,7 @@ public class AddJishiPresenter extends BasePresenterImpl<AddJishiContract.View> 
                 .execute(new JsonCallback<HttpResult>() {
                     @Override
                     public void onSuccess(Response<HttpResult> response) {
+                        StyledDialog.dismissLoading();
                         if (response.body().code==0){
                             mView.technicianEditCallBack();
                         }else{

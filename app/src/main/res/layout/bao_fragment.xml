@@ -2,10 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/blackf1"
     android:orientation="vertical">
 
-    <include layout="@layout/title"/>
+    <RelativeLayout
+        android:id="@+id/title_head"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/back"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textSize="16dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="50dp"
+            android:text="报表"
+            android:textColor="@color/black333"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blackf1" />
 
     <LinearLayout
         android:id="@+id/ll_bao_view"
@@ -37,7 +78,6 @@
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center"
-                        android:visibility="gone"
                         android:orientation="vertical">
 
                         <RadioGroup

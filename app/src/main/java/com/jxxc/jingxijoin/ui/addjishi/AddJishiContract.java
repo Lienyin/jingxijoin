@@ -23,7 +23,7 @@ public class AddJishiContract {
 
     interface  Presenter extends BasePresenter<View> {
         void technicianInfo(String technicianId);
-        void technicianEdit(String realName,
+        void technicianEdit(String technicianId,String realName,
                            String idCart,String phonenumber,
                            String idCartImg,String password);
         void technicianAdd(String realName,

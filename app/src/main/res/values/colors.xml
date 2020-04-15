@@ -25,6 +25,7 @@
     <color name="gray">#55757575</color>
     <color name="home_yellow">#FFD669</color>
     <color name="home_yellow_m">#FF4402</color>
+    <color name="home_yellow_n">#FFBD70</color>
 
     <color name="car_type_color1">#02A211</color>
     <color name="car_type_color2">#016CFF</color>
@@ -43,4 +44,6 @@
     <color name="coupon_bg">#67A8F6</color>
     <color name="yi_wan_bg">#038EFC</color>
     <color name="order_list_bg">#BA252C</color>
+    <color name="car_bao">#E6A906</color>
+    <color name="battery_bao">#2495EE</color>
 </resources>

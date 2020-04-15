@@ -18,6 +18,7 @@ import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
 import com.jxxc.jingxijoin.ui.bindingaccount.BindingAccountActivity;
 import com.jxxc.jingxijoin.ui.commercialtenant.CommercialTenantActivity;
+import com.jxxc.jingxijoin.ui.extract.ExtractActivity;
 import com.jxxc.jingxijoin.ui.message.MessageActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
@@ -26,11 +27,12 @@ import com.jxxc.jingxijoin.utils.StatusBarUtil;
 @SuppressLint("ValidFragment")
 public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragmentPresenter> implements View.OnClickListener, MyFragmentContract.View {
     private Context context;
-    private TextView tv_user_name,tv_company_type;
+    private TextView tv_user_name,tv_company_type,tv_is_bangding;
     private LinearLayout ll_tixian;
     private LinearLayout ll_commercial_tenant_info;
     private LinearLayout ll_msg;
     private ImageView iv_user_head;
+    private int BindingAccount;
 
     public MyFragment(Context context){
         this.context = context;
@@ -46,6 +48,7 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
         tv_user_name = view.findViewById(R.id.tv_user_name);
         iv_user_head = view.findViewById(R.id.iv_user_head);
         tv_company_type = view.findViewById(R.id.tv_company_type);
+        tv_is_bangding = view.findViewById(R.id.tv_is_bangding);
         ll_tixian.setOnClickListener(this);
         ll_commercial_tenant_info.setOnClickListener(this);
         ll_msg.setOnClickListener(this);
@@ -58,7 +61,13 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
         AnimUtils.clickAnimator(v);
         switch (v.getId()){
             case R.id.ll_tixian://提现
-                ZzRouter.gotoActivity((Activity) context, BindingAccountActivity.class);
+                if (BindingAccount==0){
+                    //绑账户
+                    ZzRouter.gotoActivity((Activity) context, BindingAccountActivity.class);
+                }else{
+                    //提现
+                    ZzRouter.gotoActivity((Activity) context, ExtractActivity.class);
+                }
                 break;
             case R.id.ll_commercial_tenant_info://商户信息
                 ZzRouter.gotoActivity((Activity) context, CommercialTenantActivity.class);
@@ -81,6 +90,13 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
             tv_company_type.setText("加盟店");
         }else{
             tv_company_type.setText("合作店");
+        }
+        BindingAccount = data.isBindingAccount;
+        //是否绑定体现账户 0否 1是
+        if (data.isBindingAccount==0){
+            tv_is_bangding.setText("未绑定");
+        }else{
+            tv_is_bangding.setText("已绑定");
         }
     }
 }

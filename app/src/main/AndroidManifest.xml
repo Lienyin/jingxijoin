@@ -99,5 +99,14 @@
         <!--财务报表-->
         <activity android:name=".ui.finance.FinanceActivity"
             android:screenOrientation="portrait"/>
+        <!--提现-->
+        <activity android:name=".ui.extract.ExtractActivity"
+            android:screenOrientation="portrait"/>
+        <!--提现成功-->
+        <activity android:name=".ui.extractsucceed.ExtractSucceedActivity"
+            android:screenOrientation="portrait"/>
+        <!--提现记录-->
+        <activity android:name=".ui.withdrawdepositrecord.WithdrawDepositRecordActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

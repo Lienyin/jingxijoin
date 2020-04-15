@@ -28,6 +28,7 @@ public class SPUtils {
     public static final String K_COMPANY_NAME = "companyName";
     public static final String K_COMPANY_ID = "companyId";
     public static final String K_FILE_URL = "baseUrl";
+    public static final String K_USER_TYPE = "userType";//管理员类型 1:运营商,2：站点 '
     private static Context mContext;
 
     public static SharedPreferences init(Context context) {

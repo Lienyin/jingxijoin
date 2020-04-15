@@ -45,6 +45,12 @@ public class Api {
     public static final String GET_ACCOUNT_INFO = BASEURL + "biz/drawMoney/getAccountInfo";
     //20-上传文件
     public static final String UPLOAD_FILE = SPUtils.get(SPUtils.K_FILE_URL,"") + "common/upload";
+    //21-财务报表
+    public static final String STATS = BASEURL + "biz/form/stats";
+    //22-提现申请
+    public static final String DRAW_MONEY_APPLY = BASEURL + "biz/drawMoney/drawMoneyApply";
+    //23-提现记录
+    public static final String DRAW_MONEY_RECORD = BASEURL + "biz/drawMoney/drawMoneyRecord";
 
     //1-客户登录
     public static final String MESSAGE_LIST = BASEURL + "/";

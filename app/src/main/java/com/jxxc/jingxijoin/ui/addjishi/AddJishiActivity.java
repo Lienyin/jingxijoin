@@ -21,6 +21,7 @@ import com.jxxc.jingxijoin.utils.SPUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -64,7 +65,7 @@ public class AddJishiActivity extends MVPBaseActivity<AddJishiContract.View, Add
     private String technicianId="";
     private String AbsolutePath="";
     private static final int REQUEST_CODE_CHOOSE = 1100;
-    private List<String> pathList;
+    private List<String> pathList = new ArrayList<>();
 
     @Override
     protected int layoutId() {
@@ -128,7 +129,7 @@ public class AddJishiActivity extends MVPBaseActivity<AddJishiContract.View, Add
                             //需要修改头像
                             mPresenter.uploadImage(AbsolutePath);
                         }else{
-                            mPresenter.technicianEdit(
+                            mPresenter.technicianEdit(technicianId,
                                     et_jishi_name.getText().toString().trim(),
                                     et_jishi_idcar.getText().toString().trim(),
                                     et_jishi_phone.getText().toString().trim(),
@@ -175,7 +176,8 @@ public class AddJishiActivity extends MVPBaseActivity<AddJishiContract.View, Add
     //修改技师
     @Override
     public void technicianEditCallBack() {
-
+        toast(this,"修改成功");
+        finish();
     }
 
     //添加技师返回数据
@@ -194,7 +196,7 @@ public class AddJishiActivity extends MVPBaseActivity<AddJishiContract.View, Add
     @Override
     public void uploadImageCallBack(UpdateInfoEntity data) {
         if ("修改技师".equals(tv_title.getText().toString())){
-            mPresenter.technicianEdit(
+            mPresenter.technicianEdit(technicianId,
                     et_jishi_name.getText().toString().trim(),
                     et_jishi_idcar.getText().toString().trim(),
                     et_jishi_phone.getText().toString().trim(),

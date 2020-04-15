@@ -18,4 +18,5 @@ public class UserInfoEntity implements Serializable {
     public String imgUrl;
     public int companyType;
     public String companyLogo;
+    public int isBindingAccount;
 }

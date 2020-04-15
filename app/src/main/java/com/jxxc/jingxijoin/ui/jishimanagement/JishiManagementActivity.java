@@ -100,4 +100,10 @@ public class JishiManagementActivity extends MVPBaseActivity<JishiManagementCont
     public void removeCallBack() {
         mPresenter.queryList();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.queryList();
+    }
 }

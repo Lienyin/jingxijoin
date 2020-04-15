@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blackf1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/home_pop_bg">
+        <TextView
+            android:id="@+id/tv_title_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black333"
+            android:text="过去三个月的累计车电柜数"/>
+        <TextView
+            android:id="@+id/tv_bao_eq_totalRent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/public_all"
+            android:text="00.00"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_bao_eq_sanyue"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:checked="true"
+                android:text="近三个月"
+                android:drawableBottom="@drawable/radio_bao_bg"
+                android:textColor="@drawable/radio_bao"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_bao_eq_liuyue"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="近半年"
+                android:drawableBottom="@drawable/radio_bao_bg"
+                android:textColor="@drawable/radio_bao"
+                android:textSize="14sp" />
+            <RadioButton
+                android:id="@+id/rb_bao_eq_yinian"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="近一年"
+                android:drawableBottom="@drawable/radio_bao_bg"
+                android:textColor="@drawable/radio_bao"
+                android:textSize="14sp" />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/home_pop_bg">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="right|center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/ll_data_all"
+                    android:layout_width="55dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/bao_data_bg"
+                    android:button="@null"
+                    android:checked="true"
+                    android:paddingLeft="10dp"
+                    android:drawableLeft="@mipmap/bao_bg_dian"
+                    android:text=" 全部"
+                    android:textColor="@color/black333"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/ll_data_car"
+                    android:layout_width="55dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/bao_data_bg"
+                    android:button="@null"
+                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="  车"
+                    android:drawableLeft="@drawable/comm_color_e6a906"
+                    android:textColor="@color/black333"
+                    android:textSize="12sp" />
+                <RadioButton
+                    android:id="@+id/ll_data_battery"
+                    android:layout_width="55dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/bao_data_bg"
+                    android:button="@null"
+                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text=" 电池"
+                    android:drawableLeft="@drawable/comm_color_2495ee"
+                    android:textColor="@color/black333"
+                    android:textSize="12sp" />
+                <RadioButton
+                    android:id="@+id/ll_data_gui"
+                    android:layout_width="65dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/bao_data_bg"
+                    android:button="@null"
+                    android:paddingLeft="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:text=" 换电柜"
+                    android:drawableLeft="@drawable/comm_color_00b488"
+                    android:textColor="@color/black333"
+                    android:textSize="12sp" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <!--柱状图-->
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/line_chart"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</LinearLayout>
