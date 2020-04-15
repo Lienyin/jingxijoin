@@ -21,6 +21,7 @@ import com.jxxc.jingxijoin.ui.bindingaccount.BindingAccountActivity;
 import com.jxxc.jingxijoin.ui.commercialtenant.CommercialTenantActivity;
 import com.jxxc.jingxijoin.ui.extract.ExtractActivity;
 import com.jxxc.jingxijoin.ui.message.MessageActivity;
+import com.jxxc.jingxijoin.ui.yuyuelist.YuYueListActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
@@ -32,6 +33,7 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
     private LinearLayout ll_tixian;
     private LinearLayout ll_commercial_tenant_info;
     private LinearLayout ll_msg;
+    private LinearLayout ll_pai_dan;
     private ImageView iv_user_head;
     private int BindingAccount;
 
@@ -50,9 +52,11 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
         iv_user_head = view.findViewById(R.id.iv_user_head);
         tv_company_type = view.findViewById(R.id.tv_company_type);
         tv_is_bangding = view.findViewById(R.id.tv_is_bangding);
+        ll_pai_dan = view.findViewById(R.id.ll_pai_dan);
         ll_tixian.setOnClickListener(this);
         ll_commercial_tenant_info.setOnClickListener(this);
         ll_msg.setOnClickListener(this);
+        ll_pai_dan.setOnClickListener(this);
         mPresenter.userInfo();
         return view;
     }
@@ -75,6 +79,9 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
                 break;
             case R.id.ll_msg://消息
                 ZzRouter.gotoActivity((Activity) context, MessageActivity.class);
+                break;
+            case R.id.ll_pai_dan://排单
+                ZzRouter.gotoActivity((Activity) context, YuYueListActivity.class);
                 break;
         }
     }
@@ -99,5 +106,11 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
         }else{
             tv_is_bangding.setText("已绑定");
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.userInfo();
     }
 }

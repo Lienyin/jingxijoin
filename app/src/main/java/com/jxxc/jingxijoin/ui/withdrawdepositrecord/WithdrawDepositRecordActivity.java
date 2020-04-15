@@ -12,6 +12,7 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.DrawMoneyRecordEntity;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
+import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,7 @@ public class WithdrawDepositRecordActivity extends MVPBaseActivity<WithdrawDepos
 
     @Override
     public void initData() {
+        StatusBarUtil.setStatusBarMode(this, true, R.color.white);//状态栏颜色
         tv_title.setText("提现记录");
         onRefresh();
         initAdapter();

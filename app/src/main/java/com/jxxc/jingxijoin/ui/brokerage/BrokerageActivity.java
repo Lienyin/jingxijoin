@@ -19,6 +19,7 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.CommissionListEntity;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
+import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class BrokerageActivity extends MVPBaseActivity<BrokerageContract.View, B
 
     @Override
     public void initData() {
+        StatusBarUtil.setStatusBarMode(this, true, R.color.white);//状态栏颜色
         tv_title.setText("佣金对账单");
         initAdapter();
         onRefresh();

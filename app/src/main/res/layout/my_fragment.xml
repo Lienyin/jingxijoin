@@ -144,6 +144,7 @@
     </LinearLayout>
     <!--预约单技师排任务-->
     <LinearLayout
+        android:id="@+id/ll_pai_dan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="0.5dp"
@@ -163,7 +164,7 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="@color/black999"
-            android:text="未绑定"/>
+            android:text=""/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -216,15 +217,17 @@
             android:layout_marginLeft="20dp"
             android:text="关于菁喜科技"/>
         <TextView
+            android:id="@+id/tv_banben"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="@color/black999"
-            android:text="修改"/>
+            android:text="v1.0.0"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
+            android:visibility="invisible"
             android:src="@mipmap/jiantou"/>
     </LinearLayout>
 

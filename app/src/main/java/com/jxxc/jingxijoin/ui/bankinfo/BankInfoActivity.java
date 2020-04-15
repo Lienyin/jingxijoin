@@ -15,6 +15,7 @@ import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.AppUtils;
 import com.jxxc.jingxijoin.utils.MD5Utils;
 import com.jxxc.jingxijoin.utils.SPUtils;
+import com.jxxc.jingxijoin.utils.StatusBarUtil;
 import com.nestia.biometriclib.BiometricPromptManager;
 
 import butterknife.BindView;
@@ -58,6 +59,7 @@ public class BankInfoActivity extends MVPBaseActivity<BankInfoContract.View, Ban
 
     @Override
     public void initData() {
+        StatusBarUtil.setStatusBarMode(this, true, R.color.white);//状态栏颜色
         tv_title.setText("银行卡");
         mPresenter.GetUserBank();
         dialog = new PassWordDialog(this);
