@@ -34,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black333"
                 android:textSize="10sp"
-                android:visibility="gone"
                 android:text="可用洗车工位"/>
             <TextView
                 android:id="@+id/tv_order_gongwei"
@@ -46,7 +45,6 @@
                 android:gravity="center"
                 android:drawableRight="@mipmap/xiang_xia"
                 android:paddingRight="3dp"
-                android:visibility="gone"
                 android:background="@drawable/shape_bg_white"
                 android:textSize="12sp"
                 android:text="0"/>

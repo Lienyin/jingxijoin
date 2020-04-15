@@ -26,6 +26,7 @@
     <color name="home_yellow">#FFD669</color>
     <color name="home_yellow_m">#FF4402</color>
     <color name="home_yellow_n">#FFBD70</color>
+    <color name="gray_100">#e6e6e6</color>
 
     <color name="car_type_color1">#02A211</color>
     <color name="car_type_color2">#016CFF</color>

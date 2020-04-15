@@ -111,5 +111,8 @@
         <!--佣金记录-->
         <activity android:name=".ui.brokerage.BrokerageActivity"
             android:screenOrientation="portrait"/>
+        <!--添加银行卡-->
+        <activity android:name=".ui.bankinfo.BankInfoActivity"
+            android:screenOrientation="portrait"/>
     </application>
 </manifest>

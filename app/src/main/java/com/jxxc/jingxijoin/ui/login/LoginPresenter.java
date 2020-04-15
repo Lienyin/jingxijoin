@@ -47,6 +47,7 @@ public class LoginPresenter extends BasePresenterImpl<LoginContract.View> implem
                         if (response.body().code == 0){
                             SPUtils.put(SPUtils.K_TOKEN,d.token);
                             SPUtils.put(SPUtils.K_ACCOUNT,loginName);
+                            SPUtils.put(SPUtils.K_PASS_WORD,MD5Utils.md5(password));
                             mView.loginCallBack();
                         }else {
                             toast(mContext,response.body().message);

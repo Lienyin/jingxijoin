@@ -16,6 +16,7 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.UserInfoEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
+import com.jxxc.jingxijoin.ui.bankinfo.BankInfoActivity;
 import com.jxxc.jingxijoin.ui.bindingaccount.BindingAccountActivity;
 import com.jxxc.jingxijoin.ui.commercialtenant.CommercialTenantActivity;
 import com.jxxc.jingxijoin.ui.extract.ExtractActivity;
@@ -62,8 +63,8 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
         switch (v.getId()){
             case R.id.ll_tixian://提现
                 if (BindingAccount==0){
-                    //绑账户
-                    ZzRouter.gotoActivity((Activity) context, BindingAccountActivity.class);
+                    //绑银行卡
+                    ZzRouter.gotoActivity((Activity) context, BankInfoActivity.class);
                 }else{
                     //提现
                     ZzRouter.gotoActivity((Activity) context, ExtractActivity.class);
