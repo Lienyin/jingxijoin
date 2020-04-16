@@ -18,6 +18,7 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.BasEarningsEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
+import com.jxxc.jingxijoin.ui.brokeragedetails.BrokerageDetailsActivity;
 import com.jxxc.jingxijoin.ui.finance.FinanceActivity;
 import com.jxxc.jingxijoin.ui.jishimanagement.JishiManagementActivity;
 import com.jxxc.jingxijoin.ui.orderlist.OrderListActivity;
@@ -94,7 +95,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
                 ZzRouter.gotoActivity((Activity) context, QrcoedActivity.class);
                 break;
             case R.id.ll_jie_suan://结算
-                ZzRouter.gotoActivity((Activity) context, SettleAccountsActivity.class);
+                ZzRouter.gotoActivity((Activity) context, BrokerageDetailsActivity.class);
                 break;
             case R.id.ll_finance://财务
                 ZzRouter.gotoActivity((Activity) context, FinanceActivity.class);
