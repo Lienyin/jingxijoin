@@ -97,8 +97,15 @@ public class UserInfoActivity extends MVPBaseActivity<UserInfoContract.View, Use
     }
 
     @Override
-    public void uploadImageCallBack() {
+    public void uploadImageCallBack(String avatar) {
+        mPresenter.updateUserInfo(avatar);
+    }
+
+    //修改头像返回接口
+    @Override
+    public void updateUserInfoCallBack() {
         mPresenter.getUserInfo();
+        toast(this,"修改成功");
     }
 
     @Override

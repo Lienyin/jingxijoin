@@ -13,7 +13,8 @@ import com.jxxc.jingxijoin.mvp.BaseView;
 public class UserInfoContract {
     interface View extends BaseView {
         void getUserInfoCallBack(UserInfoEntity data);
-        void uploadImageCallBack();
+        void uploadImageCallBack(String avatar);
+        void updateUserInfoCallBack();
     }
 
     interface  Presenter extends BasePresenter<View> {
@@ -25,5 +26,6 @@ public class UserInfoContract {
          * @param s 头像路径
          */
         void uploadImage(String s);
+        void updateUserInfo(String avatar);
     }
 }

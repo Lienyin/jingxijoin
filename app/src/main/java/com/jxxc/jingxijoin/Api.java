@@ -59,6 +59,8 @@ public class Api {
     public static final String SELECT_ALL_AREA = BASEURL + "system/area/selectAllArea";
     //27-更新商户信息
     public static final String UPDATE_INFO = BASEURL + "system/company/updateInfo";
+    //28-修改用户信息
+    public static final String UPDATE_USER_INFO = BASEURL + "system/company/updateUserInfo";
 
     //0-客户登录
     public static final String MESSAGE_LIST = BASEURL + "/";

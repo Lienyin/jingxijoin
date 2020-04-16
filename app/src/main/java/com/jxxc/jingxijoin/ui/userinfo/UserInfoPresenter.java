@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.Api;
 import com.jxxc.jingxijoin.R;
+import com.jxxc.jingxijoin.entity.backparameter.UpdateInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.UserInfoEntity;
 import com.jxxc.jingxijoin.http.EventCenter;
 import com.jxxc.jingxijoin.http.HttpResult;
@@ -84,19 +85,37 @@ public class UserInfoPresenter extends BasePresenterImpl<UserInfoContract.View> 
      */
     @Override
     public void uploadImage(String s) {
-        OkGo.<HttpResult>post(Api.UPLOAD_FILE)
+        OkGo.<HttpResult<UpdateInfoEntity>>post(Api.UPLOAD_FILE)
                 .params("userPic",new File(s))
                 .isMultipart(true)
+                .execute(new JsonCallback<HttpResult<UpdateInfoEntity>>() {
+                    @Override
+                    public void onSuccess(Response<HttpResult<UpdateInfoEntity>> response) {
+                        StyledDialog.dismissLoading();
+                        UpdateInfoEntity d = response.body().data;
+                        if (response.body().code == 0) {
+                            mView.uploadImageCallBack(d.fileName);
+                        }else{
+                            toast(mContext,response.body().message);
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 修改头像
+     * @param avatar
+     */
+    @Override
+    public void updateUserInfo(String avatar) {
+        OkGo.<HttpResult>post(Api.UPDATE_USER_INFO)
+                .params("avatar",avatar)
                 .execute(new JsonCallback<HttpResult>() {
                     @Override
                     public void onSuccess(Response<HttpResult> response) {
                         StyledDialog.dismissLoading();
-                        if (AppUtils.isEmpty(mView)) {
-                            return;
-                        }
                         if (response.body().code == 0) {
-                            mView.uploadImageCallBack();
-                            toast(mContext,response.body().message);
+                            mView.updateUserInfoCallBack();
                         }else{
                             toast(mContext,response.body().message);
                         }
