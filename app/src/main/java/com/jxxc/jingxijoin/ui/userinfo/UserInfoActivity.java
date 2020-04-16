@@ -93,7 +93,7 @@ public class UserInfoActivity extends MVPBaseActivity<UserInfoContract.View, Use
         tv_user_info_phone.setText(data.phonenumber);
         tv_user_info_site_name.setText(data.companyName);
         tv_address.setText(data.address);
-        GlideImgManager.loadCircleImage(this, data.companyLogo, iv_user_head);
+        GlideImgManager.loadCircleImage(this, data.avatar, iv_user_head);
     }
 
     @Override

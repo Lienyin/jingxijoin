@@ -9,7 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,6 +46,7 @@
                     android:textSize="14sp" />
 
                 <EditText
+                    android:id="@+id/et_commercial_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
@@ -62,6 +64,7 @@
                 android:background="@color/blackccc" />
 
             <LinearLayout
+                android:id="@+id/ll_select_address"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
@@ -75,6 +78,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tv_ssq"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
@@ -112,6 +116,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tv_commercial_time"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
@@ -133,11 +138,13 @@
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/blackccc" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:visibility="gone"
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp">
 
@@ -156,6 +163,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/rb_commercial_dd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="到店服务"
@@ -163,6 +171,7 @@
                         android:textSize="14sp" />
 
                     <RadioButton
+                        android:id="@+id/rb_commercial_sm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -196,6 +205,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/blackccc" />
                 <ImageView
+                    android:id="@+id/iv_commercial_logo"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"/>
             </LinearLayout>
@@ -235,6 +245,7 @@
                         android:textSize="14sp" />
 
                     <EditText
+                        android:id="@+id/et_faren_info"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -258,6 +269,7 @@
                         android:textSize="14sp" />
 
                     <EditText
+                        android:id="@+id/et_faren_phone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -281,6 +293,7 @@
                         android:textSize="14sp" />
 
                     <EditText
+                        android:id="@+id/et_faren_bank_number"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -304,6 +317,7 @@
                         android:textSize="14sp" />
 
                     <EditText
+                        android:id="@+id/et_faren_bank_open"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"

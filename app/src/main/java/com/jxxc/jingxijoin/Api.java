@@ -55,9 +55,13 @@ public class Api {
     public static final String COMMISSION_DETAIL = BASEURL + "biz/drawMoney/commissionDetail";
     //25-绑定银行卡
     public static final String BINDING_ACCOUNT = BASEURL + "biz/drawMoney/bindingAccount";
+    //26-省市区
+    public static final String SELECT_ALL_AREA = BASEURL + "system/area/selectAllArea";
+    //27-更新商户信息
+    public static final String UPDATE_INFO = BASEURL + "system/company/update_info";
 
-    //1-客户登录
+    //0-客户登录
     public static final String MESSAGE_LIST = BASEURL + "/";
-    //1-客户登录
+    //0-客户登录
     public static final String BINDING_TIXIAN = BASEURL + "/";
 }
