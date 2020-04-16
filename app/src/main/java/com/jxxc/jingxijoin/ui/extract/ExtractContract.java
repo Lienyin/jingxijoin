@@ -2,6 +2,7 @@ package com.jxxc.jingxijoin.ui.extract;
 
 import android.content.Context;
 
+import com.jxxc.jingxijoin.entity.backparameter.DrawMoneyApplyEntity;
 import com.jxxc.jingxijoin.entity.backparameter.GetAccountInfoEntity;
 import com.jxxc.jingxijoin.mvp.BasePresenter;
 import com.jxxc.jingxijoin.mvp.BaseView;
@@ -13,7 +14,7 @@ import com.jxxc.jingxijoin.mvp.BaseView;
 
 public class ExtractContract {
     interface View extends BaseView {
-        void drawMoneyApplyCallBack();
+        void drawMoneyApplyCallBack(DrawMoneyApplyEntity data);
         void getAccountInfoCallBack(GetAccountInfoEntity data);
     }
 

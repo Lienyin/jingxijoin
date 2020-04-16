@@ -29,6 +29,9 @@ public class ExtractSucceedActivity extends MVPBaseActivity<ExtractSucceedContra
     TextView tv_hint_text;
     @BindView(R.id.btn_ok)
     Button btn_ok;
+    private String bankCardNumber;
+    private String tixianTime;
+    private String bankName;
     @Override
     protected int layoutId() {
         return R.layout.extract_succeed_activity;
@@ -38,7 +41,10 @@ public class ExtractSucceedActivity extends MVPBaseActivity<ExtractSucceedContra
     public void initData() {
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);//状态栏颜色
         tv_title.setText("结果详情");
-        tv_hint_text.setText("");
+        bankCardNumber = getIntent().getStringExtra("bankCardNumber");
+        tixianTime = getIntent().getStringExtra("tixianTime");
+        bankName = getIntent().getStringExtra("bankName");
+        tv_hint_text.setText("收款账号 "+bankName+"(尾号"+bankCardNumber+")\n"+"提现时间 "+tixianTime);
     }
 
     @OnClick({R.id.tv_back,R.id.btn_ok})

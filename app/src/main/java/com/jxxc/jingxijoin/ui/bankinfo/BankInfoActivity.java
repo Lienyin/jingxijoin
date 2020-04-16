@@ -162,7 +162,7 @@ public class BankInfoActivity extends MVPBaseActivity<BankInfoContract.View, Ban
         et_user_bank_number.setText(data.bankCardNumber);
         et_user_kaihui_hang.setText(data.bankName);
         et_user_bank_wangidan.setText(data.bankBranchName);
-        et_user_phone.setText(data.linkMobile);
+        et_user_phone.setText(data.phonenumber);
     }
 
     /**

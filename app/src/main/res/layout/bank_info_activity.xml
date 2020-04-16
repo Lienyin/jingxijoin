@@ -28,7 +28,9 @@
                 android:id="@+id/et_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="right|center"
+                android:hint="请输入姓名"
                 android:textSize="14sp"
                 android:background="@color/transparent"/>
         </LinearLayout>
@@ -51,7 +53,9 @@
                 android:id="@+id/et_user_bank_number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="right|center"
+                android:hint="请输入银行卡号"
                 android:inputType="number"
                 android:textSize="14sp"
                 android:background="@color/transparent"/>
@@ -75,7 +79,9 @@
                 android:id="@+id/et_user_kaihui_hang"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="right|center"
+                android:hint="请输入开户行"
                 android:textSize="14sp"
                 android:background="@color/transparent"/>
         </LinearLayout>
@@ -98,7 +104,9 @@
                 android:id="@+id/et_user_bank_wangidan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="right|center"
+                android:hint="请输入银行网点"
                 android:textSize="14sp"
                 android:background="@color/transparent"/>
         </LinearLayout>
@@ -121,7 +129,9 @@
                 android:id="@+id/et_user_phone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="right|center"
+                android:hint="请输入手机号码"
                 android:inputType="phone"
                 android:textSize="14sp"
                 android:maxLength="11"

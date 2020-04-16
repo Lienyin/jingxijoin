@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.Api;
+import com.jxxc.jingxijoin.entity.backparameter.DrawMoneyApplyEntity;
 import com.jxxc.jingxijoin.entity.backparameter.GetAccountInfoEntity;
 import com.jxxc.jingxijoin.http.EventCenter;
 import com.jxxc.jingxijoin.http.HttpResult;
@@ -26,13 +27,15 @@ public class ExtractPresenter extends BasePresenterImpl<ExtractContract.View> im
 
     @Override
     public void drawMoneyApply(String money) {
-        OkGo.<HttpResult>post(Api.DRAW_MONEY_APPLY)
+        OkGo.<HttpResult<DrawMoneyApplyEntity>>post(Api.DRAW_MONEY_APPLY)
                 .params("money",money)
-                .execute(new JsonCallback<HttpResult>() {
+                .execute(new JsonCallback<HttpResult<DrawMoneyApplyEntity>>() {
                     @Override
-                    public void onSuccess(Response<HttpResult> response) {
+                    public void onSuccess(Response<HttpResult<DrawMoneyApplyEntity>> response) {
+                        StyledDialog.dismissLoading();
+                        DrawMoneyApplyEntity d = response.body().data;
                         if (response.body().code==0){
-                            mView.drawMoneyApplyCallBack();
+                            mView.drawMoneyApplyCallBack(d);
                         }else{
                             toast(mContext,response.body().message);
                         }

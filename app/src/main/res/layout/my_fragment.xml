@@ -18,6 +18,7 @@
             android:text="我的"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/ll_user_info"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:background="#F7F5F6"
@@ -135,7 +136,7 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="@color/black999"
-            android:text="未绑定"/>
+            android:text=""/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
