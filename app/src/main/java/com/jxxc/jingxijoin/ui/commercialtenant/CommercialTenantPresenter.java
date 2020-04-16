@@ -133,7 +133,7 @@ public class CommercialTenantPresenter extends BasePresenterImpl<CommercialTenan
     public void initImageSelecter() {
         config = new ISListConfig.Builder()
                 .multiSelect(true)
-                .rememberSelected(true)
+                .rememberSelected(false)
                 .btnBgColor(Color.TRANSPARENT)
                 .btnTextColor(Color.WHITE)
                 .statusBarColor(ContextCompat.getColor(mView.getContext().getApplicationContext(), R.color.public_all))
@@ -150,7 +150,7 @@ public class CommercialTenantPresenter extends BasePresenterImpl<CommercialTenan
     }
 
     @Override
-    public void uploadImage(String s) {
+    public void uploadImage(String s,int type) {
         OkGo.<HttpResult<UpdateInfoEntity>>post(Api.UPLOAD_FILE)
                 .params("file",new File(s))
                 .isMultipart(true)
@@ -159,8 +159,15 @@ public class CommercialTenantPresenter extends BasePresenterImpl<CommercialTenan
                     public void onSuccess(Response<HttpResult<UpdateInfoEntity>> response) {
                         UpdateInfoEntity d = response.body().data;
                         if (response.body().code == 0) {
-                            //上传文件成功，添加技师接口
-                            mView.uploadImageCallBack(d);
+                            //上传文件成功
+                            String yyzz = "";
+                            String dianPuLogin = "";
+                            if (type==1){
+                                yyzz = d.fileName;
+                            }else{
+                                dianPuLogin = d.fileName;
+                            }
+                            mView.uploadImageCallBack(yyzz,dianPuLogin);
                         }else{
                             toast(mContext,response.body().message);
                         }

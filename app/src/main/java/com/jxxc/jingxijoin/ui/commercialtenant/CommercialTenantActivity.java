@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -20,8 +21,10 @@ import com.jxxc.jingxijoin.entity.backparameter.SelectAllAreaEntity;
 import com.jxxc.jingxijoin.entity.backparameter.UpdateInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.UserInfoEntity;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
+import com.jxxc.jingxijoin.ui.userinfo.UserInfoActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.AppUtils;
+import com.jxxc.jingxijoin.utils.GlideImgManager;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
 import java.io.File;
@@ -49,13 +52,13 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
     @BindView(R.id.et_commercial_name)
     EditText et_commercial_name;
     @BindView(R.id.et_faren_bank_number)
-    EditText et_faren_bank_number;
+    TextView et_faren_bank_number;
     @BindView(R.id.et_faren_bank_open)
-    EditText et_faren_bank_open;
+    TextView et_faren_bank_open;
     @BindView(R.id.et_faren_info)
-    EditText et_faren_info;
+    TextView et_faren_info;
     @BindView(R.id.et_faren_phone)
-    EditText et_faren_phone;
+    TextView et_faren_phone;
     @BindView(R.id.tv_ssq)
     TextView tv_ssq;
     @BindView(R.id.tv_start_time)
@@ -70,10 +73,16 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
     RadioButton rb_commercial_sm;
     @BindView(R.id.ll_select_address)
     LinearLayout ll_select_address;
+    @BindView(R.id.ll_yy_zz)
+    LinearLayout ll_yy_zz;
     @BindView(R.id.rv_ic_add)
     RecyclerView rvIcAdd;
     @BindView(R.id.rv_list_images)
     RecyclerView rvListImages;
+    @BindView(R.id.iv_yy_zz)
+    ImageView iv_yy_zz;
+    @BindView(R.id.tv_app_yyzz)
+    TextView tv_app_yyzz;
     private List<SelectAllAreaEntity> shengList = new ArrayList<>();
     private AreaDialog areaDialog;
     private String provinceId,provinceName;
@@ -88,6 +97,8 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
     private ArrayList<String> addList = new ArrayList<>();
     private int pathListNum=0;//网站照片数量
     private int isPath=0;//0未修改，1修改
+    private String StrYyzz = "";
+    private String StrDianPuLogin = "";
 
 
     @Override
@@ -152,7 +163,7 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
     }
 
     @OnClick({R.id.tv_back,R.id.rb_commercial_dd,R.id.rb_commercial_sm,R.id.ll_select_address,
-    R.id.tv_start_time,R.id.tv_end_time,R.id.tv_baocun_update})
+    R.id.tv_start_time,R.id.tv_end_time,R.id.tv_baocun_update,R.id.ll_yy_zz})
     public void onViewClicked(View view) {
         AnimUtils.clickAnimator(view);
         switch (view.getId()) {
@@ -182,9 +193,9 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
                 mPresenter.updateInfo(
                         et_commercial_name.getText().toString().trim(),
                         "",
+                        StrDianPuLogin,
                         "",
-                        "",
-                        "",
+                        StrYyzz,
                         et_faren_info.getText().toString().trim(),
                         et_faren_phone.getText().toString().trim(),
                         tv_start_time.getText().toString().trim(),
@@ -192,6 +203,9 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
                         provinceId,
                         cityId,
                         districtId);
+                break;
+            case R.id.ll_yy_zz://上传营业执照
+                mPresenter.gotoImageSelect(this,SAOMA_REQUEST_CODE);
                 break;
             default:
         }
@@ -208,6 +222,11 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
         et_faren_phone.setText(data.contactsNumber);
         et_faren_bank_number.setText(data.bankCardNumber);
         et_faren_bank_open.setText(data.bankName);
+        if (!AppUtils.isEmpty(data.businessLicense)){//营业执照
+            tv_app_yyzz.setVisibility(View.GONE);
+            iv_yy_zz.setVisibility(View.VISIBLE);
+            GlideImgManager.loadRectangleImage(this, data.businessLicense, iv_yy_zz);
+        }
 
         //设置站点图片
         final ArrayList<String> path3 = new ArrayList<>();
@@ -247,8 +266,9 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
 
     //上传文件返回数据
     @Override
-    public void uploadImageCallBack(UpdateInfoEntity data) {
-
+    public void uploadImageCallBack(String yyzz,String dianPuLogin) {
+        StrYyzz = yyzz;
+        StrDianPuLogin = dianPuLogin;
     }
 
     //时间选择器
@@ -289,6 +309,7 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
                         @Override
                         public void onSuccess(File file) {
                             String absolutePath = file.getAbsolutePath();
+                            mPresenter.uploadImage(absolutePath,2);
                             path2.add(absolutePath);
                             pathListNum = path2.size();//获取照片数组大小
                             isPath = 1;//修改了照片数组
@@ -303,6 +324,7 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
 
                         @Override
                         public void onError(Throwable e) {
+                            mPresenter.uploadImage(pathList.get(0),2);
                             mImagesAdapter.setNewData(pathList);
                             if (mImagesAdapter.getData().size()<=3) {
                                 addList.clear();
@@ -313,6 +335,31 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
                         }
                     }).launch();    //启动压缩
 
+        }else if (requestCode == SAOMA_REQUEST_CODE && resultCode == RESULT_OK) {
+            final List<String> pathList1 = data.getStringArrayListExtra("result");
+            if (!AppUtils.isEmpty(pathList1)) {
+                tv_app_yyzz.setVisibility(View.GONE);
+                iv_yy_zz.setVisibility(View.VISIBLE);
+                GlideImgManager.loadRectangleImage(this, pathList1.get(0), iv_yy_zz);
+                Luban.with(this)
+                        .load(pathList1.get(0))
+                        .ignoreBy(50)
+                        .setTargetDir(ConfigApplication.CACHA_URL)
+                        .setCompressListener(new OnCompressListener() {
+                            @Override
+                            public void onStart() {
+                                //toast(IDCardActivity.this,"正在上传身份证", TastyToast.WARNING);
+                                //StyledDialog.buildLoading("正在上传头像").setActivity(CommercialTenantActivity.this).show();
+                            }
+                            @Override public void onSuccess(File f) {
+                                mPresenter.uploadImage(f.getAbsolutePath(),1);
+                            }
+                            @Override public void onError(Throwable e) {
+                                mPresenter.uploadImage(pathList1.get(0),1);
+                            }
+                        }).launch();    //启动压缩
+
+            }
         }
     }
 }

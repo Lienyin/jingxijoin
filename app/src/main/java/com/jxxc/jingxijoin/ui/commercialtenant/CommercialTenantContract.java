@@ -21,7 +21,7 @@ public class CommercialTenantContract {
         void getUserInfoCallBack(UserInfoEntity data);
         void selectAllAreaCallBack(List<AreaEntity> data);
         void updateInfoCallBack();
-        void uploadImageCallBack(UpdateInfoEntity data);
+        void uploadImageCallBack(String yyzz,String dianPuLogin);
     }
 
     interface  Presenter extends BasePresenter<View> {
@@ -31,7 +31,7 @@ public class CommercialTenantContract {
         void initImageSelecter();
         void gotoImageSelect(CommercialTenantActivity malfunctionRepairActivity, int requestCodeChoose);
 
-        void uploadImage(String s);
+        void uploadImage(String s,int type);
         void updateInfo(String companyName,String address,String imgUrl,String companyLogo,String businessLicense
                 ,String contacts,String contactsNumber,String officeTime,String closingTime,String province
                 ,String city,String district);
