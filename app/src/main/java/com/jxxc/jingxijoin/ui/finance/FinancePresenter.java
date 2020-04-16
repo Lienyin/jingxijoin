@@ -31,7 +31,7 @@ public class FinancePresenter extends BasePresenterImpl<FinanceContract.View> im
     @Override
     public void financeReport(int tabType) {
         OkGo.<HttpResult<FinanceReportEntity>>post(Api.STATS)
-                .params("tabType",tabType)
+                .params("month",tabType)
                 .execute(new JsonCallback<HttpResult<FinanceReportEntity>>() {
                     @Override
                     public void onSuccess(Response<HttpResult<FinanceReportEntity>> response) {
@@ -52,7 +52,7 @@ public class FinancePresenter extends BasePresenterImpl<FinanceContract.View> im
     @Override
     public void deviceReport(int tabType) {
         OkGo.<HttpResult<DeviceReportEntity>>post(Api.STATS)
-                .params("tabType",tabType)
+                .params("month",tabType)
                 .execute(new JsonCallback<HttpResult<DeviceReportEntity>>() {
                     @Override
                     public void onSuccess(Response<HttpResult<DeviceReportEntity>> response) {

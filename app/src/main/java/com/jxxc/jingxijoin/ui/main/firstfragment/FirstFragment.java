@@ -23,6 +23,7 @@ import com.jxxc.jingxijoin.ui.jishimanagement.JishiManagementActivity;
 import com.jxxc.jingxijoin.ui.orderlist.OrderListActivity;
 import com.jxxc.jingxijoin.ui.qrcoed.QrcoedActivity;
 import com.jxxc.jingxijoin.ui.settleaccounts.SettleAccountsActivity;
+import com.jxxc.jingxijoin.ui.userinfo.UserInfoActivity;
 import com.jxxc.jingxijoin.ui.yuyuelist.YuYueListActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
@@ -34,7 +35,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
     private Context context;
     private LinearLayout ll_yuyue,ll_jishi,ll_order,ll_qr_code,ll_jie_suan,ll_finance;
     private TextView tv_home_name,tv_fuwu_type,tv_home_type;
-    private ImageView iv_home_logo,iv_home_level;
+    private ImageView iv_home_logo,iv_home_level,iv_update;
     private TextView tv_today_order,tv_benyue_shouyi,tv_ke_tixian;
     private TextView tv_yuyue_number,tv_home_order_num,tv_home_settle_order_num;
 
@@ -60,6 +61,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         tv_ke_tixian = view.findViewById(R.id.tv_ke_tixian);
         ll_jie_suan = view.findViewById(R.id.ll_jie_suan);
         ll_finance = view.findViewById(R.id.ll_finance);
+        iv_update = view.findViewById(R.id.iv_update);
         tv_yuyue_number = view.findViewById(R.id.tv_yuyue_number);
         tv_home_order_num = view.findViewById(R.id.tv_home_order_num);
         tv_home_settle_order_num = view.findViewById(R.id.tv_home_settle_order_num);
@@ -69,6 +71,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         ll_qr_code.setOnClickListener(this);
         ll_jie_suan.setOnClickListener(this);
         ll_finance.setOnClickListener(this);
+        iv_update.setOnClickListener(this);
         StyledDialog.buildLoading("加载中").setActivity((Activity) context).show();
         mPresenter.basEarnings();
         return view;
@@ -95,6 +98,9 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
                 break;
             case R.id.ll_finance://财务
                 ZzRouter.gotoActivity((Activity) context, FinanceActivity.class);
+                break;
+            case R.id.iv_update://修改
+                ZzRouter.gotoActivity((Activity) context, UserInfoActivity.class);
                 break;
         }
     }

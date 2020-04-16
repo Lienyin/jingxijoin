@@ -147,7 +147,7 @@ public class FinanceActivity extends MVPBaseActivity<FinanceContract.View, Finan
         equipment_view.setVisibility(View.GONE);
         ll_bao_view_null.setVisibility(View.GONE);
         ll_financing_view.setVisibility(View.VISIBLE);
-        mPresenter.financeReport(0);
+        mPresenter.financeReport(3);
     }
 
     @OnClick({R.id.tv_back,R.id.rb_bao_financing,R.id.rb_bao_equipment,R.id.rb_bao_sanyue,
@@ -173,7 +173,7 @@ public class FinanceActivity extends MVPBaseActivity<FinanceContract.View, Finan
 //                }
                 ll_bao_view_null.setVisibility(View.GONE);
                 ll_financing_view.setVisibility(View.VISIBLE);
-                mPresenter.financeReport(0);
+                mPresenter.financeReport(3);
                 break;
             case R.id.rb_bao_equipment://设备报表
                 equipment_view.setVisibility(View.VISIBLE);
@@ -181,15 +181,15 @@ public class FinanceActivity extends MVPBaseActivity<FinanceContract.View, Finan
                 mPresenter.deviceReport(0);
                 break;
             case R.id.rb_bao_sanyue://财务报表三个月
-                mPresenter.financeReport(0);
+                mPresenter.financeReport(3);
                 tv_title_head.setText("过去三个月的累计租金（元）");
                 break;
             case R.id.rb_bao_liuyue://财务报表半年
-                mPresenter.financeReport(1);
+                mPresenter.financeReport(6);
                 tv_title_head.setText("过去半年的累计租金（元）");
                 break;
             case R.id.rb_bao_yinian://财务报表一年
-                mPresenter.financeReport(2);
+                mPresenter.financeReport(12);
                 tv_title_head.setText("过去一年的累计租金（元）");
                 break;
             case R.id.rb_bao_eq_sanyue://设备报表三个月
@@ -416,11 +416,11 @@ public class FinanceActivity extends MVPBaseActivity<FinanceContract.View, Finan
                 swipeLayout.setRefreshing(false);
             }else{
                 if (rb_bao_sanyue.isChecked() == true){
-                    mPresenter.financeReport(0);
+                    mPresenter.financeReport(3);
                 }else if (rb_bao_liuyue.isChecked() == true){
-                    mPresenter.financeReport(1);
+                    mPresenter.financeReport(6);
                 }else if (rb_bao_yinian.isChecked() == true){
-                    mPresenter.financeReport(2);
+                    mPresenter.financeReport(12);
                 }
             }
         }else{

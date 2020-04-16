@@ -18,7 +18,7 @@ public class BrokerageContract {
     }
 
     interface  Presenter extends BasePresenter<View> {
-        void commissionList(int offset, int limit, int tabType, String statsTime);
-        void commissionListMore(int offset, int limit, int tabType, String statsTime);
+        void commissionList(int pageNum, int pageSize, int tabType, String statsTime);
+        void commissionListMore(int pageNum, int pageSize, int tabType, String statsTime);
     }
 }

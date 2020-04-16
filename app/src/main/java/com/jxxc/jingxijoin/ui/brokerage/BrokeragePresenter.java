@@ -25,12 +25,12 @@ public class BrokeragePresenter extends BasePresenterImpl<BrokerageContract.View
     }
 
     @Override
-    public void commissionList(int offset, int limit,int tabType,String statsTime) {
+    public void commissionList(int pageNum, int pageSize,int tabType,String statsTime) {
         OkGo.<HttpResult<List<CommissionListEntity>>>post(Api.COMMISSION_DETAIL)
-                .params("offset",offset)
-                .params("limit",limit)
+                .params("pageNum",pageNum)
+                .params("pageSize",pageSize)
                 .params("tabType",tabType)
-                .params("statsTime",statsTime)
+                .params("createTime",statsTime)
                 .execute(new JsonCallback<HttpResult<List<CommissionListEntity>>>() {
                     @Override
                     public void onSuccess(Response<HttpResult<List<CommissionListEntity>>> response) {
