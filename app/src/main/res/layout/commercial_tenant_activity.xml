@@ -101,12 +101,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@color/blackccc" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:gravity="center_vertical"
-                android:paddingLeft="20dp">
+                android:paddingLeft="20sp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -115,22 +114,33 @@
                     android:textColor="@color/blackccc"
                     android:textSize="14sp" />
 
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"/>
                 <TextView
-                    android:id="@+id/tv_commercial_time"
-                    android:layout_width="0dp"
+                    android:id="@+id/tv_start_time"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:hint="营业时间"
+                    android:gravity="right|center"
                     android:textColor="@color/black333"
-                    android:textSize="14sp" />
-
-                <ImageView
+                    android:textSize="14sp"
+                    android:hint="开始时间"/>
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:src="@mipmap/jiantou" />
+                    android:text="—"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tv_end_time"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp"
+                    android:hint="结束时间"/>
             </LinearLayout>
 
             <View

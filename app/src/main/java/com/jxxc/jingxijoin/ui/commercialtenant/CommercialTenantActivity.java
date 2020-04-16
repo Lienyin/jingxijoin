@@ -22,6 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.qqtheme.framework.picker.TimePicker;
 
 
 /**
@@ -47,8 +48,10 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
     EditText et_faren_phone;
     @BindView(R.id.tv_ssq)
     TextView tv_ssq;
-    @BindView(R.id.tv_commercial_time)
-    TextView tv_commercial_time;
+    @BindView(R.id.tv_start_time)
+    TextView tv_start_time;
+    @BindView(R.id.tv_end_time)
+    TextView tv_end_time;
     @BindView(R.id.rb_commercial_dd)
     RadioButton rb_commercial_dd;
     @BindView(R.id.rb_commercial_sm)
@@ -60,6 +63,7 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
     private String provinceId,provinceName;
     private String cityId,cityName;
     private String districtId,districtName;
+    private int timeType=0;//时间类型（0开始时间，1结束时间）
 
 
     @Override
@@ -89,7 +93,8 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
         });
     }
 
-    @OnClick({R.id.tv_back,R.id.rb_commercial_dd,R.id.rb_commercial_sm,R.id.ll_select_address})
+    @OnClick({R.id.tv_back,R.id.rb_commercial_dd,R.id.rb_commercial_sm,R.id.ll_select_address,
+    R.id.tv_start_time,R.id.tv_end_time})
     public void onViewClicked(View view) {
         AnimUtils.clickAnimator(view);
         switch (view.getId()) {
@@ -106,6 +111,14 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
                 StyledDialog.buildLoading("加载中").setActivity(this).show();
                 mPresenter.selectAllArea();
                 break;
+            case R.id.tv_start_time://开始时间
+                timeType = 0;
+                getTime();
+                break;
+            case R.id.tv_end_time://结束时间
+                timeType = 1;
+                getTime();
+                break;
             default:
         }
     }
@@ -115,7 +128,8 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
     public void getUserInfoCallBack(UserInfoEntity data) {
         et_commercial_name.setText(data.companyName);
         tv_ssq.setText(data.province+"/"+data.city+"/"+data.district);
-        tv_commercial_time.setText(data.officeTime+"~"+data.closingTime);
+        tv_start_time.setText(data.officeTime);
+        tv_end_time.setText(data.closingTime);
         et_faren_info.setText(data.contacts);
         et_faren_phone.setText(data.contactsNumber);
         et_faren_bank_number.setText(data.bankCardNumber);
@@ -125,5 +139,24 @@ public class CommercialTenantActivity extends MVPBaseActivity<CommercialTenantCo
     @Override
     public void selectAllAreaCallBack(List<AreaEntity> data) {
         areaDialog.showShareDialog(true,data);
+    }
+
+    //时间选择器
+    private void getTime(){
+        //获取当前时间日期格式
+        TimePicker timePicker = new TimePicker(this,TimePicker.HOUR_24);//时分
+        timePicker.setRangeStart(00,00);//开始的时分
+        timePicker.setRangeEnd(23,59);//结束的时分
+        timePicker.setOnTimePickListener(new TimePicker.OnTimePickListener() {
+            @Override
+            public void onTimePicked(String hour, String minute) {
+                if (timeType == 0){
+                    tv_start_time.setText(hour + ":" + minute);
+                }else{
+                    tv_end_time.setText(hour + ":" + minute);
+                }
+            }
+        });
+        timePicker.show();
     }
 }
