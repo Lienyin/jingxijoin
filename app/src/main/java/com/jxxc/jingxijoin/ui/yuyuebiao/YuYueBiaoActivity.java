@@ -166,7 +166,7 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
     //预约详情返回数据
     @Override
     public void appointmentInfoCallBack(AppointmentInfoEntity data) {
-        sortDialog.showShareDialog(true,data);
+        sortDialog.showShareDialog(true,data,"");
         sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
             @Override
             public void onFenxiangClick(String orderId, String technicianId) {

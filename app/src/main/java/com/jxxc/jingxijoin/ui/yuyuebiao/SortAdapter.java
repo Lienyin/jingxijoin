@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
+import com.jxxc.jingxijoin.utils.AppUtils;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,6 +25,8 @@ public class SortAdapter extends BaseAdapter {
     private List<AppointmentInfoEntity.Tech> techList;
     private Map<Integer,String> carId = new HashMap<>();
     private Map<String,String> techId = new HashMap<>();
+    private String orderId="";
+    private String oId="";
 
     public SortAdapter(Context context){
         this.context=context;
@@ -37,14 +40,34 @@ public class SortAdapter extends BaseAdapter {
         this.techList = techList;
     }
 
+    public void setData(String orderId,
+                        List<AppointmentInfoEntity.Carport> carportList,
+                        List<AppointmentInfoEntity.Tech> techList){
+        this.orderId = orderId;
+        this.carportList = carportList;
+        this.techList = techList;
+    }
+
     @Override
     public int getCount() {
-        return list.size();
+        int num = 0;
+        if (!AppUtils.isEmpty(orderId)){
+            num = 1;
+        }else{
+            num = list.size();
+        }
+        return num;
     }
 
     @Override
     public Object getItem(int position) {
-        return list.get(position);
+        AppointmentInfoEntity.Order nums;
+        if (!AppUtils.isEmpty(orderId)){
+            nums = null;
+        }else{
+            nums = list.get(position);
+        }
+        return nums;
     }
 
     @Override
@@ -66,9 +89,15 @@ public class SortAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-        AppointmentInfoEntity.Order data = list.get(position);
-        holder.tv_order_id.setText(data.orderId);
-        holder.tv_order_time.setText(data.appointmentTime);
+        if (!AppUtils.isEmpty(orderId)){
+            oId = orderId;
+            holder.tv_order_id.setText(orderId);
+        }else{
+            AppointmentInfoEntity.Order data = list.get(position);
+            holder.tv_order_id.setText(data.orderId);
+            holder.tv_order_time.setText(data.appointmentTime);
+            oId = data.orderId;
+        }
         ViewHolder finalHolder = holder;
         holder.tv_order_gongwei.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +131,7 @@ public class SortAdapter extends BaseAdapter {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finalHolder.tv_order_jishi.setText(items[which]+"");
-                                techId.put(data.orderId,techList.get(which).technicianId);
+                                techId.put(oId,techList.get(which).technicianId);
                             }
                         });
                 dialog.show();

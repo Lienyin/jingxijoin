@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jxxc.jingxijoin.dialog.SortDialog;
+import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.GetOrderEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.utils.AnimUtils;
@@ -14,6 +16,9 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.utils.AppUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -75,8 +80,13 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
     GridView gv_fuwu_data;
     @BindView(R.id.ll_ping_jia)
     LinearLayout ll_ping_jia;
+    @BindView(R.id.tv_dating_order_kehu)
+    TextView tv_dating_order_kehu;
     private String orderId="";
     private OrderDetailsDataAdapter adapter;
+    private GetOrderEntity getOrderEntity;
+    private SortDialog sortDialog;
+
     @Override
     protected int layoutId() {
         return R.layout.acivity_order_details;
@@ -87,13 +97,37 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
         tv_title.setText("订单详情");
         orderId = ZzRouter.getIntentData(this,String.class);
         mPresenter.getOrder(orderId);
+
+        sortDialog = new SortDialog(this);
+        sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
+            @Override
+            public void onFenxiangClick(String orderId, String technicianId) {
+                mPresenter.dispatch(orderId,technicianId);
+            }
+        });
     }
-    @OnClick({R.id.tv_back})
+    @OnClick({R.id.tv_back,R.id.tv_diao_du,R.id.tv_dating_order_kehu})
     public void onViewClicked(View view) {
         AnimUtils.clickAnimator(view);
         switch (view.getId()) {
             case R.id.tv_back:
                 finish();
+                break;
+            case R.id.tv_diao_du://调度
+                //获取当前日期
+                SimpleDateFormat formatter= new SimpleDateFormat("yyyy");
+                Date date = new Date(System.currentTimeMillis());
+                String year = formatter.format(date);//年
+                //月/日
+                String YD = getOrderEntity.appointmentTime.substring(0,2)+"-"+getOrderEntity.appointmentTime.substring(3,5);
+                String starthm = getOrderEntity.appointmentTime.substring(7,12);
+                String endhm = getOrderEntity.appointmentTime.substring(13,18);
+                String appointmentStartTime = year+"-"+YD+" "+starthm;
+                String appointmentEndTime = year+"-"+YD+" "+endhm;
+                mPresenter.appointmentInfo(appointmentStartTime,appointmentEndTime);
+                break;
+            case R.id.tv_dating_order_kehu:
+                AppUtils.callPhone(this,getOrderEntity.phonenumber);
                 break;
             default:
         }
@@ -102,6 +136,7 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
     //订单详情返回数据
     @Override
     public void getOrderCallBack(GetOrderEntity data) {
+        getOrderEntity = data;
         adapter = new OrderDetailsDataAdapter(this);
         adapter.setData(data.products);
         gv_fuwu_data.setAdapter(adapter);
@@ -208,5 +243,23 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
             tv_order_details_static.setText("订单取消");
             tv_fuwu_start_time.setText("订单已取消");
         }
+    }
+
+    //预约详情
+    @Override
+    public void appointmentInfoCallBack(AppointmentInfoEntity data) {
+        sortDialog.showShareDialog(true,data,orderId);
+        sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
+            @Override
+            public void onFenxiangClick(String orderId, String technicianId) {
+                mPresenter.dispatch(orderId,technicianId);
+            }
+        });
+    }
+
+    //调度返回数据
+    @Override
+    public void dispatchCallBack() {
+        mPresenter.getOrder(orderId);
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.jxxc.jingxijoin.entity.backparameter.AreaEntity;
 import com.jxxc.jingxijoin.entity.backparameter.SelectAllAreaEntity;
+import com.jxxc.jingxijoin.entity.backparameter.UpdateInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.UserInfoEntity;
 import com.jxxc.jingxijoin.mvp.BasePresenter;
 import com.jxxc.jingxijoin.mvp.BaseView;
@@ -19,10 +20,20 @@ public class CommercialTenantContract {
     interface View extends BaseView {
         void getUserInfoCallBack(UserInfoEntity data);
         void selectAllAreaCallBack(List<AreaEntity> data);
+        void updateInfoCallBack();
+        void uploadImageCallBack(UpdateInfoEntity data);
     }
 
     interface  Presenter extends BasePresenter<View> {
         void getUserInfo();
         void selectAllArea();
+
+        void initImageSelecter();
+        void gotoImageSelect(CommercialTenantActivity malfunctionRepairActivity, int requestCodeChoose);
+
+        void uploadImage(String s);
+        void updateInfo(String companyName,String address,String imgUrl,String companyLogo,String businessLicense
+                ,String contacts,String contactsNumber,String officeTime,String closingTime,String province
+                ,String city,String district);
     }
 }

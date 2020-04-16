@@ -28,7 +28,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/blackccc" />
 
@@ -118,10 +118,17 @@
                     android:layout_width="10dp"
                     android:layout_height="match_parent"/>
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    android:text="开始时间: "/>
+                <TextView
                     android:id="@+id/tv_start_time"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="right|center"
+                    android:gravity="left|center"
                     android:textColor="@color/black333"
                     android:textSize="14sp"
                     android:hint="开始时间"/>
@@ -133,6 +140,13 @@
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/black333"
                     android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    android:text="结束时间: "/>
                 <TextView
                     android:id="@+id/tv_end_time"
                     android:layout_width="70dp"
@@ -214,10 +228,28 @@
                     android:layout_height="0.5dp"
                     android:layout_marginTop="10dp"
                     android:background="@color/blackccc" />
-                <ImageView
-                    android:id="@+id/iv_commercial_logo"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingLeft="10dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_list_images"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_ic_add"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -353,6 +385,7 @@
                 </LinearLayout>
             </LinearLayout>
             <TextView
+                android:id="@+id/tv_baocun_update"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"

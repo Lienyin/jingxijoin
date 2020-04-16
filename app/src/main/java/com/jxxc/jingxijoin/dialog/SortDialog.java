@@ -16,6 +16,7 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.ui.yuyuebiao.SortAdapter;
 import com.jxxc.jingxijoin.utils.AnimUtils;
+import com.jxxc.jingxijoin.utils.AppUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -63,12 +64,18 @@ public class SortDialog implements View.OnClickListener {
     }
 
 
-    public void showShareDialog(boolean outTouchCancel, AppointmentInfoEntity data) {
+    public void showShareDialog(boolean outTouchCancel, AppointmentInfoEntity data,String orderId) {
         appointmentInfoEntity = data;
-        if (data.order.size()>0){
+        if (!AppUtils.isEmpty(orderId)){
             sortAdapter = new SortAdapter(context);
-            sortAdapter.setData(data.order,data.carport,data.tech);
+            sortAdapter.setData(orderId,data.carport,data.tech);
             lv_pai_ban_data.setAdapter(sortAdapter);
+        }else{
+            if (data.order.size()>0){
+                sortAdapter = new SortAdapter(context);
+                sortAdapter.setData(data.order,data.carport,data.tech);
+                lv_pai_ban_data.setAdapter(sortAdapter);
+            }
         }
 
         dialog.setCanceledOnTouchOutside(outTouchCancel);

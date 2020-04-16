@@ -88,6 +88,12 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
         initAdapter();
         onRefresh();
         sortDialog = new SortDialog(this);
+        sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
+            @Override
+            public void onFenxiangClick(String orderId, String technicianId) {
+                mPresenter.dispatch(orderId,technicianId);
+            }
+        });
     }
 
     private void initAdapter() {
@@ -190,7 +196,7 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
     //预约详情
     @Override
     public void appointmentInfoCallBack(AppointmentInfoEntity data) {
-        sortDialog.showShareDialog(true,data);
+        sortDialog.showShareDialog(true,data,oId);
         sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
             @Override
             public void onFenxiangClick(String orderId, String technicianId) {
