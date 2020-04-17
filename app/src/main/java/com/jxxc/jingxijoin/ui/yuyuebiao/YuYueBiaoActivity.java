@@ -66,8 +66,8 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
         String queryDate = formatter.format(date);//今天日期
-        //dateStr = queryDate;//默认日期
-        dateStr = "2020-04-06";//默认日期
+        dateStr = queryDate;//默认日期
+        //dateStr = "2020-04-06";//默认日期
         mPresenter.appointmentList(dateStr);
 
         sortDialog = new SortDialog(this);
