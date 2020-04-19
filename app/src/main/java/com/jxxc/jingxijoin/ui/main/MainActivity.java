@@ -53,8 +53,8 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
         bindView();
         mPresenter.latestVersion(3);
         //极光推送id
-        String pToken = JPushInterface.getRegistrationID(this);//18071adc03923faee46
-        Log.i("TAG","[MyReceiver] getRegistrationID===="+pToken);
+//        String pToken = JPushInterface.getRegistrationID(this);//18071adc03923faee46
+//        Log.i("TAG","[MyReceiver] getRegistrationID===="+pToken);
     }
 
     //UI组件初始化与事件绑定
