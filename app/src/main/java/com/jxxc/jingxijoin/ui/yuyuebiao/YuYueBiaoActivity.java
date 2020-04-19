@@ -9,8 +9,10 @@ import android.widget.TextView;
 import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.dialog.SortDialog;
+import com.jxxc.jingxijoin.dialog.YuYueListDialog;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentListEntity;
+import com.jxxc.jingxijoin.entity.backparameter.AppointmentManagementEntity;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.HorizontalListView;
@@ -48,6 +50,8 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
     private String dateStr ="";
     private SortDialog sortDialog;
     private int orderNumber = 0;
+    private YuYueListDialog yuYueListDialog;
+    private List<AppointmentListEntity.DayNum> dayNumList = new ArrayList<>();
     @Override
     protected int layoutId() {
         return R.layout.yuyue_biao_activity;
@@ -57,11 +61,12 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
     public void initData() {
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);//状态栏颜色
         tv_title.setText("预约单日程表");
-
         //日期设置
         weekOfAdapter = new WeekOfAdapter(this);
-        weekOfAdapter.setData(test(30));
+        weekOfAdapter.setData(test(7),null);
         gv_weekOf_date.setAdapter(weekOfAdapter);
+
+        mPresenter.appointmentManagement();//预约单管理
         //获取当前日期
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
@@ -141,10 +146,10 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
 
     //预约列表接口返回数据
     @Override
-    public void appointmentListCallBack(List<AppointmentListEntity> data) {
-        if (data.size()>0){
+    public void appointmentListCallBack(AppointmentListEntity data) {
+        if (data.hourDispatch.size()>0){
             timeAdapter = new TimeAdapter(this);
-            timeAdapter.setData(data);
+            timeAdapter.setData(data.hourDispatch);
             gv_time_data.setAdapter(timeAdapter);
 
             timeAdapter.setOnFenxiangClickListener(new TimeAdapter.OnFenxiangClickListener() {
@@ -153,12 +158,11 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
                     mPresenter.appointmentInfo(dateStr+" "+statTime,dateStr+" "+endTime);
                 }
             });
-            orderNumber = 0;//换时间，清空
-            for (int i=0;i<data.size();i++){
-                orderNumber += data.get(i).num;
-            }
+        }
 
-            weekOfAdapter.setOrderNumber(orderNumber);
+        if (data.dayNum.size()>0){
+            weekOfAdapter.setData(test(7),data.dayNum);
+            //weekOfAdapter.setOrderNumber(data.dayNum);
             weekOfAdapter.notifyDataSetChanged();
         }
     }
@@ -179,5 +183,14 @@ public class YuYueBiaoActivity extends MVPBaseActivity<YuYueBiaoContract.View, Y
     @Override
     public void dispatchCallBack() {
         mPresenter.appointmentList(dateStr);
+    }
+
+    //预约单管理返回数据
+    @Override
+    public void appointmentManagementCallBack(AppointmentManagementEntity data) {
+        yuYueListDialog = new YuYueListDialog(this);
+        if (data.notDispatch>0){
+            yuYueListDialog.showShareDialog(true,data.notDispatch+"");
+        }
     }
 }

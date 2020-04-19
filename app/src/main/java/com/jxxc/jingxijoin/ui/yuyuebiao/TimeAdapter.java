@@ -17,13 +17,13 @@ import java.util.List;
 
 public class TimeAdapter extends BaseAdapter {
     private Context context;
-    private List<AppointmentListEntity> list;
+    private List<AppointmentListEntity.HourDispatch> list;
 
     public TimeAdapter(Context context){
         this.context=context;
     }
 
-    public void setData(List<AppointmentListEntity> list){
+    public void setData(List<AppointmentListEntity.HourDispatch> list){
         this.list = list;
     }
 
@@ -58,7 +58,7 @@ public class TimeAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-        AppointmentListEntity data = list.get(position);
+        AppointmentListEntity.HourDispatch data = list.get(position);
         holder.tv_time_name.setText(data.title);
         //订单状态 1待调度 2待服务 3服务中
         if (data.status==1){

@@ -7,5 +7,5 @@ public class AppointmentManagementEntity implements Serializable {
     public String dispatch;
     public String overtime;
     public String complete;
-    public String notDispatch;
+    public int notDispatch;
 }

@@ -6,6 +6,7 @@ import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.Api;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentInfoEntity;
 import com.jxxc.jingxijoin.entity.backparameter.AppointmentListEntity;
+import com.jxxc.jingxijoin.entity.backparameter.AppointmentManagementEntity;
 import com.jxxc.jingxijoin.http.EventCenter;
 import com.jxxc.jingxijoin.http.HttpResult;
 import com.jxxc.jingxijoin.http.JsonCallback;
@@ -33,12 +34,12 @@ public class YuYueBiaoPresenter extends BasePresenterImpl<YuYueBiaoContract.View
      */
     @Override
     public void appointmentList(String queryDate) {
-        OkGo.<HttpResult<List<AppointmentListEntity>>>post(Api.APPOINTMENT_LIST)
+        OkGo.<HttpResult<AppointmentListEntity>>post(Api.APPOINTMENT_LIST)
                 .params("queryDate",queryDate)
-                .execute(new JsonCallback<HttpResult<List<AppointmentListEntity>>>() {
+                .execute(new JsonCallback<HttpResult<AppointmentListEntity>>() {
                     @Override
-                    public void onSuccess(Response<HttpResult<List<AppointmentListEntity>>> response) {
-                        List<AppointmentListEntity> d = response.body().data;
+                    public void onSuccess(Response<HttpResult<AppointmentListEntity>> response) {
+                        AppointmentListEntity d = response.body().data;
                         if (response.body().code==0){
                             mView.appointmentListCallBack(d);
                         }else{
@@ -87,6 +88,26 @@ public class YuYueBiaoPresenter extends BasePresenterImpl<YuYueBiaoContract.View
                     public void onSuccess(Response<HttpResult> response) {
                         if (response.body().code==0){
                             mView.dispatchCallBack();
+                        }else{
+                            toast(mContext,response.body().message);
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 预约单管理
+     */
+    @Override
+    public void appointmentManagement() {
+        OkGo.<HttpResult<AppointmentManagementEntity>>post(Api.APPOINTMENT_MANAGEMENT)
+                .tag(this)
+                .execute(new JsonCallback<HttpResult<AppointmentManagementEntity>>() {
+                    @Override
+                    public void onSuccess(Response<HttpResult<AppointmentManagementEntity>> response) {
+                        AppointmentManagementEntity d = response.body().data;
+                        if (response.body().code==0){
+                            mView.appointmentManagementCallBack(d);
                         }else{
                             toast(mContext,response.body().message);
                         }

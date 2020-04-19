@@ -126,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="@color/white"
-                    android:text="今日订单(笔)"/>
+                    android:text="已结算金额"/>
             </LinearLayout>
             <View
                 android:layout_width="0.5dp"
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="@color/white"
-                    android:text="本月收益(元)"/>
+                    android:text="未结算金额"/>
             </LinearLayout>
             <View
                 android:layout_width="0.5dp"
@@ -178,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="@color/white"
-                    android:text="可提现"/>
+                    android:text="可提现金额"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

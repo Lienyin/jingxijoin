@@ -31,7 +31,7 @@
             android:id="@+id/tv_order_number"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@drawable/order_number_bg"
+            android:background="@drawable/order_number_bg_no"
             android:textSize="10sp"
             android:gravity="center"
             android:visibility="visible"

@@ -25,8 +25,10 @@ import com.jxxc.jingxijoin.ui.orderlist.OrderListActivity;
 import com.jxxc.jingxijoin.ui.qrcoed.QrcoedActivity;
 import com.jxxc.jingxijoin.ui.settleaccounts.SettleAccountsActivity;
 import com.jxxc.jingxijoin.ui.userinfo.UserInfoActivity;
+import com.jxxc.jingxijoin.ui.yuyuebiao.YuYueBiaoActivity;
 import com.jxxc.jingxijoin.ui.yuyuelist.YuYueListActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
+import com.jxxc.jingxijoin.utils.AppUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
 import com.jxxc.jingxijoin.utils.SPUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
@@ -89,7 +91,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
                 ZzRouter.gotoActivity((Activity) context, OrderListActivity.class);
                 break;
             case R.id.ll_yuyue://订单
-                ZzRouter.gotoActivity((Activity) context, YuYueListActivity.class);
+                ZzRouter.gotoActivity((Activity) context, YuYueBiaoActivity.class);
                 break;
             case R.id.ll_qr_code://二维码
                 ZzRouter.gotoActivity((Activity) context, QrcoedActivity.class);
@@ -150,8 +152,14 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         tv_today_order.setText(data.dayOrderNum);
         tv_benyue_shouyi.setText(data.monthEarnings);
         tv_ke_tixian.setText(data.availableBalance);
-        tv_yuyue_number.setText("+"+data.appointmentOrderNum);
-        tv_home_order_num.setText("+"+data.orderNum);
-        tv_home_settle_order_num.setText("+"+data.settleOrderNum);
+        if (!AppUtils.isEmpty(data.appointmentOrderNum)){
+            tv_yuyue_number.setText("+"+data.appointmentOrderNum);
+        }
+        if (!AppUtils.isEmpty(data.orderNum)){
+            tv_home_order_num.setText("+"+data.orderNum);
+        }
+        if (!AppUtils.isEmpty(data.settleOrderNum)){
+            tv_home_settle_order_num.setText("+"+data.settleOrderNum);
+        }
     }
 }

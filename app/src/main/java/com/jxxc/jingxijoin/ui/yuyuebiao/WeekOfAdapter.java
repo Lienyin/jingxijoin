@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jxxc.jingxijoin.R;
+import com.jxxc.jingxijoin.entity.backparameter.AppointmentListEntity;
+import com.jxxc.jingxijoin.utils.AppUtils;
 
 import java.util.List;
 
@@ -16,18 +18,15 @@ public class WeekOfAdapter extends BaseAdapter {
     private Context context;
     private int defaultSelection=0;
     private List<String> list;
-    private int orderNumber=0;
+    private List<AppointmentListEntity.DayNum> dayNum;
 
     public WeekOfAdapter(Context context){
         this.context=context;
     }
 
-    public void setData(List<String> list){
+    public void setData(List<String> list,List<AppointmentListEntity.DayNum> dayNum){
         this.list = list;
-    }
-
-    public void setOrderNumber(int orderNumber){
-        this.orderNumber = orderNumber;
+        this.dayNum = dayNum;
     }
 
     @Override
@@ -59,14 +58,16 @@ public class WeekOfAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         String data = list.get(position);
-        holder.tv_time_name.setText(data);
+        holder.tv_time_name.setText(list.get(position));
+        if (!AppUtils.isEmpty(dayNum)){
+            holder.tv_order_number.setText(dayNum.get(position).num+"");
+        }
         if (position == defaultSelection) {// 选中时设置单纯颜色
             holder.ll_time_bg.setSelected(true);
-            holder.tv_order_number.setText(orderNumber+"");
-            holder.tv_order_number.setVisibility(View.VISIBLE);
+            holder.tv_order_number.setBackgroundResource(R.drawable.order_number_bg);
         } else {// 未选中时设置selector
             holder.ll_time_bg.setSelected(false);
-            holder.tv_order_number.setVisibility(View.INVISIBLE);
+            holder.tv_order_number.setBackgroundResource(R.drawable.order_number_bg_no);
         }
         return convertView;
     }
