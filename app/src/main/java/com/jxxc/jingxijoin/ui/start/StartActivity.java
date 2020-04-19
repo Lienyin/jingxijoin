@@ -40,7 +40,7 @@ public class StartActivity extends Activity {
         timer = new Timer();
         TimerTask task =new TimerTask(){
             public void run(){
-                if (!AppUtils.isEmpty(SPUtils.get(SPUtils.K_ACCOUNT,""))){
+                if (!AppUtils.isEmpty(SPUtils.get(SPUtils.K_TOKEN,""))){
                     ZzRouter.gotoActivity(StartActivity.this, MainActivity.class);
                 }else{
                     ZzRouter.gotoActivity(StartActivity.this, LoginActivity.class);

@@ -3,6 +3,7 @@ package com.jxxc.jingxijoin.ui.userinfo;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,9 +14,11 @@ import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.UserInfoEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
+import com.jxxc.jingxijoin.ui.login.LoginActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.utils.AppUtils;
 import com.jxxc.jingxijoin.utils.GlideImgManager;
+import com.jxxc.jingxijoin.utils.SPUtils;
 
 import java.io.File;
 import java.util.List;
@@ -52,6 +55,8 @@ public class UserInfoActivity extends MVPBaseActivity<UserInfoContract.View, Use
     TextView tv_address;
     @BindView(R.id.iv_user_head)
     ImageView iv_user_head;
+    @BindView(R.id.btn_login_out)
+    Button btn_login_out;
     private static final int REQUEST_CODE_CHOOSE = 1100;
 
     @Override
@@ -66,7 +71,8 @@ public class UserInfoActivity extends MVPBaseActivity<UserInfoContract.View, Use
         mPresenter.initImageSelecter();
     }
 
-    @OnClick({R.id.tv_back,R.id.ll_user_info_qr,R.id.ll_user_info_address,R.id.iv_user_head})
+    @OnClick({R.id.tv_back,R.id.ll_user_info_qr,R.id.ll_user_info_address,R.id.iv_user_head,
+    R.id.btn_login_out})
     public void onViewClicked(View view) {
         AnimUtils.clickAnimator(view);
         switch (view.getId()) {
@@ -82,6 +88,10 @@ public class UserInfoActivity extends MVPBaseActivity<UserInfoContract.View, Use
                 break;
             case R.id.iv_user_head://头像
                 mPresenter.gotoImageSelect(this, REQUEST_CODE_CHOOSE);
+                break;
+            case R.id.btn_login_out://退出登录
+                SPUtils.remove(this,SPUtils.K_TOKEN);
+                ZzRouter.gotoActivity(this, LoginActivity.class);
                 break;
             default:
         }
