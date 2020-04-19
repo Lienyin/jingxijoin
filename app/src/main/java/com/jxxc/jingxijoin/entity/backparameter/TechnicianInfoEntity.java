@@ -8,4 +8,5 @@ public class TechnicianInfoEntity implements Serializable {
     public String idCart;
     public String phonenumber;
     public String technicianCode;
+    public double commissionRatio;
 }

@@ -25,10 +25,11 @@ public class AddJishiContract {
         void technicianInfo(String technicianId);
         void technicianEdit(String technicianId,String realName,
                            String idCart,String phonenumber,
-                           String idCartImg,String password);
+                           String idCartImg,String commissionRatio,String password);
         void technicianAdd(String realName,
                            String idCart,String phonenumber,
-                           String idCartImg,String password);
+                           String idCartImg,String commissionRatio,
+                           String password);
 
         void initImageSelecter();
         void gotoImageSelect(AddJishiActivity activity, int requestCodeChoose);

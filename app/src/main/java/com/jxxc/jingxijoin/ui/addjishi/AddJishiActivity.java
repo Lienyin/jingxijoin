@@ -121,6 +121,8 @@ public class AddJishiActivity extends MVPBaseActivity<AddJishiContract.View, Add
                         toast(this,"请输入身份证号");
                     }else if (AppUtils.isEmpty(et_jishi_phone.getText().toString().trim())){
                         toast(this,"请输入手机号码");
+                    }else if (AppUtils.isEmpty(et_jishi_phone_plus.getText().toString().trim())){
+                        toast(this,"请输入分佣比列");
                     }else if (AppUtils.isEmpty(et_jishi_password.getText().toString().trim())){
                         toast(this,"请输入账户密码");
                     }else{
@@ -133,7 +135,7 @@ public class AddJishiActivity extends MVPBaseActivity<AddJishiContract.View, Add
                                     et_jishi_name.getText().toString().trim(),
                                     et_jishi_idcar.getText().toString().trim(),
                                     et_jishi_phone.getText().toString().trim(),
-                                    AbsolutePath,
+                                    AbsolutePath,Double.valueOf(et_jishi_phone_plus.getText().toString().trim())/100+"",
                                     et_jishi_password.getText().toString().trim());
                         }
                     }
@@ -144,6 +146,8 @@ public class AddJishiActivity extends MVPBaseActivity<AddJishiContract.View, Add
                         toast(this,"请输入身份证号");
                     }else if (AppUtils.isEmpty(et_jishi_phone.getText().toString().trim())){
                         toast(this,"请输入手机号码");
+                    }else if (AppUtils.isEmpty(et_jishi_phone_plus.getText().toString().trim())){
+                        toast(this,"请输入分佣比列");
                     }else if (AppUtils.isEmpty(et_jishi_password.getText().toString().trim())){
                         toast(this,"请输入账户密码");
                     }else if (pathList.size()<=0){
@@ -168,7 +172,8 @@ public class AddJishiActivity extends MVPBaseActivity<AddJishiContract.View, Add
         et_jishi_name.setText(data.realName);
         et_jishi_idcar.setText(data.idCart);
         et_jishi_phone.setText(data.phonenumber);
-        et_jishi_phone_plus.setText(data.phonenumber);
+        int m = (int)(data.commissionRatio*100);
+        et_jishi_phone_plus.setText(m+"%");
         AbsolutePath = data.idCartImg;
         GlideImgManager.loadRectangleImage(this, data.idCartImg, iv_user_head);
     }
@@ -195,19 +200,20 @@ public class AddJishiActivity extends MVPBaseActivity<AddJishiContract.View, Add
     //上传图片返回数据
     @Override
     public void uploadImageCallBack(UpdateInfoEntity data) {
+
         if ("修改技师".equals(tv_title.getText().toString())){
             mPresenter.technicianEdit(technicianId,
                     et_jishi_name.getText().toString().trim(),
                     et_jishi_idcar.getText().toString().trim(),
                     et_jishi_phone.getText().toString().trim(),
-                    data.fileName,
+                    data.fileName,Double.valueOf(et_jishi_phone_plus.getText().toString().trim())/100+"",
                     et_jishi_password.getText().toString().trim());
         }else if ("添加技师".equals(tv_title.getText().toString())){
             mPresenter.technicianAdd(
                     et_jishi_name.getText().toString().trim(),
                     et_jishi_idcar.getText().toString().trim(),
                     et_jishi_phone.getText().toString().trim(),
-                    data.fileName,
+                    data.fileName,Double.valueOf(et_jishi_phone_plus.getText().toString().trim())/100+"",
                     et_jishi_password.getText().toString().trim());
         }
 

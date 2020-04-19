@@ -62,13 +62,14 @@ public class AddJishiPresenter extends BasePresenterImpl<AddJishiContract.View> 
     @Override
     public void technicianEdit(String technicianId,String realName,
                                String idCart,String phonenumber,
-                               String idCartImg,String password) {
+                               String idCartImg,String commissionRatio,String password) {
         OkGo.<HttpResult>post(Api.TECHNICIAN_EDIT)
                 .params("technicianId",technicianId)
                 .params("realName",realName)
                 .params("idCart",idCart)
                 .params("phonenumber",phonenumber)
                 .params("idCartImg",idCartImg)
+                .params("commissionRatio",commissionRatio)
                 .params("password", MD5Utils.shaPassword(password).trim().toUpperCase())
                 .execute(new JsonCallback<HttpResult>() {
                     @Override
@@ -144,12 +145,13 @@ public class AddJishiPresenter extends BasePresenterImpl<AddJishiContract.View> 
     @Override
     public void technicianAdd(String realName,
                               String idCart, String phonenumber,
-                              String idCartImg, String password) {
+                              String idCartImg,String commissionRatio, String password) {
         OkGo.<HttpResult>post(Api.TECHNICIAN_ADD)
                 .params("realName",realName)
                 .params("idCart",idCart)
                 .params("phonenumber",phonenumber)
                 .params("idCartImg",idCartImg)
+                .params("commissionRatio",commissionRatio)
                 .params("password", MD5Utils.shaPassword(password).trim().toUpperCase())
                 .execute(new JsonCallback<HttpResult>() {
                     @Override
