@@ -24,7 +24,7 @@ android {
         //极光推送设置2
         manifestPlaceholders = [
                 JPUSH_PKGNAME: "com.jxxc.jingxijoin",
-                JPUSH_APPKEY : "1ef3e30d6f13fb21f97973d2", //JPush上注册的包名对应的appkey（*换成你的*）
+                JPUSH_APPKEY : "4f375d5ecabcb0df461651ee", //JPush上注册的包名对应的appkey（*换成你的*）
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }

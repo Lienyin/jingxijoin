@@ -4,6 +4,7 @@ package com.jxxc.jingxijoin.ui.main;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -18,6 +19,8 @@ import com.jxxc.jingxijoin.ui.main.myfragment.MyFragment;
 import com.jxxc.jingxijoin.ui.main.secondfragment.SecondFragment;
 import com.jxxc.jingxijoin.utils.SPUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
+
+import cn.jpush.android.api.JPushInterface;
 
 
 /**
@@ -49,6 +52,9 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         bindView();
         mPresenter.latestVersion(3);
+        //极光推送id
+        String pToken = JPushInterface.getRegistrationID(this);//18071adc03923faee46
+        Log.i("TAG","[MyReceiver] getRegistrationID===="+pToken);
     }
 
     //UI组件初始化与事件绑定
