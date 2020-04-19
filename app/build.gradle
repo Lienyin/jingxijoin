@@ -15,6 +15,18 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        multiDexEnabled true
+        //极光推送设置1
+        ndk {
+            //选择要添加的对应cpu类型的.so库（不需要的删除即可）。
+            abiFilters 'armeabi', 'armeabi-v7a'
+        }
+        //极光推送设置2
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "com.jxxc.jingxijoin",
+                JPUSH_APPKEY : "1ef3e30d6f13fb21f97973d2", //JPush上注册的包名对应的appkey（*换成你的*）
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
     }
     buildTypes {
         release {
@@ -48,6 +60,7 @@ allprojects {
         maven {url 'https://maven.google.com'}
     }
 }
+
 dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:design:28.0.0'
@@ -83,4 +96,9 @@ dependencies {
     implementation 'cn.qqtheme.framework:WheelPicker:1.4.5'
     implementation 'cn.qqtheme.framework:FilePicker:1.4.5'
     implementation 'cn.qqtheme.framework:ColorPicker:1.4.5'
+
+    implementation 'cn.jiguang.sdk:jpush:3.0.9'
+    implementation 'cn.jiguang.sdk:jcore:1.1.7'
+    implementation 'com.android.support:multidex:1.0.3'
+
 }
