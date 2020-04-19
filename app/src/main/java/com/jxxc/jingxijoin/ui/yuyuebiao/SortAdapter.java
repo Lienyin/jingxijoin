@@ -27,6 +27,7 @@ public class SortAdapter extends BaseAdapter {
     private Map<String,String> techId = new HashMap<>();
     private String orderId="";
     private String oId="";
+    private String time="";
 
     public SortAdapter(Context context){
         this.context=context;
@@ -42,10 +43,11 @@ public class SortAdapter extends BaseAdapter {
 
     public void setData(String orderId,
                         List<AppointmentInfoEntity.Carport> carportList,
-                        List<AppointmentInfoEntity.Tech> techList){
+                        List<AppointmentInfoEntity.Tech> techList,String time){
         this.orderId = orderId;
         this.carportList = carportList;
         this.techList = techList;
+        this.time = time;
     }
 
     @Override
@@ -92,6 +94,7 @@ public class SortAdapter extends BaseAdapter {
         if (!AppUtils.isEmpty(orderId)){
             oId = orderId;
             holder.tv_order_id.setText(orderId);
+            holder.tv_order_time.setText(time);
         }else{
             AppointmentInfoEntity.Order data = list.get(position);
             holder.tv_order_id.setText(data.orderId);

@@ -62,6 +62,7 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
     private double locationLongitude;
     private List<OrderListEntity> list = new ArrayList<>();
     private String oId;//订单id
+    private String oIdTime;//订单时间
     private SortDialog sortDialog;
 
     Handler handler = new Handler() {
@@ -113,6 +114,7 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
             @Override
             public void onFenxiangClick(String orderId, int type,String startTime,String endTime) {
                 oId = orderId;
+                oIdTime = startTime+"-"+endTime;
                 switch (type) {
                     case 1://调度
                         StyledDialog.buildLoading("请求中").setActivity(OrderListActivity.this).show();
@@ -196,7 +198,7 @@ public class OrderListActivity extends MVPBaseActivity<OrderListContract.View, O
     //预约详情
     @Override
     public void appointmentInfoCallBack(AppointmentInfoEntity data) {
-        sortDialog.showShareDialog(true,data,oId);
+        sortDialog.showShareDialog(true,data,oId,oIdTime);
         sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
             @Override
             public void onFenxiangClick(String orderId, String technicianId) {

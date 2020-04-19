@@ -11,12 +11,16 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
+import com.jxxc.jingxijoin.ConfigApplication;
 import com.jxxc.jingxijoin.R;
+import com.jxxc.jingxijoin.dialog.GuanJianDialog;
 import com.jxxc.jingxijoin.entity.backparameter.LatestVersionEntity;
+import com.jxxc.jingxijoin.entity.backparameter.UserInfoEntity;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.ui.main.firstfragment.FirstFragment;
 import com.jxxc.jingxijoin.ui.main.myfragment.MyFragment;
 import com.jxxc.jingxijoin.ui.main.secondfragment.SecondFragment;
+import com.jxxc.jingxijoin.utils.AppUtils;
 import com.jxxc.jingxijoin.utils.SPUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
@@ -42,6 +46,8 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     private FragmentManager fragmentManager;
     private long exitTime = 0;
     public static String registrationId;
+    private GuanJianDialog guanJianDialog;
+    private int isDialog=0;
     @Override
     protected int layoutId() {
         return R.layout.activity_main;
@@ -51,7 +57,9 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     public void initData() {
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         bindView();
+        //guanJianDialog = new GuanJianDialog(this);
         mPresenter.latestVersion(3);
+        //mPresenter.getUserInfo();
         //极光推送id
 //        String pToken = JPushInterface.getRegistrationID(this);//18071adc03923faee46
 //        Log.i("TAG","[MyReceiver] getRegistrationID===="+pToken);
@@ -167,5 +175,16 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     @Override
     public void latestVersionCallBack(LatestVersionEntity data) {
         SPUtils.put(SPUtils.K_FILE_URL,data.staticUrl);
+    }
+
+    //个人信息返回数据
+    @Override
+    public void getUserInfoCallBack(UserInfoEntity data) {
+//        guanJianDialog.showShareDialog(false);
+//        guanJianDialog.setOnFenxiangClickListener(new GuanJianDialog.OnFenxiangClickListener() {
+//            @Override
+//            public void onFenxiangClick(String maxNum, String fenYong) {
+//            }
+//        });
     }
 }

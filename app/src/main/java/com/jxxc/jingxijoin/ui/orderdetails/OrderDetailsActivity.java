@@ -83,6 +83,7 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
     @BindView(R.id.tv_dating_order_kehu)
     TextView tv_dating_order_kehu;
     private String orderId="";
+    private String orderIdTime="";
     private OrderDetailsDataAdapter adapter;
     private GetOrderEntity getOrderEntity;
     private SortDialog sortDialog;
@@ -141,6 +142,7 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
         adapter.setData(data.products);
         gv_fuwu_data.setAdapter(adapter);
 
+        orderIdTime = data.appointmentTime;
         tv_dating_order_static.setText(data.orderId);
         tv_dating_order_car_number.setText(data.carNum);
         tv_dating_car_type.setText(data.brandType);
@@ -248,7 +250,7 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
     //预约详情
     @Override
     public void appointmentInfoCallBack(AppointmentInfoEntity data) {
-        sortDialog.showShareDialog(true,data,orderId);
+        sortDialog.showShareDialog(true,data,orderId,orderIdTime);
         sortDialog.setOnFenxiangClickListener(new SortDialog.OnFenxiangClickListener() {
             @Override
             public void onFenxiangClick(String orderId, String technicianId) {
