@@ -60,7 +60,12 @@ public class WeekOfAdapter extends BaseAdapter {
         String data = list.get(position);
         holder.tv_time_name.setText(list.get(position));
         if (!AppUtils.isEmpty(dayNum)){
-            holder.tv_order_number.setText(dayNum.get(position).num+"");
+            if (Integer.valueOf(dayNum.get(position).num)>0){
+                holder.tv_order_number.setText(dayNum.get(position).num+"");
+                holder.tv_order_number.setVisibility(View.VISIBLE);
+            }else{
+                holder.tv_order_number.setVisibility(View.GONE);
+            }
         }
         if (position == defaultSelection) {// 选中时设置单纯颜色
             holder.ll_time_bg.setSelected(true);
