@@ -1,12 +1,25 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
     buildToolsVersion = '28.0.3'
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
+    signingConfigs {
+        config {
+            keyAlias 'hehuoren'
+            keyPassword '123456'
+            storeFile file('../key.jks')
+            storePassword '123456'
+        }
+    }
+    //指定jdk版本
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.jxxc.jingxijoin"
         minSdkVersion 15
@@ -32,16 +45,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            aaptOptions.cruncherEnabled = false
+            aaptOptions.useNewCruncher = false
+        }
+        debug {
+            signingConfig signingConfigs.config
         }
     }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
-    }
-    compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
     }
 
     //导入支付宝.aar文件要用
