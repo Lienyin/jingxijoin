@@ -41,6 +41,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
     private ImageView iv_home_logo,iv_home_level,iv_update;
     private TextView tv_today_order,tv_benyue_shouyi,tv_ke_tixian;
     private TextView tv_yuyue_number,tv_home_order_num,tv_home_settle_order_num;
+    private SwipeRefreshLayout swipeLayout;
 
     public FirstFragment(Context context) {
         this.context = context;
@@ -68,6 +69,9 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         tv_yuyue_number = view.findViewById(R.id.tv_yuyue_number);
         tv_home_order_num = view.findViewById(R.id.tv_home_order_num);
         tv_home_settle_order_num = view.findViewById(R.id.tv_home_settle_order_num);
+        swipeLayout = view.findViewById(R.id.swipeLayout);
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setColorSchemeColors(getResources().getColor(R.color.public_all));
         ll_yuyue.setOnClickListener(this);
         ll_jishi.setOnClickListener(this);
         ll_order.setOnClickListener(this);
@@ -111,12 +115,13 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
     //刷新
     @Override
     public void onRefresh() {
-
+        mPresenter.basEarnings();
     }
 
     //基础收益(首页)
     @Override
     public void basEarningsCallBack(BasEarningsEntity data) {
+        swipeLayout.setRefreshing(false);
         GlideImgManager.loadCircleImage(context, data.companyLogo, iv_home_logo);
         tv_home_name.setText(data.companyName);
         SPUtils.put(SPUtils.K_COMPANY_NAME,data.companyName);
@@ -161,5 +166,11 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         if (!AppUtils.isEmpty(data.settleOrderNum)){
             tv_home_settle_order_num.setText("+"+data.settleOrderNum);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.basEarnings();
     }
 }

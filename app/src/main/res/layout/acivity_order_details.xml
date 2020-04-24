@@ -97,8 +97,8 @@
                     <ImageView
                         android:id="@+id/iv_jishi_jibie"
                         android:layout_width="85dp"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/icon_user_23" />
+                        android:layout_height="15dp"
+                        android:background="@mipmap/icon_user_23" />
                 </LinearLayout>
             </LinearLayout>
             <View
