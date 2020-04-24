@@ -19,6 +19,7 @@ import com.jxxc.jingxijoin.entity.backparameter.BasEarningsEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.mvp.MVPBaseFragment;
 import com.jxxc.jingxijoin.ui.brokeragedetails.BrokerageDetailsActivity;
+import com.jxxc.jingxijoin.ui.extract.ExtractActivity;
 import com.jxxc.jingxijoin.ui.finance.FinanceActivity;
 import com.jxxc.jingxijoin.ui.jishimanagement.JishiManagementActivity;
 import com.jxxc.jingxijoin.ui.orderlist.OrderListActivity;
@@ -42,6 +43,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
     private TextView tv_today_order,tv_benyue_shouyi,tv_ke_tixian;
     private TextView tv_yuyue_number,tv_home_order_num,tv_home_settle_order_num;
     private SwipeRefreshLayout swipeLayout;
+    private LinearLayout ll_tixian_view;
 
     public FirstFragment(Context context) {
         this.context = context;
@@ -66,6 +68,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         ll_jie_suan = view.findViewById(R.id.ll_jie_suan);
         ll_finance = view.findViewById(R.id.ll_finance);
         iv_update = view.findViewById(R.id.iv_update);
+        ll_tixian_view = view.findViewById(R.id.ll_tixian_view);
         tv_yuyue_number = view.findViewById(R.id.tv_yuyue_number);
         tv_home_order_num = view.findViewById(R.id.tv_home_order_num);
         tv_home_settle_order_num = view.findViewById(R.id.tv_home_settle_order_num);
@@ -79,6 +82,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         ll_jie_suan.setOnClickListener(this);
         ll_finance.setOnClickListener(this);
         iv_update.setOnClickListener(this);
+        ll_tixian_view.setOnClickListener(this);
         StyledDialog.buildLoading("加载中").setActivity((Activity) context).show();
         mPresenter.basEarnings();
         return view;
@@ -108,6 +112,9 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
                 break;
             case R.id.iv_update://修改
                 ZzRouter.gotoActivity((Activity) context, UserInfoActivity.class);
+                break;
+            case R.id.ll_tixian_view://提下
+                ZzRouter.gotoActivity((Activity) context, ExtractActivity.class);
                 break;
         }
     }
