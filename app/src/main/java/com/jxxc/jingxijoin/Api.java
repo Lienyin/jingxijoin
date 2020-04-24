@@ -3,7 +3,7 @@ package com.jxxc.jingxijoin;
 import com.jxxc.jingxijoin.utils.SPUtils;
 
 public class Api {
-   public static final String BASEURL = "https://jx.bashideban.com/company/";//
+   public static final String BASEURL = "https://jx.incofuture.com/company/";//
 
     //1-获取验证码
     public static final String SMS_CODE = BASEURL + "common/auth/get_code";
