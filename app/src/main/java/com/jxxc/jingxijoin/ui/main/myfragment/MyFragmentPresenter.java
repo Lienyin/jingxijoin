@@ -1,5 +1,6 @@
 package com.jxxc.jingxijoin.ui.main.myfragment;
 
+import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.Api;
 import com.jxxc.jingxijoin.entity.backparameter.UserInfoEntity;
 import com.jxxc.jingxijoin.http.EventCenter;
@@ -28,6 +29,7 @@ public class MyFragmentPresenter extends BasePresenterImpl<MyFragmentContract.Vi
                 .execute(new JsonCallback<HttpResult<UserInfoEntity>>() {
                     @Override
                     public void onSuccess(Response<HttpResult<UserInfoEntity>> response) {
+                        StyledDialog.dismissLoading();
                         UserInfoEntity d = response.body().data;
                         if (response.body().code==0){
                             mView.userInfoCallBack(d);

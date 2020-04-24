@@ -19,5 +19,6 @@ public class LoginContract {
         void getCode(String phonenumber, TextView tvAuthCode);
         void login(String loginName,String password);
         void loginCode(String phonenumber,String code);
+        void reportCofing();//上传配置文件
     }
 }

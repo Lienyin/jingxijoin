@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.jxxc.jingxijoin.play.AudioPlayer;
 import com.jxxc.jingxijoin.ui.message.MessageActivity;
 
 import org.json.JSONException;
@@ -101,13 +102,14 @@ public class MyReceiver extends BroadcastReceiver {
 					while (it.hasNext()) {
 						String myKey = it.next();
 						sb.append("\nkey:" + key + ", value3: [" +myKey + " - " +json.optString(myKey) + "]");
-//						if ("sourceType".equals(myKey)&&"1".equals(json.optString(myKey))){
-//							//抢单大厅出新单
-//							AudioPlayer.getInstance().startPlay(mContext, "1");
-//						}else if ("sourceType".equals(myKey)&&"2".equals(json.optString(myKey))){
-//							//抢单成功
-//							AudioPlayer.getInstance().startPlay(mContext, "2");
-//						}else if ("sourceType".equals(myKey)&&"3".equals(json.optString(myKey))){
+						if ("sourceType".equals(myKey)&&"8".equals(json.optString(myKey))){
+							//抢单大厅出新单
+							AudioPlayer.getInstance().startPlay(mContext, "1");
+						}else if ("sourceType".equals(myKey)&&"9".equals(json.optString(myKey))){
+							//抢单成功
+							AudioPlayer.getInstance().startPlay(mContext, "2");
+						}
+//						else if ("sourceType".equals(myKey)&&"3".equals(json.optString(myKey))){
 //							//转单成功
 //							AudioPlayer.getInstance().startPlay(mContext, "3");
 //						}else if ("sourceType".equals(myKey)&&"4".equals(json.optString(myKey))){
