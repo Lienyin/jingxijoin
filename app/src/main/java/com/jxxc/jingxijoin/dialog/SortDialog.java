@@ -95,14 +95,6 @@ public class SortDialog implements View.OnClickListener {
                 cleanDialog();
                 break;
             case R.id.btn_queding_paiban://确定排班
-//                Set<Map.Entry<Integer, String>> carId = sortAdapter.getCarId().entrySet();
-//                for (Map.Entry<Integer, String> me : carId){
-//                    // 根据键值对对象获取键和值
-//                    Integer key = me.getKey();
-//                    String value = me.getValue();
-//                    Log.i("TAG",key + "-@--" + value);
-//                }
-
                 Set<Map.Entry<String, String>> techId = sortAdapter.getTechId().entrySet();
                 for (Map.Entry<String, String> me : techId){
                     // 根据键值对对象获取键和值

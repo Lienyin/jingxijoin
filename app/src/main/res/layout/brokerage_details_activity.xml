@@ -30,7 +30,7 @@
                 android:gravity="center"
                 android:textColor="@color/black333"
                 android:textSize="17sp"
-                android:text="租金"/>
+                android:text="订单金额"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"

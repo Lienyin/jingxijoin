@@ -63,9 +63,9 @@ public class Api {
     public static final String UPDATE_USER_INFO = BASEURL + "system/company/updateUserInfo";
    //29-配置上报
    public static final String REPORT_COFING = BASEURL + "system/company/reportCofing";
+    //30-消息列表
+    public static final String MESSAGE_LIST = BASEURL + "biz/message/messageList";
 
-    //0-客户登录
-    public static final String MESSAGE_LIST = BASEURL + "/";
     //0-客户登录
     public static final String BINDING_TIXIAN = BASEURL + "/";
 }

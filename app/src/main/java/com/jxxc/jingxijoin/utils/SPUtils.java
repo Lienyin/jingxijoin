@@ -36,6 +36,7 @@ public class SPUtils {
     public static final String K_USER_TYPE = "userType";//管理员类型 1:运营商,2：站点 '
     public static final String K_BANK_NAME = "bankName";
     public static final String K_PASS_WORD = "password";//用户密码
+    public static final String K_AVATAR = "avatar";//头像
     private static Context mContext;
 
     public static SharedPreferences init(Context context) {

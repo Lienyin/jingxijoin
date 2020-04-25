@@ -134,7 +134,7 @@ public class SortAdapter extends BaseAdapter {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finalHolder.tv_order_jishi.setText(items[which]+"");
-                                techId.put(oId,techList.get(which).technicianId);
+                                techId.put(list.get(position).orderId,techList.get(which).technicianId);
                             }
                         });
                 dialog.show();

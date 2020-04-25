@@ -34,6 +34,7 @@ public class MyFragmentPresenter extends BasePresenterImpl<MyFragmentContract.Vi
                         if (response.body().code==0){
                             mView.userInfoCallBack(d);
                             SPUtils.put(SPUtils.K_SESSION_MOBILE,d.phonenumber);
+                            SPUtils.put(SPUtils.K_AVATAR,d.avatar);
                         }else{
                             toast(mContext,response.body().message);
                         }

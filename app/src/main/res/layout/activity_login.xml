@@ -20,6 +20,7 @@
                 android:gravity="center">
 
                 <ImageView
+                    android:id="@+id/iv_head_logo"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
                     android:src="@mipmap/iv_head" />

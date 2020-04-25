@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
 import com.jxxc.jingxijoin.utils.AppUtils;
+import com.jxxc.jingxijoin.utils.GlideImgManager;
 import com.jxxc.jingxijoin.utils.SPUtils;
 import com.jxxc.jingxijoin.utils.StatusBarUtil;
 
@@ -50,6 +52,8 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
     LinearLayout ll_password_view;
     @BindView(R.id.ll_code_view)
     LinearLayout ll_code_view;
+    @BindView(R.id.iv_head_logo)
+    ImageView iv_head_logo;
     private long exitTime = 0;
 
     @Override
@@ -62,6 +66,11 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         if (!AppUtils.isEmpty(SPUtils.get(SPUtils.K_ACCOUNT,""))){
             etAccount.setText(SPUtils.get(SPUtils.K_ACCOUNT,""));
+        }
+
+        if (!AppUtils.isEmpty(SPUtils.get(SPUtils.K_AVATAR,""))){
+            GlideImgManager.loadCircleImage(this, SPUtils.get(SPUtils.K_AVATAR,"")
+                    , iv_head_logo);
         }
     }
 
