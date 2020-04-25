@@ -34,8 +34,7 @@
                     android:layout_height="wrap_content"
                     android:text="XXXX"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"/>
                 <TextView
                     android:id="@+id/tv_order_static_time"
                     android:layout_width="wrap_content"
@@ -49,7 +48,7 @@
                 android:id="@+id/tv_order_static_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:layout_marginTop="5dp"
                 android:maxLength="30"
                 android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
