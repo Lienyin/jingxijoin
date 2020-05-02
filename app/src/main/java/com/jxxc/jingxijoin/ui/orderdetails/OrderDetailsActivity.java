@@ -82,6 +82,8 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
     LinearLayout ll_ping_jia;
     @BindView(R.id.tv_dating_order_kehu)
     TextView tv_dating_order_kehu;
+    @BindView(R.id.tv_dating_order_count_down)
+    TextView tv_dating_order_count_down;
     private String orderId="";
     private String orderIdTime="";
     private OrderDetailsDataAdapter adapter;
@@ -153,6 +155,7 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
         tv_dating_order_memo.setText(data.remark);
         tv_order_xia_time.setText(data.createTime);
         tv_order_pay_type.setText(data.payType);
+        tv_dating_order_count_down.setText(data.statusName);
         //评价内容
         if (!AppUtils.isEmpty(data.customerCommentTime)){
             ll_ping_jia.setVisibility(View.VISIBLE);

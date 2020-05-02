@@ -106,7 +106,7 @@ public class MyReceiver extends BroadcastReceiver {
 							//抢单大厅出新单
 							AudioPlayer.getInstance().startPlay(mContext, "1");
 						}else if ("sourceType".equals(myKey)&&"9".equals(json.optString(myKey))){
-							//抢单成功
+							//预约订单
 							AudioPlayer.getInstance().startPlay(mContext, "2");
 						}
 //						else if ("sourceType".equals(myKey)&&"3".equals(json.optString(myKey))){
