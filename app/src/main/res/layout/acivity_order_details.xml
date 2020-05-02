@@ -307,7 +307,7 @@
                         android:textSize="14sp"
                         android:drawableLeft="@mipmap/time_yuyue"
                         android:textColor="@color/black333"
-                        android:text="未开始"/>
+                        android:text="XXX"/>
                 </LinearLayout>
             </LinearLayout>
             <View
