@@ -84,6 +84,8 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
     TextView tv_dating_order_kehu;
     @BindView(R.id.tv_dating_order_count_down)
     TextView tv_dating_order_count_down;
+    @BindView(R.id.tv_fuwu_itme)
+    TextView tv_fuwu_itme;
     private String orderId="";
     private String orderIdTime="";
     private OrderDetailsDataAdapter adapter;
@@ -159,6 +161,7 @@ public class OrderDetailsActivity extends MVPBaseActivity<OrderDetailsContract.V
         //评价内容
         if (!AppUtils.isEmpty(data.customerCommentTime)){
             ll_ping_jia.setVisibility(View.VISIBLE);
+            tv_fuwu_itme.setText(data.customerCommentTime);
             if (data.starLevel>0&&data.starLevel<=1){
                 iv_ping_jia_level.setBackgroundResource(R.mipmap.icon_user_13);
             }else if (data.starLevel>1&&data.starLevel<=2){
