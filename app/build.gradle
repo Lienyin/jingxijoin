@@ -24,8 +24,8 @@ android {
         applicationId "com.jxxc.jingxijoin"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 103
-        versionName '1.0.3'
+        versionCode 104
+        versionName '1.0.4'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
         multiDexEnabled true
@@ -115,5 +115,6 @@ dependencies {
     implementation 'cn.jiguang.sdk:jpush:3.0.9'
     implementation 'cn.jiguang.sdk:jcore:1.1.7'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'zlc.season:rxdownload2:2.0.4'
 
 }

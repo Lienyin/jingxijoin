@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jxxc.jingxijoin.BuildConfig;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.entity.backparameter.UserInfoEntity;
 import com.jxxc.jingxijoin.http.ZzRouter;
@@ -37,6 +38,7 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
     private LinearLayout ll_pai_dan;
     private LinearLayout ll_user_info;
     private ImageView iv_user_head;
+    private TextView tv_banben;
     private int BindingAccount;
 
     public MyFragment(Context context){
@@ -56,12 +58,16 @@ public class MyFragment extends MVPBaseFragment<MyFragmentContract.View, MyFragm
         tv_is_bangding = view.findViewById(R.id.tv_is_bangding);
         ll_pai_dan = view.findViewById(R.id.ll_pai_dan);
         ll_user_info = view.findViewById(R.id.ll_user_info);
+        tv_banben = view.findViewById(R.id.tv_banben);
         ll_tixian.setOnClickListener(this);
         ll_user_info.setOnClickListener(this);
         ll_commercial_tenant_info.setOnClickListener(this);
         ll_msg.setOnClickListener(this);
         ll_pai_dan.setOnClickListener(this);
         mPresenter.userInfo();
+
+        //版本号
+        tv_banben.setText("v"+BuildConfig.VERSION_NAME);
         return view;
     }
 

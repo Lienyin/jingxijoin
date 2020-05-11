@@ -28,7 +28,7 @@
             android:id="@+id/iv_user_head"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
             android:src="@mipmap/logo"/>
         <LinearLayout
             android:layout_width="0dp"
@@ -223,7 +223,7 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="@color/black999"
-            android:text="v1.0.2"/>
+            android:text="v1.0.0"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

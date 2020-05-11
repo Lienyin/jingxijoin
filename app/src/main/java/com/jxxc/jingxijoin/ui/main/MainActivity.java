@@ -173,8 +173,13 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
 
     //查询app最新版本返回接口
     @Override
-    public void latestVersionCallBack(LatestVersionEntity data) {
-        SPUtils.put(SPUtils.K_FILE_URL,data.staticUrl);
+    public void latestVersionCallBack() {
+
+    }
+
+    @Override
+    public void updateCB(boolean must) {
+
     }
 
     //个人信息返回数据

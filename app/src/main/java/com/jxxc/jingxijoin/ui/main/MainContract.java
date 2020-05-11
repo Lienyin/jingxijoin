@@ -12,7 +12,8 @@ import com.jxxc.jingxijoin.mvp.BasePresenter;
 
 public class MainContract {
     interface View extends BaseView {
-        void latestVersionCallBack(LatestVersionEntity data);
+        void updateCB(boolean must);
+        void latestVersionCallBack();
         void getUserInfoCallBack(UserInfoEntity data);
     }
 

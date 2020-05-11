@@ -83,7 +83,7 @@ public class FirstFragment extends MVPBaseFragment<FirseFramentContract.View, Fi
         ll_finance.setOnClickListener(this);
         iv_update.setOnClickListener(this);
         ll_tixian_view.setOnClickListener(this);
-        StyledDialog.buildLoading("加载中").setActivity((Activity) context).show();
+        //StyledDialog.buildLoading("加载中").setActivity((Activity) context).show();
         mPresenter.basEarnings();
         return view;
     }
