@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.hss01248.dialog.StyledDialog;
 import com.jxxc.jingxijoin.http.ZzRouter;
 import com.jxxc.jingxijoin.ui.main.MainActivity;
+import com.jxxc.jingxijoin.ui.regardsagreement.RegardsAgreementActivity;
 import com.jxxc.jingxijoin.utils.AnimUtils;
 import com.jxxc.jingxijoin.R;
 import com.jxxc.jingxijoin.mvp.MVPBaseActivity;
@@ -46,6 +47,8 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
     TextView tv_get_code;
     @BindView(R.id.tv_login_fangshi)
     TextView tv_login_fangshi;
+    @BindView(R.id.tv_ying_yingsi)
+    TextView tv_ying_yingsi;
     @BindView(R.id.rb_xieyi)
     RadioButton rb_xieyi;
     @BindView(R.id.ll_password_view)
@@ -74,7 +77,7 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
         }
     }
 
-    @OnClick({R.id.btn_login,R.id.tv_get_code,R.id.tv_login_fangshi})
+    @OnClick({R.id.btn_login,R.id.tv_get_code,R.id.tv_login_fangshi,R.id.tv_ying_yingsi})
     public void onViewClicked(View view) {
         AnimUtils.clickAnimator(view);
         switch (view.getId()) {
@@ -123,6 +126,13 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
                     ll_code_view.setVisibility(View.GONE);
                     et_ms_code.setText("");
                 }
+                break;
+            case R.id.tv_ying_yingsi://隐私政策
+                String URL = "https://jx.bashideban.com/tool/build/ios_privacy";
+                Intent intent = new Intent(this, RegardsAgreementActivity.class);
+                intent.putExtra("URL",URL);
+                intent.putExtra("h5Type","0");
+                startActivity(intent);
                 break;
             default:
         }
